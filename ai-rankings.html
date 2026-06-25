@@ -298,7 +298,15 @@ body {
   box-sizing: border-box;
 }
 
-.badge + .badge { margin-left: 0.3rem; }
+.badge + .badge { margin-top: 0.2rem; }
+
+/* 状态列：badge 居中堆叠 */
+.status-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
 
 .badge.new { background: rgba(63,185,80,0.15); color: var(--accent-green); border: 1px solid rgba(63,185,80,0.3); }
 .badge.open { background: rgba(88,166,255,0.15); color: var(--accent-blue); border: 1px solid rgba(88,166,255,0.3); }
@@ -438,7 +446,7 @@ footer a:hover { text-decoration: underline; }
   .model-vendor { font-size: 0.7rem; }
   .region-tag { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
   .badge { font-size: 0.6rem; padding: 0.05rem 0.3rem; width: 5em; box-sizing: border-box; }
-  .badge + .badge { margin-left: 0.15rem; }
+  .badge + .badge { margin-top: 0.15rem; }
   .score-cell { font-size: 0.72rem; }
   .rank-cell { width: 28px; font-size: 0.75rem; }
 }
@@ -522,7 +530,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Anthropic</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">LMSYS 99</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>LMSYS Arena 99分，SWE-bench 95.5%，因出口管制曾下线</td>
           </tr>
           <tr>
@@ -531,7 +539,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">OpenAI</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">AAI 51</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>全能均衡，生态成熟，Codex周活500万+</td>
           </tr>
           <tr>
@@ -540,7 +548,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">智谱 AI</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">AAI 51 / CA 1595</td>
-            <td><span class="badge new">新发布</span><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge open">开源</span></td>
             <td>Code Arena全球可用第1，编程第4，智能体第2，Design Arena第1</td>
           </tr>
           <tr>
@@ -549,7 +557,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Anthropic</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">AAI 50</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>长文本与安全严谨性突出，幻觉少</td>
           </tr>
           <tr>
@@ -558,7 +566,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">字节跳动</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">国产第1</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>性能接近GPT-5.5，日均180万亿Tokens调用，月活3.45亿</td>
           </tr>
           <tr>
@@ -567,7 +575,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">OpenAI</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">AAI 49</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>编程专项优化，SWE-bench 95.5%</td>
           </tr>
           <tr>
@@ -576,7 +584,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Google</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">AAI 48</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>多模态与搜索整合最强，速度快</td>
           </tr>
           <tr>
@@ -585,7 +593,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">月之暗面</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">AAI 47</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>超长上下文和Agent能力突出，性价比极高</td>
           </tr>
           <tr>
@@ -594,7 +602,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">阿里巴巴</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">CA 1540+</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>唯一突破1540分的国产模型，企业级生态完善</td>
           </tr>
           <tr>
@@ -603,7 +611,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">深度求索</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">本地70.48</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>开源第1，数学71.93，代码74.95，智能体78.12，V4.1即将发布</td>
           </tr>
           <tr>
@@ -612,7 +620,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Anthropic</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>与Fable 5共享架构，首次开放Mythos级能力</td>
           </tr>
           <tr>
@@ -621,7 +629,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Google</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>多模态能力持续增强，与Google生态深度整合</td>
           </tr>
           <tr>
@@ -630,7 +638,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Meta</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>开源旗舰，本地部署首选之一</td>
           </tr>
           <tr>
@@ -639,7 +647,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">百度</td>
             <td><span class="region-tag cn">国内</span></td>
             <td class="score-cell">LMSYS 1446</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>国家队选手，稳扎稳打，中文理解能力强</td>
           </tr>
           <tr>
@@ -648,7 +656,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">Google</td>
             <td><span class="region-tag intl">国外</span></td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>轻量开源模型，端侧部署友好</td>
           </tr>
         </tbody>
@@ -691,7 +699,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">GPT-5.2 (high)</td>
             <td class="model-vendor">OpenAI</td>
             <td class="score-cell">51</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>全能均衡，生态成熟，Codex周活500万+</td>
           </tr>
           <tr>
@@ -699,7 +707,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Opus 4.5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">50</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>长文本与安全严谨性突出，幻觉少</td>
           </tr>
           <tr>
@@ -707,7 +715,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">GPT-5.2 Codex (high)</td>
             <td class="model-vendor">OpenAI</td>
             <td class="score-cell">49</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>编程专项优化，SWE-bench 95.5%</td>
           </tr>
           <tr>
@@ -715,7 +723,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Gemini 3 Pro (high)</td>
             <td class="model-vendor">Google</td>
             <td class="score-cell">48</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>多模态与搜索整合最强，速度快</td>
           </tr>
           <tr>
@@ -723,7 +731,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Kimi K2.5</td>
             <td class="model-vendor">Moonshot AI</td>
             <td class="score-cell">47</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>性价比极高，比Claude Opus 4.5便宜数倍</td>
           </tr>
           <tr>
@@ -731,7 +739,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Fable 5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>Anthropic最强模型，LMSYS Arena 99分，因出口管制曾下线</td>
           </tr>
           <tr>
@@ -739,7 +747,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Mythos 5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>与Fable 5共享架构，安全配置不同，首次开放Mythos级能力</td>
           </tr>
           <tr>
@@ -747,7 +755,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Gemini 3.1 Pro</td>
             <td class="model-vendor">Google</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>多模态能力持续增强，与Google生态深度整合</td>
           </tr>
           <tr>
@@ -755,7 +763,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Llama 4</td>
             <td class="model-vendor">Meta</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>开源旗舰，本地部署首选之一</td>
           </tr>
           <tr>
@@ -763,7 +771,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Gemma 4</td>
             <td class="model-vendor">Google</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>轻量开源模型，端侧部署友好</td>
           </tr>
         </tbody>
@@ -871,7 +879,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">字节跳动</td>
             <td class="score-cell">国产第1（月活3.45亿）</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>性能接近 GPT-5.5，日均 180 万亿 Tokens 调用</td>
           </tr>
           <tr>
@@ -880,7 +888,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">智谱 AI</td>
             <td class="score-cell">Artificial Analysis 第4（51分）</td>
             <td class="score-cell">1595（全球可用第1）</td>
-            <td><span class="badge new">新发布</span><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge open">开源</span></td>
             <td>开源模型 SOTA，编程全球第4，智能体第2，Design Arena 第1</td>
           </tr>
           <tr>
@@ -889,7 +897,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">月之暗面</td>
             <td class="score-cell">Artificial Analysis 第5</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>超长上下文和 Agent 能力突出，性价比极高</td>
           </tr>
           <tr>
@@ -898,7 +906,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">阿里巴巴</td>
             <td class="score-cell">国产第1梯队</td>
             <td class="score-cell">1540+（全球第4）</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>唯一突破 1540 分的国产模型，企业级生态完善</td>
           </tr>
           <tr>
@@ -907,7 +915,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">深度求索</td>
             <td class="score-cell">开源第1（本地横评）</td>
             <td class="score-cell">74.95（代码）</td>
-            <td><span class="badge open">开源</span></td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
             <td>总分 70.48，数学 71.93，智能体 78.12，V4.1即将发布</td>
           </tr>
           <tr>
@@ -916,7 +924,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">百度</td>
             <td class="score-cell">LMSYS 1446分</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>国家队选手，稳扎稳打，中文理解能力强</td>
           </tr>
           <tr>
@@ -925,7 +933,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">MiniMax</td>
             <td class="score-cell">国产第1梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>中文任务接近 GPT-4o 水平，多模态能力突出</td>
           </tr>
           <tr>
@@ -934,7 +942,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">腾讯</td>
             <td class="score-cell">国产第2梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>背靠腾讯生态，微信 AI 助手「小微」灰度上线</td>
           </tr>
           <tr>
@@ -943,7 +951,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">科大讯飞</td>
             <td class="score-cell">国产第2梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>A股第一，多语种实时翻译，达沃斯现场跑通</td>
           </tr>
           <tr>
@@ -952,7 +960,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">昆仑万维</td>
             <td class="score-cell">国产第9</td>
             <td class="score-cell">—</td>
-            <td><span class="badge closed">不开源</span></td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
             <td>AI Agent 国内 Top3~5，海外商业化 A 股第一</td>
           </tr>
         </tbody>
