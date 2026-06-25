@@ -667,40 +667,40 @@ var HISTORY_PREFIX = 'gh-tracker-history-'; // daily history for new-entry detec
 // ===== Project Chinese Descriptions =====
 var PROJECT_DESC = {
   // Category 1: AI Coding
-  'iOfficeAI/AionUi': '主要功能：为OpenClaw、Claude Code、Codex等20+命令行AI工具提供统一的本地协作界面。实现目的：解决多AI工具切换繁琐的问题，让用户在一个界面中管理和定制多个AI助手。产生效果：显著降低AI工具使用门槛，提升多工具协同效率。',
-  'the-open-agent/openagent': '主要功能：基于LLM、RAG和Agent循环的下一代个人AI助手，支持计算机操控、浏览器使用和编码代理。实现目的：打造一个能自主完成复杂任务的通用AI Agent。产生效果：实现从对话到行动的跨越，AI可直接操作浏览器和系统完成实际工作。',
-  'Natively-AI-assistant/natively-cluely-ai-assistant': '主要功能：开源AI会议助手、面试副驾驶和笔记工具，支持实时转录、AI会议纪要、本地RAG。实现目的：提供Cluely、Otter等商业产品的免费开源替代方案。产生效果：在本地运行保护隐私，无需订阅费用即可获得专业级会议辅助能力。',
-  'madox2/vim-ai': '主要功能：为Vim和Neovim提供AI代码助手插件，集成OpenAI和ChatGPT。实现目的：让Vim用户无需离开编辑器即可使用AI辅助编码。产生效果：在传统编辑器中引入AI能力，提升Vim开发者的编码效率和体验。',
-  'editor-code-assistant/eca': '主要功能：编辑器无关的AI结对编程框架，提供跨编辑器的AI辅助能力。实现目的：打破AI编码助手与特定编辑器的绑定，实现一套能力多处复用。产生效果：开发者可在任意编辑器中获得一致的AI编程辅助体验。',
-  'Palm1r/QodeAssist': '主要功能：Qt Creator的AI编码助手插件，提供代码补全、问答等AI辅助功能。实现目的：为Qt/C++开发者填补AI编码工具的空白。产生效果：让Qt Creator用户也能享受AI驱动的编码效率提升。',
-  'agent-sh/agnix': '主要功能：AI编码助手的Linter和LSP工具，验证CLAUDE.md、AGENTS.md、SKILL.md等配置文件。实现目的：解决AI编码助手配置文件缺乏规范校验的问题。产生效果：自动检测和修复配置错误，提升AI辅助开发的可靠性和一致性。',
-  'strands-agents/mcp-server': '主要功能：为GenAI工具提供Strands Agents文档的MCP服务器。实现目的：让AI编码助手能准确理解和使用Strands Agents框架。产生效果：开发者可通过任意AI工具进行Strands Agents的Vibe Coding开发。',
-  'FlamxGames/godot-ai-assistant-hub': '主要功能：在Godot引擎中嵌入AI助手，支持代码读写和编辑器操作。实现目的：为Godot游戏开发者提供AI辅助开发能力。产生效果：降低游戏开发门槛，AI可直接在Godot编辑器中辅助编写代码。',
-  'Govcraft/rust-docs-mcp-server': '主要功能：MCP服务器，实时获取Rust crate文档并通过嵌入和LLM提供准确上下文。实现目的：防止AI助手生成过时的Rust代码建议。产生效果：确保AI生成的Rust代码基于最新文档，大幅减少因API变更导致的代码错误。',
+  'iOfficeAI/AionUi': '主要功能：为20+命令行AI工具提供统一本地协作界面。实现目的：解决多AI工具切换繁琐问题。产生效果：降低使用门槛，提升多工具协同效率。',
+  'the-open-agent/openagent': '主要功能：基于LLM和Agent循环的个人AI助手。实现目的：打造能自主完成复杂任务的通用Agent。产生效果：实现从对话到行动的跨越。',
+  'Natively-AI-assistant/natively-cluely-ai-assistant': '主要功能：开源AI会议助手，支持实时转录和纪要。实现目的：提供商业产品的免费开源替代方案。产生效果：本地运行保护隐私，无需订阅费用。',
+  'madox2/vim-ai': '主要功能：为Vim/Neovim提供AI代码助手插件。实现目的：让Vim用户无需离开编辑器即可用AI。产生效果：提升Vim开发者的编码效率和体验。',
+  'editor-code-assistant/eca': '主要功能：编辑器无关的AI结对编程框架。实现目的：打破AI助手与特定编辑器的绑定。产生效果：任意编辑器中获得一致的AI辅助。',
+  'Palm1r/QodeAssist': '主要功能：Qt Creator的AI编码助手插件。实现目的：为Qt/C++开发者填补AI编码空白。产生效果：让Qt Creator用户享受AI编码提升。',
+  'agent-sh/agnix': '主要功能：AI编码助手的Linter和LSP配置校验工具。实现目的：解决配置文件缺乏规范校验的问题。产生效果：自动检测修复配置错误，提升可靠性。',
+  'strands-agents/mcp-server': '主要功能：提供Strands Agents文档的MCP服务器。实现目的：让AI助手准确理解Strands框架。产生效果：支持通过任意AI工具进行Vibe Coding。',
+  'FlamxGames/godot-ai-assistant-hub': '主要功能：在Godot引擎中嵌入AI助手。实现目的：为Godot游戏开发者提供AI辅助。产生效果：AI可直接在Godot中辅助编写代码。',
+  'Govcraft/rust-docs-mcp-server': '主要功能：实时获取Rust crate文档的MCP服务器。实现目的：防止AI助手生成过时的Rust代码。产生效果：确保AI代码基于最新文档，减少错误。',
 
   // Category 2: Vibe Coding
-  'shanraisshan/claude-code-best-practice': '主要功能：从Vibe Coding到Agentic Engineering的Claude Code最佳实践指南。实现目的：系统化整理Claude Code的高效使用方法和工程化实践。产生效果：帮助开发者从随性编码升级到工程化AI开发，显著提升Claude Code使用效率。',
-  'BloopAI/vibe-kanban': '主要功能：为Claude Code、Codex等编码Agent提供看板式任务管理工具。实现目的：解决AI编码Agent任务规划和进度追踪的痛点。产生效果：让AI编码效率提升10倍，实现多任务并行和可视化进度管理。',
-  '2025Emma/vibe-coding-cn': '主要功能：Vibe Coding中文社区项目，汇集氛围编程的中文资源和实践。实现目的：为中文开发者提供Vibe Coding的本土化学习材料。产生效果：降低中文用户接触Vibe Coding的门槛，促进国内AI编程社区发展。',
-  'datawhalechina/easy-vibe': '主要功能：Vibe Coding 2026入门课程，从零基础到精通的阶梯式教程。实现目的：让编程新手也能快速上手AI辅助编程。产生效果：系统化培养AI编程能力，帮助初学者快速进入Vibe Coding世界。',
-  'liyupi/ai-guide': '主要功能：程序员鱼皮的AI资源大全，涵盖OpenClaw教程、大模型玩法、Prompt大全、AI编程教程等。实现目的：一站式整合AI学习资源，降低信息获取成本。产生效果：成为国内最受欢迎的AI学习导航之一，帮助大量开发者快速掌握AI技术。',
-  'coleam00/context-engineering-intro': '主要功能：上下文工程入门指南，讲解如何让AI编码助手真正发挥作用。实现目的：将Vibe Coding从感觉驱动升级为工程化方法论。产生效果：系统化提升AI编码质量，减少无效提示和重复修改。',
-  'refly-ai/refly': '主要功能：首个开源Agent技能构建器，通过Vibe工作流定义技能并运行于Claude Code、Cursor等平台。实现目的：将AI技能从临时提示升级为可复用基础设施。产生效果：实现一次定义、多平台运行，大幅降低Agent开发成本。',
-  'datawhalechina/vibe-vibe': '主要功能：首个系统化Vibe Coding开源教程，从零基础到全栈实战。实现目的：让人人都能借助AI实现自己的想法与创意。产生效果：全民AI学习第一课，推动AI编程的普及化教育。',
-  'zai-org/GLM-5': '主要功能：智谱GLM-5大模型，从Vibe Coding到Agentic Engineering的跨越。实现目的：打造国产顶尖开源大模型，推动AI编程能力升级。产生效果：在多项基准测试中达到国际一流水平，加速国内AI编程生态发展。',
-  'cloudflare/vibesdk': '主要功能：基于Cloudflare技术栈的开源Vibe Coding平台构建工具。实现目的：帮助开发者快速搭建自己的Vibe Coding平台。产生效果：降低Vibe Coding平台搭建门槛，推动AI编程工具的定制化发展。',
+  'shanraisshan/claude-code-best-practice': '主要功能：Claude Code最佳实践指南。实现目的：系统化整理高效使用方法和工程实践。产生效果：帮助从随性编码升级到工程化AI开发。',
+  'BloopAI/vibe-kanban': '主要功能：为AI编码Agent提供看板式任务管理。实现目的：解决AI编码任务规划和进度追踪痛点。产生效果：实现多任务并行和可视化进度管理。',
+  '2025Emma/vibe-coding-cn': '主要功能：Vibe Coding中文社区资源项目。实现目的：为中文开发者提供本土化学习材料。产生效果：降低中文用户接触Vibe Coding门槛。',
+  'datawhalechina/easy-vibe': '主要功能：Vibe Coding入门阶梯式教程。实现目的：让编程新手快速上手AI辅助编程。产生效果：系统化培养AI编程能力。',
+  'liyupi/ai-guide': '主要功能：程序员鱼皮的AI资源大全。实现目的：一站式整合AI学习资源。产生效果：帮助开发者快速掌握AI技术。',
+  'coleam00/context-engineering-intro': '主要功能：上下文工程入门指南。实现目的：将Vibe Coding升级为工程化方法论。产生效果：系统化提升AI编码质量，减少重复修改。',
+  'refly-ai/refly': '主要功能：开源Agent技能构建器。实现目的：将AI技能升级为可复用基础设施。产生效果：一次定义多平台运行，降低开发成本。',
+  'datawhalechina/vibe-vibe': '主要功能：系统化Vibe Coding开源教程。实现目的：让人人都能借助AI实现创意。产生效果：推动AI编程的普及化教育。',
+  'zai-org/GLM-5': '主要功能：智谱GLM-5大模型。实现目的：打造国产顶尖开源大模型。产生效果：多项基准测试达国际一流水平。',
+  'cloudflare/vibesdk': '主要功能：开源Vibe Coding平台构建工具。实现目的：帮助快速搭建Vibe Coding平台。产生效果：降低平台搭建门槛，推动定制化发展。',
 
   // Category 3: Unity MCP
-  'CoplayDev/unity-mcp': '主要功能：Unity MCP服务器，作为AI助手与Unity编辑器之间的桥梁，提供资产管理、场景控制、脚本编辑等工具。实现目的：让LLM能够直接操控Unity编辑器完成游戏开发任务。产生效果：实现AI驱动的Unity自动化开发，大幅提升游戏开发效率。',
-  'IvanMurzak/Unity-MCP': '主要功能：Unity引擎的AI技能、MCP工具和CLI，支持完整AI开发和测试循环。实现目的：提供高效的Token使用和高级工具，任意C#方法可一行代码转为工具。产生效果：兼容Claude Code、Gemini、Copilot、Cursor等主流AI工具，免费使用。',
-  'sahibzada-allahyar/YC-Killer': '主要功能：企业级AI Agent库，提供YC创业公司的开源替代方案。实现目的：民主化AI访问，提供免费开源的高质量AI Agent。产生效果：降低AI应用开发门槛，为开发者提供商业级AI Agent的参考实现。',
-  'CoderGamester/mcp-unity': '主要功能：连接Unity编辑器的MCP插件，专为Cursor、Claude Code、Codex、Windsurf等IDE设计。实现目的：让主流AI编程工具能够直接与Unity编辑器交互。产生效果：在AI辅助开发环境中实现Unity项目的智能开发和管理。',
-  'jackwrichards/UnityMCP': '主要功能：Unity MCP项目，为AI助手提供Unity编辑器操控能力。实现目的：探索MCP协议在Unity开发中的应用。产生效果：为Unity AI开发提供基础MCP集成方案。',
-  'hatayama/unity-cli-loop': '主要功能：让AI驱动Unity，从编辑器到Play Mode的完整循环。实现目的：实现AI对Unity编辑器和运行时环境的全流程控制。产生效果：AI可自主完成Unity项目的编辑、测试和调试闭环。',
-  'AnkleBreaker-Studio/unity-mcp-server': '主要功能：提供268个工具的Unity MCP服务器，覆盖场景管理、GameObjects、组件、构建、性能分析、Shader Graph、物理、NavMesh、动画等。实现目的：为AI辅助游戏开发提供最全面的工具集。产生效果：连接Claude、Cursor等MCP客户端，实现Unity全功能AI操控。',
-  'youngwoocho02/unity-cli': '主要功能：命令行控制Unity编辑器，无MCP、无Python、无依赖的单二进制工具。实现目的：提供最轻量的Unity命令行控制方案。产生效果：简化Unity自动化流程，适合CI/CD和AI工具链集成。',
-  'liyingsong99/AIBridge': '主要功能：AI Unity开发工具集，结合项目本地工作流、AIBridge技能、CLI和运行时工具、代码索引、视觉验证等。实现目的：打造围绕Unity项目的完整AI开发循环。产生效果：实现AI辅助的Unity开发全流程自动化，从编码到测试到调试。',
-  'Glade-tool/glade-mcp': '主要功能：连接MCP兼容AI客户端到Unity或Godot，提供235+细粒度工具、Unity系统提示、游戏设计文档上下文等。实现目的：为游戏开发者提供最全面的AI辅助开发工具链。产生效果：支持Claude Code、Cursor、Windsurf等主流工具，实现游戏设计与开发的一体化AI辅助。'
+  'CoplayDev/unity-mcp': '主要功能：AI助手与Unity编辑器之间的MCP桥梁。实现目的：让LLM直接操控Unity编辑器。产生效果：实现AI驱动的Unity自动化开发。',
+  'IvanMurzak/Unity-MCP': '主要功能：Unity引擎的AI技能和MCP工具。实现目的：提供高效Token使用和高级工具。产生效果：兼容Claude Code、Gemini等主流AI工具。',
+  'sahibzada-allahyar/YC-Killer': '主要功能：企业级AI Agent开源库。实现目的：民主化AI访问，提供免费开源Agent。产生效果：降低AI应用开发门槛。',
+  'CoderGamester/mcp-unity': '主要功能：连接Unity编辑器的MCP插件。实现目的：让AI编程工具直接与Unity交互。产生效果：实现Unity项目的智能开发和管理。',
+  'jackwrichards/UnityMCP': '主要功能：为AI助手提供Unity编辑器操控能力。实现目的：探索MCP协议在Unity开发中的应用。产生效果：为Unity AI开发提供基础MCP方案。',
+  'hatayama/unity-cli-loop': '主要功能：AI驱动Unity从编辑器到Play Mode循环。实现目的：实现AI对Unity全流程控制。产生效果：AI可自主完成编辑、测试和调试闭环。',
+  'AnkleBreaker-Studio/unity-mcp-server': '主要功能：提供268个工具的Unity MCP服务器。实现目的：为AI辅助游戏开发提供全面工具集。产生效果：连接Claude、Cursor实现Unity全功能操控。',
+  'youngwoocho02/unity-cli': '主要功能：命令行控制Unity的单二进制工具。实现目的：提供最轻量的Unity命令行方案。产生效果：简化Unity自动化流程。',
+  'liyingsong99/AIBridge': '主要功能：AI Unity开发工具集。实现目的：打造Unity项目完整AI开发循环。产生效果：实现AI辅助开发全流程自动化。',
+  'Glade-tool/glade-mcp': '主要功能：连接AI客户端到Unity或Godot的MCP。实现目的：为游戏开发者提供全面AI辅助工具链。产生效果：支持Claude Code等实现游戏设计一体化。'
 };
 
 // Language colors (GitHub standard)
@@ -907,10 +907,6 @@ function formatCnDesc(desc) {
     }
     // Remove trailing period
     rest = rest.replace(/。$/, '');
-    // Truncate to 35 Chinese characters
-    if (rest.length > 35) {
-      rest = rest.substring(0, 35) + '...';
-    }
     html += '<span class="cn-line">' + (tag ? '<span class="cn-tag ' + tagClass + '">' + escapeHtml(tag) + '</span>' : '') + escapeHtml(rest) + '</span>';
   });
   return html;
