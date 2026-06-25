@@ -84,7 +84,7 @@ body {
 .hero {
   background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1a1f3a 70%, #0d1117 100%);
   border-bottom: 1px solid var(--rule);
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 2.5rem 1.5rem 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -107,29 +107,41 @@ body {
   pointer-events: none;
 }
 
-.hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-left { flex: 1; min-width: 280px; }
 
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #e6edf3 0%, #3fb950 50%, #58a6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.hero .subtitle { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; }
+.hero .subtitle { font-size: 0.9rem; color: var(--muted); }
 
-.hero .meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.hero-right { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
 
 .timestamp {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.875rem; color: var(--muted);
+  font-size: 0.82rem; color: var(--muted);
   background: rgba(63,185,80,0.08);
   border: 1px solid rgba(63,185,80,0.2);
-  padding: 0.5rem 1rem; border-radius: 8px;
+  padding: 0.45rem 0.9rem; border-radius: 8px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -145,7 +157,7 @@ body {
 }
 
 /* ===== Container ===== */
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
 
 /* ===== Section ===== */
 .section { margin-bottom: 3rem; }
@@ -160,6 +172,11 @@ body {
   width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem; flex-shrink: 0;
+}
+
+.section[data-type="mixed"] .section-icon {
+  background: rgba(188,140,255,0.12);
+  border: 1px solid rgba(188,140,255,0.25);
 }
 
 .section[data-type="intl"] .section-icon {
@@ -231,7 +248,6 @@ body {
 }
 
 .ranking-table tbody tr:last-child td { border-bottom: none; }
-
 .ranking-table tbody tr:hover { background: var(--bg3); }
 
 .rank-cell {
@@ -248,6 +264,18 @@ body {
 .model-name { font-weight: 600; }
 .model-vendor { color: var(--muted); font-size: 0.78rem; }
 
+.region-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  margin-left: 0.3rem;
+}
+
+.region-tag.intl { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
+.region-tag.cn { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+
 .score-cell {
   font-variant-numeric: tabular-nums;
   font-weight: 600;
@@ -255,6 +283,7 @@ body {
 }
 
 .section[data-type="cn"] .score-cell { color: var(--accent-green); }
+.section[data-type="mixed"] .score-cell { color: var(--accent-purple); }
 
 .badge {
   display: inline-block;
@@ -267,7 +296,7 @@ body {
 
 .badge.new { background: rgba(63,185,80,0.15); color: var(--accent-green); border: 1px solid rgba(63,185,80,0.3); }
 .badge.open { background: rgba(88,166,255,0.15); color: var(--accent-blue); border: 1px solid rgba(88,166,255,0.3); }
-.badge.blocked { background: rgba(248,81,73,0.15); color: var(--accent-red); border: 1px solid rgba(248,81,73,0.3); }
+.badge.closed { background: rgba(125,133,144,0.15); color: var(--muted); border: 1px solid rgba(125,133,144,0.3); }
 
 /* ===== News Cards ===== */
 .news-grid {
@@ -345,15 +374,30 @@ body {
 .news-card .news-source {
   font-size: 0.72rem;
   color: var(--accent-blue);
-  margin-top: 0.3rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.news-card .news-source .source-label {
+  color: var(--muted);
+  flex-shrink: 0;
 }
 
 .news-card .news-source a {
   color: var(--accent-blue);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .news-card .news-source a:hover { text-decoration: underline; }
+.news-card .news-source .source-sep { color: var(--muted); }
 
 /* ===== Footer ===== */
 footer {
@@ -370,13 +414,14 @@ footer a:hover { text-decoration: underline; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .hero { padding: 2rem 1rem 1.5rem; }
-  .hero h1 { font-size: 1.6rem; }
-  .hero .subtitle { font-size: 0.85rem; }
+  .hero { padding: 1.5rem 1rem 1.2rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero .subtitle { font-size: 0.8rem; }
+  .hero-content { flex-direction: column; align-items: flex-start; }
   .news-grid { grid-template-columns: 1fr; }
   .section-header h2 { font-size: 1.1rem; }
   .section-icon { width: 40px; height: 40px; font-size: 1.2rem; }
-  .container { padding: 1.5rem 1rem 2rem; }
+  .container { padding: 1rem 1rem 2rem; }
   .navbar-inner { height: 46px; }
   .navbar-brand { font-size: 0.85rem; }
   .navbar-links a { font-size: 0.78rem; padding: 0.35rem 0.7rem; }
@@ -386,7 +431,7 @@ footer a:hover { text-decoration: underline; }
 }
 
 @media (max-width: 480px) {
-  .hero .meta { flex-direction: column; align-items: flex-start; }
+  .hero-content { flex-direction: column; align-items: flex-start; }
   .ranking-table-wrap { overflow-x: auto; }
 }
 </style>
@@ -410,12 +455,14 @@ footer a:hover { text-decoration: underline; }
 <!-- ===== Hero Header ===== -->
 <header class="hero">
   <div class="hero-content">
-    <h1>AI大模型排名与新闻</h1>
-    <p class="subtitle">国内外权威榜单 · 引擎厂商最新动态 — 涵盖模型发布、技术突破与优惠信息</p>
-    <div class="meta">
+    <div class="hero-left">
+      <h1>AI大模型排名与新闻</h1>
+      <p class="subtitle">国内外权威榜单 · 引擎厂商最新动态 — 涵盖模型发布、技术突破与优惠信息</p>
+    </div>
+    <div class="hero-right">
       <span class="timestamp">
         <span class="dot"></span>
-        <span>数据更新时间：<script>document.write(formatNow())</script></span>
+        <span id="ts-text">数据更新时间：—</span>
       </span>
     </div>
   </div>
@@ -423,6 +470,176 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ===== Main Content ===== -->
 <main class="container">
+
+  <!-- ===== Mixed Ranking Section ===== -->
+  <section class="section" data-type="mixed">
+    <div class="section-header">
+      <div class="section-icon">🌐</div>
+      <div>
+        <h2>国内外大模型综合混排</h2>
+        <p>综合 Artificial Analysis、Code Arena、SuperCLUE 等多源权威榜单的全球大模型实力排名</p>
+      </div>
+    </div>
+
+    <div class="ranking-table-wrap">
+      <div class="ranking-table-title">
+        📊 全球大模型综合实力混排榜
+        <span class="source-tag">综合来源：Artificial Analysis / Code Arena / SuperCLUE / LMSYS · 2026年6月</span>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>模型</th>
+            <th>厂商</th>
+            <th>地区</th>
+            <th>综合得分</th>
+            <th>状态</th>
+            <th>核心亮点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-cell top1">1</td>
+            <td class="model-name">Claude Fable 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">LMSYS 99</td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>LMSYS Arena 99分，SWE-bench 95.5%，因出口管制曾下线</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top2">2</td>
+            <td class="model-name">GPT-5.2 (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 51</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>全能均衡，生态成熟，Codex周活500万+</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top3">3</td>
+            <td class="model-name">GLM-5.2</td>
+            <td class="model-vendor">智谱 AI</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">AAI 51 / CA 1595</td>
+            <td><span class="badge new">新发布</span><span class="badge open">开源</span></td>
+            <td>Code Arena全球可用第1，编程第4，智能体第2，Design Arena第1</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">4</td>
+            <td class="model-name">Claude Opus 4.5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 50</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>长文本与安全严谨性突出，幻觉少</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">5</td>
+            <td class="model-name">豆包 Doubao-Seed-2.1 Pro</td>
+            <td class="model-vendor">字节跳动</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">国产第1</td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>性能接近GPT-5.5，日均180万亿Tokens调用，月活3.45亿</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">6</td>
+            <td class="model-name">GPT-5.2 Codex (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 49</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>编程专项优化，SWE-bench 95.5%</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">7</td>
+            <td class="model-name">Gemini 3 Pro (high)</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 48</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>多模态与搜索整合最强，速度快</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">8</td>
+            <td class="model-name">Kimi K2.6</td>
+            <td class="model-vendor">月之暗面</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">AAI 47</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>超长上下文和Agent能力突出，性价比极高</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">9</td>
+            <td class="model-name">通义千问 Qwen3.7-Max</td>
+            <td class="model-vendor">阿里巴巴</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">CA 1540+</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>唯一突破1540分的国产模型，企业级生态完善</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">10</td>
+            <td class="model-name">DeepSeek V4-Pro</td>
+            <td class="model-vendor">深度求索</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">本地70.48</td>
+            <td><span class="badge open">开源</span></td>
+            <td>开源第1，数学71.93，代码74.95，智能体78.12，V4.1即将发布</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">11</td>
+            <td class="model-name">Claude Mythos 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>与Fable 5共享架构，首次开放Mythos级能力</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">12</td>
+            <td class="model-name">Gemini 3.1 Pro</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>多模态能力持续增强，与Google生态深度整合</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">13</td>
+            <td class="model-name">Llama 4</td>
+            <td class="model-vendor">Meta</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td><span class="badge open">开源</span></td>
+            <td>开源旗舰，本地部署首选之一</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">14</td>
+            <td class="model-name">文心一言 Ernie 5.0</td>
+            <td class="model-vendor">百度</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">LMSYS 1446</td>
+            <td><span class="badge closed">不开源</span></td>
+            <td>国家队选手，稳扎稳打，中文理解能力强</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">15</td>
+            <td class="model-name">Gemma 4</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td><span class="badge open">开源</span></td>
+            <td>轻量开源模型，端侧部署友好</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== International Section ===== -->
   <section class="section" data-type="intl">
@@ -458,7 +675,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">GPT-5.2 (high)</td>
             <td class="model-vendor">OpenAI</td>
             <td class="score-cell">51</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>全能均衡，生态成熟，Codex周活500万+</td>
           </tr>
           <tr>
@@ -466,7 +683,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Opus 4.5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">50</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>长文本与安全严谨性突出，幻觉少</td>
           </tr>
           <tr>
@@ -474,7 +691,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">GPT-5.2 Codex (high)</td>
             <td class="model-vendor">OpenAI</td>
             <td class="score-cell">49</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>编程专项优化，SWE-bench 95.5%</td>
           </tr>
           <tr>
@@ -482,7 +699,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Gemini 3 Pro (high)</td>
             <td class="model-vendor">Google</td>
             <td class="score-cell">48</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>多模态与搜索整合最强，速度快</td>
           </tr>
           <tr>
@@ -490,7 +707,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Kimi K2.5</td>
             <td class="model-vendor">Moonshot AI</td>
             <td class="score-cell">47</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>性价比极高，比Claude Opus 4.5便宜数倍</td>
           </tr>
           <tr>
@@ -498,7 +715,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Fable 5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge blocked">受限</span></td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>Anthropic最强模型，LMSYS Arena 99分，因出口管制曾下线</td>
           </tr>
           <tr>
@@ -506,7 +723,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Claude Mythos 5</td>
             <td class="model-vendor">Anthropic</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span><span class="badge blocked">受限</span></td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>与Fable 5共享架构，安全配置不同，首次开放Mythos级能力</td>
           </tr>
           <tr>
@@ -514,7 +731,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-name">Gemini 3.1 Pro</td>
             <td class="model-vendor">Google</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>多模态能力持续增强，与Google生态深度整合</td>
           </tr>
           <tr>
@@ -547,7 +764,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">Anthropic 发布 Claude Fable 5 与 Mythos 5</div>
         <div class="news-body">Anthropic 同时发布两款旗舰模型，首次将 Mythos 级能力开放给普通用户。Fable 5 在软件工程、知识工作、视觉识别、科学研究和长上下文处理等多个领域刷新纪录，LMSYS Arena 达 99 分，SWE-bench Verified 达 95.5%。但因美国出口管制要求，曾短暂下线所有用户访问。</div>
-        <div class="news-source">来源：Anthropic 官方 / The Verge</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic 官方</a><span class="source-sep">/</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.05s">
@@ -557,7 +774,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">OpenAI 签下三星 12 万员工大单</div>
         <div class="news-body">OpenAI 签下史上最大企业订单——三星 12 万员工全面接入 ChatGPT 企业版与 Codex。Codex 周活跃用户突破 500 万，其中非开发者增速是程序员的 3 倍。三星同步启动「AI 大转型」：总裁层集训、全员 AI 教育、新设 AI 专职组织。</div>
-        <div class="news-source">来源：The Information</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.1s">
@@ -567,7 +784,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">GitHub Agent HQ 集成 Claude 与 Codex 多代理编码</div>
         <div class="news-body">GitHub 在 Agent HQ 中加入 Anthropic Claude 和 OpenAI Codex，Copilot 用户可实现多代理编码工作流。多个 AI Agent 可协同完成复杂开发任务，标志着 AI 编码从单工具辅助进入多 Agent 协作时代。</div>
-        <div class="news-source">来源：The Verge</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.15s">
@@ -577,7 +794,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">AI 芯片股重挫，万亿资本开支遭遇回报拷问</div>
         <div class="news-body">纳指重挫 2.33%，英伟达跌 3.50%，AMD 大跌 7.52%。核心逻辑：AI 万亿资本开支何时兑现回报。当华尔街开始追问「这些投入什么时候产生实质性利润」，市场情绪天平随之倾斜。OpenAI 与 Anthropic 双双冲刺 IPO，AI 行业即将公开财务底牌。</div>
-        <div class="news-source">来源：彭博社 / Wall Street Journal</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bloomberg.com" target="_blank" rel="noopener">彭博社</a><span class="source-sep">/</span><a href="https://www.wsj.com" target="_blank" rel="noopener">Wall Street Journal</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.2s">
@@ -587,7 +804,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">科学家用 AI 训练 AI，数据质量成新灰犀牛</div>
         <div class="news-body">《新科学家》调查报道：受雇于 Scale AI、Outlier 等数据标注平台的工作人员，正在用 ChatGPT 完成「提供高质量人类数据」的任务。如果「人类标注」实际由 AI 生成，模型学到的可能是一代代自我循环的「二手知识」，数据溯源和标注质量监管成为产业核心课题。</div>
-        <div class="news-source">来源：New Scientist</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.newscientist.com" target="_blank" rel="noopener">New Scientist</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.25s">
@@ -597,7 +814,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">夏季达沃斯开幕，AI 成为全场关键词</div>
         <div class="news-body">世界经济论坛第 17 届新领军者年会在大连开幕，来自 90 多个国家的 1700 余名代表齐聚。AI 成为绝对关键词。荷兰特文特大学教授警告 AI 能耗被严重低估，联合国报告称到 2030 年 AI 数据中心用水量将相当于 13 亿人的年基本生活用水。</div>
-        <div class="news-source">来源：世界经济论坛 / 联合国报告</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.weforum.org" target="_blank" rel="noopener">世界经济论坛</a><span class="source-sep">/</span><a href="https://www.un.org" target="_blank" rel="noopener">联合国报告</a></div>
       </div>
     </div>
   </section>
@@ -638,7 +855,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">字节跳动</td>
             <td class="score-cell">国产第1（月活3.45亿）</td>
             <td class="score-cell">—</td>
-            <td><span class="badge new">新发布</span></td>
+            <td><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
             <td>性能接近 GPT-5.5，日均 180 万亿 Tokens 调用</td>
           </tr>
           <tr>
@@ -656,7 +873,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">月之暗面</td>
             <td class="score-cell">Artificial Analysis 第5</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>超长上下文和 Agent 能力突出，性价比极高</td>
           </tr>
           <tr>
@@ -665,7 +882,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">阿里巴巴</td>
             <td class="score-cell">国产第1梯队</td>
             <td class="score-cell">1540+（全球第4）</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>唯一突破 1540 分的国产模型，企业级生态完善</td>
           </tr>
           <tr>
@@ -683,7 +900,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">百度</td>
             <td class="score-cell">LMSYS 1446分</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>国家队选手，稳扎稳打，中文理解能力强</td>
           </tr>
           <tr>
@@ -692,7 +909,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">MiniMax</td>
             <td class="score-cell">国产第1梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>中文任务接近 GPT-4o 水平，多模态能力突出</td>
           </tr>
           <tr>
@@ -701,7 +918,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">腾讯</td>
             <td class="score-cell">国产第2梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>背靠腾讯生态，微信 AI 助手「小微」灰度上线</td>
           </tr>
           <tr>
@@ -710,7 +927,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">科大讯飞</td>
             <td class="score-cell">国产第2梯队</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>A股第一，多语种实时翻译，达沃斯现场跑通</td>
           </tr>
           <tr>
@@ -719,7 +936,7 @@ footer a:hover { text-decoration: underline; }
             <td class="model-vendor">昆仑万维</td>
             <td class="score-cell">国产第9</td>
             <td class="score-cell">—</td>
-            <td><span class="badge open">可用</span></td>
+            <td><span class="badge closed">不开源</span></td>
             <td>AI Agent 国内 Top3~5，海外商业化 A 股第一</td>
           </tr>
         </tbody>
@@ -736,7 +953,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">智谱 AI 开源 GLM-5.2，Code Arena 全球可用模型第一</div>
         <div class="news-body">智谱 AI 正式开源旗舰模型 GLM-5.2。在百万开发者盲测的 Code Arena 编程榜单中取得 1595 分，总榜第二，由于排名第一的 Claude Fable 5 被出口管制封锁，GLM-5.2 实际成为全球可商用模型第一。在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一。</div>
-        <div class="news-source">来源：智谱 AI 官方 / IT之家</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a><span class="source-sep">/</span><a href="https://www.ithome.com" target="_blank" rel="noopener">IT之家</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.05s">
@@ -746,7 +963,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">字节豆包 2.1 Pro 发布，性能直逼 GPT-5.5</div>
         <div class="news-body">在 2026 年火山引擎 Force 大会上，字节跳动旗下豆包大模型最新旗舰版本 Doubao-Seed-2.1 Pro 正式亮相。官方 Benchmark 数据显示，其性能已接近 GPT-5.5、Claude Opus 4.7 以及 Gemini 3.1 Pro。豆包大模型日均 Tokens 调用量达 180 万亿，对比上线时增长超 1500 倍。豆包已从「追赶者」进化至「规模化运营者」。</div>
-        <div class="news-source">来源：火山引擎 Force 大会</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.volcengine.com" target="_blank" rel="noopener">火山引擎 Force 大会</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.1s">
@@ -756,7 +973,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">阿里千问开源 Qwen-AgentWorld 原生语言世界模型</div>
         <div class="news-body">阿里千问团队正式开源 Qwen-AgentWorld，号称首个原生语言世界模型（LWM），可在文本、代码、网页、办公、移动、桌面、具身等七大领域统一模拟智能体交互环境。环境建模从预训练阶段即作为目标，贯穿 CPT → SFT → RL 全流程，被视为 Agent 时代的基础设施级开源工作。</div>
-        <div class="news-source">来源：阿里千问团队 / AI日报</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://qwen.ai" target="_blank" rel="noopener">阿里千问团队</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.15s">
@@ -766,7 +983,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">DeepSeek V4.1 即将发布，迭代节奏加速至两个月一更</div>
         <div class="news-body">据 The Information 爆料，DeepSeek 计划在 6 月推出 V4.1 版本。从 V4 到 V4.1，间隔不到两个月。国产大模型的迭代节奏已从「半年一更」加速进入「两个月一更」。DeepSeek V4-Pro 在本地大模型横评中以 70.48 总分排名第一，数学 71.93、代码 74.95、智能体 78.12。</div>
-        <div class="news-source">来源：The Information</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.2s">
@@ -776,7 +993,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">豆包专业版上线，标准套餐 68 元/月</div>
         <div class="news-body">字节豆包专业版今日上线，基于豆包 2.1 系列大模型，标准套餐连续包月 68 元。专业版接入全新「办公任务模式」，可执行 Agent 类任务、操作本地文件。免费用户也可体验 2.1 Turbo 版本的办公模式。这是国内大模型从聊天向 Agent 生产力工具加速转型的关键信号。豆包 Q1 月活达 3.45 亿，超过千问与 DeepSeek 之和。</div>
-        <div class="news-source">来源：字节跳动 / QuestMobile</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bytedance.com" target="_blank" rel="noopener">字节跳动</a><span class="source-sep">/</span><a href="https://www.questmobile.com.cn" target="_blank" rel="noopener">QuestMobile</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.25s">
@@ -786,7 +1003,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">智谱 GLM-5.2 模型免费用，开源即巅峰</div>
         <div class="news-body">智谱 AI 开源 GLM-5.2 的同时宣布模型可免费使用。该模型在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名冲到第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一——超过了 Claude Fable 5。开源模型吊打闭源成为现实。</div>
-        <div class="news-source">来源：智谱 AI 官方</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.3s">
@@ -796,7 +1013,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">虚幻引擎 5.8 收官发布，MegaLights 转正</div>
         <div class="news-body">Epic Games 发布 UE 5.8，这是虚幻引擎 5 计划内的最后一个大版本，下一站直接迈向 UE6。本次更新中 MegaLights 进入生产可用状态，MetaHuman 升级到人群系统级别，并新增无标记动捕能力，AIGC 内容生产门槛进一步降低。对 Unity MCP 生态也是重要信号：游戏引擎与 AI 的融合正在加速。</div>
-        <div class="news-source">来源：Epic Games 官方</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.unrealengine.com" target="_blank" rel="noopener">Epic Games 官方</a></div>
       </div>
 
       <div class="news-card" style="animation-delay:0.35s">
@@ -806,7 +1023,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-title">滴滴、千问、豆包打响 AI 打车入口战</div>
         <div class="news-body">AI 打车正在重写互联网底层规则——从「人找服务」转向「意图先行、服务后置」。滴滴、阿里千问、字节豆包均在加紧布局 AI 入口，谁能成为用户的「默认意图层」，谁就握住下一代流量分配权。微信 AI 助手「小微」灰度上线，内嵌于微信生态，13 亿月活用户即将「无感」体验 AI。</div>
-        <div class="news-source">来源：钛媒体 / AI日报</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.tmtpost.com" target="_blank" rel="noopener">钛媒体</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
       </div>
     </div>
   </section>
@@ -821,7 +1038,8 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script>
-function formatNow() {
+// 立即设置时间戳，避免延迟
+(function() {
   var d = new Date();
   var y = d.getFullYear();
   var mo = String(d.getMonth() + 1).padStart(2, '0');
@@ -829,8 +1047,9 @@ function formatNow() {
   var h = String(d.getHours()).padStart(2, '0');
   var mi = String(d.getMinutes()).padStart(2, '0');
   var s = String(d.getSeconds()).padStart(2, '0');
-  return y + '-' + mo + '-' + da + ' ' + h + ':' + mi + ':' + s;
-}
+  var el = document.getElementById('ts-text');
+  if (el) el.textContent = '数据更新时间：' + y + '-' + mo + '-' + da + ' ' + h + ':' + mi + ':' + s;
+})();
 </script>
 
 </body>
