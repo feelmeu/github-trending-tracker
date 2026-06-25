@@ -264,6 +264,12 @@ body {
 .model-name { font-weight: 600; }
 .model-vendor { color: var(--muted); font-size: 0.78rem; }
 
+/* 列宽控制 - 混排表 */
+.section[data-type="mixed"] .ranking-table th:nth-child(2),
+.section[data-type="mixed"] .ranking-table td:nth-child(2) { max-width: 7rem; }
+.section[data-type="mixed"] .ranking-table th:nth-child(3),
+.section[data-type="mixed"] .ranking-table td:nth-child(3) { max-width: 5rem; }
+
 .region-tag {
   display: inline-block;
   font-size: 0.65rem;
@@ -424,27 +430,47 @@ footer a:hover { text-decoration: underline; }
   .news-grid { grid-template-columns: 1fr; }
   .section-header h2 { font-size: 1.1rem; }
   .section-icon { width: 40px; height: 40px; font-size: 1.2rem; }
-  .container { padding: 1rem 1rem 2rem; }
+  .container { padding: 1rem 0.6rem 2rem; }
   .navbar-inner { height: 46px; }
   .navbar-brand { font-size: 0.85rem; }
   .navbar-links a { font-size: 0.78rem; padding: 0.35rem 0.7rem; }
-  .ranking-table { font-size: 0.72rem; line-height: 1.35; }
-  .ranking-table thead th { padding: 0.35rem 0.5rem; font-size: 0.65rem; }
-  .ranking-table tbody td { padding: 0.35rem 0.5rem; }
-  .model-name { font-size: 0.78rem; }
-  .model-vendor { font-size: 0.7rem; }
-  .region-tag { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
-  .badge { font-size: 0.6rem; padding: 0.05rem 0.3rem; margin-left: 0.15rem; width: 3.8em; }
-  .score-cell { font-size: 0.72rem; }
-  .rank-cell { width: 28px; font-size: 0.75rem; }
+  .ranking-table { font-size: 0.72rem; line-height: 1.35; table-layout: fixed; }
+  .ranking-table thead th { padding: 0.35rem 0.4rem; font-size: 0.62rem; white-space: normal; word-break: break-word; }
+  .ranking-table tbody td { padding: 0.35rem 0.4rem; word-break: break-word; }
+  .model-name { font-size: 0.72rem; }
+  .model-vendor { font-size: 0.66rem; }
+  .region-tag { font-size: 0.58rem; padding: 0.05rem 0.25rem; }
+  .badge { font-size: 0.58rem; padding: 0.05rem 0.25rem; margin-left: 0.1rem; width: 3.5em; }
+  .score-cell { font-size: 0.68rem; }
+  .rank-cell { width: 22px; font-size: 0.72rem; }
+  /* 混排表手机端列宽分配 */
+  .section[data-type="mixed"] .ranking-table th:nth-child(1),
+  .section[data-type="mixed"] .ranking-table td:nth-child(1) { width: 4%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(2),
+  .section[data-type="mixed"] .ranking-table td:nth-child(2) { width: 20%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(3),
+  .section[data-type="mixed"] .ranking-table td:nth-child(3) { width: 14%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(4),
+  .section[data-type="mixed"] .ranking-table td:nth-child(4) { width: 9%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(5),
+  .section[data-type="mixed"] .ranking-table td:nth-child(5) { width: 15%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(6),
+  .section[data-type="mixed"] .ranking-table td:nth-child(6) { width: 16%; }
+  .section[data-type="mixed"] .ranking-table th:nth-child(7),
+  .section[data-type="mixed"] .ranking-table td:nth-child(7) { width: 22%; }
 }
 
 @media (max-width: 480px) {
   .hero-content { flex-direction: column; align-items: flex-start; }
-  .ranking-table-wrap { overflow-x: auto; }
-  .ranking-table { font-size: 0.68rem; }
-  .ranking-table thead th { padding: 0.3rem 0.4rem; }
-  .ranking-table tbody td { padding: 0.3rem 0.4rem; }
+  .ranking-table-wrap { overflow-x: hidden; }
+  .ranking-table { font-size: 0.62rem; }
+  .ranking-table thead th { padding: 0.25rem 0.3rem; font-size: 0.55rem; }
+  .ranking-table tbody td { padding: 0.25rem 0.3rem; }
+  .model-name { font-size: 0.65rem; }
+  .model-vendor { font-size: 0.6rem; }
+  .badge { font-size: 0.52rem; width: 3.2em; }
+  .score-cell { font-size: 0.6rem; }
+  .rank-cell { width: 18px; font-size: 0.65rem; }
 }
 </style>
 </head>
