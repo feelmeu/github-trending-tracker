@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GitHub 热门项目追踪 | AI · Vibe Coding · Unity MCP</title>
+<title>AI大模型排名与新闻 | 国内外权威榜单</title>
 <style>
 :root {
   --bg: #0d1117;
@@ -94,7 +94,7 @@ body {
   position: absolute;
   top: -50%; right: -10%;
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(88,166,255,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(63,185,80,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -103,7 +103,7 @@ body {
   position: absolute;
   bottom: -30%; left: -5%;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(188,140,255,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(88,166,255,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -125,7 +125,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 50%, #bc8cff 100%);
+  background: linear-gradient(135deg, #e6edf3 0%, #3fb950 50%, #58a6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -134,23 +134,14 @@ body {
 
 .hero .subtitle { font-size: 0.9rem; color: var(--muted); }
 
-.hero-right {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
+.hero-right { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
 
 .timestamp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  background: rgba(88,166,255,0.08);
-  border: 1px solid rgba(88,166,255,0.2);
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; color: var(--muted);
+  background: rgba(63,185,80,0.08);
+  border: 1px solid rgba(63,185,80,0.2);
+  padding: 0.45rem 0.9rem; border-radius: 8px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -160,122 +151,179 @@ body {
   animation: pulse 2s infinite;
 }
 
-.timestamp.loading .dot { background: var(--accent-orange); }
-
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.85); }
 }
 
-.refresh-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--bg3);
-  color: var(--ink);
-  border: 1px solid var(--rule);
-  padding: 0.45rem 1.1rem;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-
-.refresh-btn:hover {
-  background: var(--bg2);
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
-}
-
-.refresh-btn:active { transform: scale(0.96); }
-
-.refresh-btn svg { width: 16px; height: 16px; transition: transform 0.5s; }
-.refresh-btn.spinning svg { animation: spin 0.8s linear infinite; }
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ===== New Entry Banner ===== */
-.new-entry-banner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.8rem 1.5rem;
-  display: none;
-}
-
-.new-entry-banner.show { display: flex; }
-
-.new-entry-banner .banner-inner {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--accent-green);
-  background: rgba(63,185,80,0.08);
-  border: 1px solid rgba(63,185,80,0.2);
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  flex-wrap: wrap;
-}
-
-.new-entry-banner .banner-inner strong { color: var(--accent-green); }
-.new-entry-banner .new-project-name { color: var(--ink); font-weight: 600; }
-
 /* ===== Container ===== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 1.5rem 3rem;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
 
-/* ===== Category Section ===== */
-.category {
-  margin-bottom: 3rem;
-  scroll-margin-top: 1rem;
-}
+/* ===== Section ===== */
+.section { margin-bottom: 3rem; }
 
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+.section-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
   border-bottom: 1px solid var(--rule);
 }
 
-.category-icon {
+.section-icon {
   width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem; flex-shrink: 0;
 }
 
-.category[data-cat="1"] .category-icon {
-  background: rgba(88,166,255,0.12);
-  border: 1px solid rgba(88,166,255,0.25);
-}
-
-.category[data-cat="2"] .category-icon {
-  background: rgba(63,185,80,0.12);
-  border: 1px solid rgba(63,185,80,0.25);
-}
-
-.category[data-cat="3"] .category-icon {
+.section[data-type="mixed"] .section-icon {
   background: rgba(188,140,255,0.12);
   border: 1px solid rgba(188,140,255,0.25);
 }
 
-.category-header h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.15rem; }
-.category-header p { font-size: 0.85rem; color: var(--muted); }
+.section[data-type="intl"] .section-icon {
+  background: rgba(88,166,255,0.12);
+  border: 1px solid rgba(88,166,255,0.25);
+}
 
-/* ===== Projects Grid ===== */
-.projects-grid {
+.section[data-type="cn"] .section-icon {
+  background: rgba(63,185,80,0.12);
+  border: 1px solid rgba(63,185,80,0.25);
+}
+
+.section-header h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.15rem; }
+.section-header p { font-size: 0.85rem; color: var(--muted); }
+
+/* ===== Ranking Table ===== */
+.ranking-table-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.ranking-table-title {
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ranking-table-title .source-tag {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--muted);
+  background: var(--bg3);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ranking-table thead th {
+  background: var(--bg3);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.ranking-table tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+
+.ranking-table tbody tr:last-child td { border-bottom: none; }
+.ranking-table tbody tr:hover { background: var(--bg3); }
+
+.rank-cell {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  width: 40px;
+  text-align: center;
+}
+
+.rank-cell.top1 { color: var(--accent-orange); }
+.rank-cell.top2 { color: var(--muted); }
+.rank-cell.top3 { color: var(--accent-orange); opacity: 0.7; }
+
+.model-name { font-weight: 600; }
+.model-vendor { color: var(--muted); font-size: 0.78rem; }
+
+/* 国内表厂商列宽度：容纳4个汉字 */
+.section[data-type="cn"] .ranking-table th:nth-child(3),
+.section[data-type="cn"] .ranking-table td:nth-child(3) {
+  min-width: 4.5em;
+  white-space: nowrap;
+}
+
+.region-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  margin-left: 0.3rem;
+}
+
+.region-tag.intl { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
+.region-tag.cn { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+
+.score-cell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--accent-blue);
+}
+
+.section[data-type="cn"] .score-cell { color: var(--accent-green); }
+.section[data-type="mixed"] .score-cell { color: var(--accent-purple); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  width: 5em;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.badge + .badge { margin-left: 0; margin-top: 0.2rem; }
+
+/* 状态列：badge 居中堆叠 */
+.status-cell {
+  text-align: center;
+}
+
+.badge.new { background: rgba(63,185,80,0.15); color: var(--accent-green); border: 1px solid rgba(63,185,80,0.3); }
+.badge.open { background: rgba(88,166,255,0.15); color: var(--accent-blue); border: 1px solid rgba(88,166,255,0.3); }
+.badge.closed { background: rgba(125,133,144,0.15); color: var(--muted); border: 1px solid rgba(125,133,144,0.3); }
+
+/* ===== News Cards ===== */
+.news-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
-/* ===== Project Card ===== */
-.project-card {
+.news-card {
   background: var(--bg2);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
@@ -283,248 +331,91 @@ body {
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
+  gap: 0.5rem;
   opacity: 0;
   animation: fadeInUp 0.4s ease forwards;
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px; height: 100%;
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.category[data-cat="1"] .project-card::before { background: var(--accent-blue); }
-.category[data-cat="2"] .project-card::before { background: var(--accent-green); }
-.category[data-cat="3"] .project-card::before { background: var(--accent-purple); }
-
-.project-card:hover {
+.news-card:hover {
   background: var(--bg3);
-  border-color: var(--rule);
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
-
-.project-card:hover::before { opacity: 1; }
-
-.project-card.is-new {
-  border-color: rgba(63,185,80,0.4);
-  box-shadow: 0 0 0 1px rgba(63,185,80,0.15);
-}
-
-.project-card.is-new::before { opacity: 1; background: var(--accent-green) !important; }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.project-card .card-header {
+.news-card .news-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.project-card .repo-name {
+.news-card .news-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.news-tag.release { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+.news-tag.breakthrough { background: rgba(188,140,255,0.15); color: var(--accent-purple); }
+.news-tag.deal { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
+.news-tag.offer { background: rgba(210,153,34,0.15); color: var(--accent-orange); }
+.news-tag.warning { background: rgba(248,81,73,0.15); color: var(--accent-red); }
+
+.news-card .news-date {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.news-card .news-title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--accent-blue);
-  word-break: break-all;
+  color: var(--ink);
   line-height: 1.4;
 }
 
-.project-card .repo-name .owner { color: var(--muted); font-weight: 400; }
+.news-card .news-body {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
 
-.project-card .rank-badge {
+.news-card .news-source {
+  font-size: 0.72rem;
+  color: var(--accent-blue);
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.news-card .news-source .source-label {
+  color: var(--muted);
   flex-shrink: 0;
-  width: 26px; height: 26px;
-  border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.75rem; font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  background: var(--bg3); color: var(--muted);
-  border: 1px solid var(--rule);
 }
 
-.project-card .rank-badge.top3 {
-  background: rgba(210,153,34,0.15);
-  color: var(--accent-orange);
-  border-color: rgba(210,153,34,0.3);
-}
-
-/* NEW badge */
-.new-badge {
+.news-card .news-source a {
+  color: var(--accent-blue);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  background: rgba(63,185,80,0.15);
-  color: var(--accent-green);
-  border: 1px solid rgba(63,185,80,0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-left: 0.4rem;
-  vertical-align: middle;
-  animation: glow 2s ease-in-out infinite;
 }
 
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(63,185,80,0); }
-  50% { box-shadow: 0 0 8px 2px rgba(63,185,80,0.15); }
-}
-
-.project-card .description {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ===== Star Count Display ===== */
-.star-display {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(210,153,34,0.08);
-  border: 1px solid rgba(210,153,34,0.2);
-  padding: 0.35rem 0.7rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent-orange);
-  font-variant-numeric: tabular-nums;
-  align-self: flex-start;
-}
-
-.star-display svg { width: 14px; height: 14px; }
-
-/* ===== Project CN Description ===== */
-.project-card .cn-desc {
-  font-size: 0.82rem;
-  color: var(--ink);
-  line-height: 1.65;
-  background: rgba(255,255,255,0.03);
-  border-left: 2px solid var(--rule);
-  padding: 0.6rem 0.8rem;
-  border-radius: 0 6px 6px 0;
-  flex-grow: 1;
-}
-
-.category[data-cat="1"] .project-card .cn-desc { border-left-color: var(--accent-blue); }
-.category[data-cat="2"] .project-card .cn-desc { border-left-color: var(--accent-green); }
-.category[data-cat="3"] .project-card .cn-desc { border-left-color: var(--accent-purple); }
-
-.project-card .cn-desc .cn-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.project-card .cn-desc .cn-line {
-  display: block;
-  margin-bottom: 0.25rem;
-  line-height: 1.55;
-}
-
-.project-card .cn-desc .cn-line:last-child {
-  margin-bottom: 0;
-}
-
-.project-card .cn-desc .cn-tag {
-  font-weight: 700;
-  margin-right: 0.3rem;
-}
-
-.project-card .cn-desc .cn-tag.func { color: var(--accent-blue); }
-.project-card .cn-desc .cn-tag.purpose { color: var(--accent-green); }
-.project-card .cn-desc .cn-tag.effect { color: var(--accent-orange); }
-
-.project-card .card-footer {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.project-card .stat-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.project-card .stat-item svg { width: 14px; height: 14px; opacity: 0.7; }
-
-.project-card .lang-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  display: inline-block; flex-shrink: 0;
-}
-
-.project-card .topics { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-
-.project-card .topic-tag {
-  font-size: 0.7rem;
-  background: var(--bg3);
-  color: var(--accent-blue);
-  padding: 0.15rem 0.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(88,166,255,0.15);
-}
-
-/* ===== Loading & Error States ===== */
-.state-msg {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.state-msg.error { color: var(--accent-red); }
-
-.spinner {
-  width: 32px; height: 32px;
-  border: 3px solid var(--rule);
-  border-top-color: var(--accent-blue);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 0 auto 1rem;
-}
-
-.retry-btn {
-  margin-top: 0.8rem;
-  background: var(--bg3);
-  color: var(--accent-blue);
-  border: 1px solid rgba(88,166,255,0.3);
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-
-.retry-btn:hover { background: rgba(88,166,255,0.1); }
+.news-card .news-source a:hover { text-decoration: underline; }
+.news-card .news-source .source-sep { color: var(--muted); }
 
 /* ===== Footer ===== */
 footer {
@@ -545,13 +436,31 @@ footer a:hover { text-decoration: underline; }
   .hero h1 { font-size: 1.5rem; }
   .hero .subtitle { font-size: 0.8rem; }
   .hero-content { flex-direction: column; align-items: flex-start; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .category-header h2 { font-size: 1.1rem; }
-  .category-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+  .news-grid { grid-template-columns: 1fr; }
+  .section-header h2 { font-size: 1.1rem; }
+  .section-icon { width: 40px; height: 40px; font-size: 1.2rem; }
   .container { padding: 1rem 1rem 2rem; }
   .navbar-inner { height: 46px; }
   .navbar-brand { font-size: 0.85rem; }
   .navbar-links a { font-size: 0.78rem; padding: 0.35rem 0.7rem; }
+  .ranking-table { font-size: 0.72rem; line-height: 1.35; }
+  .ranking-table thead th { padding: 0.35rem 0.5rem; font-size: 0.65rem; }
+  .ranking-table tbody td { padding: 0.35rem 0.5rem; }
+  .model-name { font-size: 0.78rem; }
+  .model-vendor { font-size: 0.7rem; }
+  .region-tag { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
+  .badge { font-size: 0.6rem; padding: 0.05rem 0.3rem; width: 5em; box-sizing: border-box; }
+  .badge + .badge { margin-left: 0; margin-top: 0.15rem; }
+  .score-cell { font-size: 0.72rem; }
+  .rank-cell { width: 28px; font-size: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-content { flex-direction: column; align-items: flex-start; }
+  .ranking-table-wrap { overflow-x: auto; }
+  .ranking-table { font-size: 0.68rem; }
+  .ranking-table thead th { padding: 0.3rem 0.4rem; }
+  .ranking-table tbody td { padding: 0.3rem 0.4rem; }
 }
 </style>
 </head>
@@ -561,12 +470,13 @@ footer a:hover { text-decoration: underline; }
 <nav class="navbar">
   <div class="navbar-inner">
     <a class="navbar-brand" href="index.html">
-      <span class="brand-icon">📊</span>
-      <span>AI 项目追踪</span>
+      <span class="brand-icon">🏆</span>
+      <span>AI 排名与新闻</span>
     </a>
     <div class="navbar-links">
-      <a href="index.html" class="active">项目追踪</a>
-      <a href="ai-rankings.html">AI排名与新闻</a>
+      <a href="index.html" class="active">AI排名与新闻</a>
+      <a href="github-trending.html">GitHub项目追踪</a>
+      <a href="ai-tools.html">AI工具全景</a>
     </div>
   </div>
 </nav>
@@ -575,69 +485,575 @@ footer a:hover { text-decoration: underline; }
 <header class="hero">
   <div class="hero-content">
     <div class="hero-left">
-      <h1>GitHub 热门项目追踪</h1>
-      <p class="subtitle">AI大模型编码 · Vibe Coding · Unity MCP — 每次打开自动获取最新数据</p>
+      <h1>AI大模型排名与新闻</h1>
+      <p class="subtitle">国内外权威榜单 · 引擎厂商最新动态 — 涵盖模型发布、技术突破与优惠信息</p>
     </div>
     <div class="hero-right">
-      <span id="timestamp" class="timestamp loading">
+      <span class="timestamp">
         <span class="dot"></span>
-        <span id="timestamp-text">正在获取最新数据...</span>
+        <span id="ts-text">数据更新时间：—</span>
       </span>
-      <button id="refresh-btn" class="refresh-btn" onclick="refreshAll()">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM1.5 8a6.5 6.5 0 1 1 11.05 4.61l-.86-.86A5.23 5.23 0 0 0 12.5 8 4.5 4.5 0 0 1 8 12.5a5.23 5.23 0 0 0-2.75-.69l-.86.86A6.48 6.48 0 0 1 1.5 8z M8 3.5a4.5 4.5 0 0 1 4.5 4.5h-1.5a3 3 0 0 0-3-3V3.5z"/></svg>
-        刷新数据
-      </button>
     </div>
   </div>
 </header>
 
-<!-- ===== New Entry Banner ===== -->
-<div class="new-entry-banner" id="new-entry-banner">
-  <div class="banner-inner" id="new-entry-content"></div>
-</div>
-
 <!-- ===== Main Content ===== -->
 <main class="container">
 
-  <!-- Category 1: AI Coding -->
-  <section class="category" data-cat="1">
-    <div class="category-header">
-      <div class="category-icon">🤖</div>
+  <!-- ===== Mixed Ranking Section ===== -->
+  <section class="section" data-type="mixed">
+    <div class="section-header">
+      <div class="section-icon">🌐</div>
       <div>
-        <h2>AI大模型分析与编码效率</h2>
-        <p>提升AI大模型代码分析、生成与辅助编码能力的工具和框架</p>
+        <h2>国内外大模型综合混排</h2>
+        <p>综合 Artificial Analysis、Code Arena、SuperCLUE 等多源权威榜单的全球大模型实力排名</p>
       </div>
     </div>
-    <div class="projects-grid" id="grid-1">
-      <div class="state-msg"><div class="spinner"></div>正在从 GitHub 获取数据...</div>
+
+    <div class="ranking-table-wrap">
+      <div class="ranking-table-title">
+        📊 全球大模型综合实力混排榜
+        <span class="source-tag">综合来源：Artificial Analysis / Code Arena / SuperCLUE / LMSYS · 2026年6月</span>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>模型</th>
+            <th>厂商</th>
+            <th>地区</th>
+            <th>综合得分</th>
+            <th>状态</th>
+            <th>核心亮点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-cell top1">1</td>
+            <td class="model-name">Claude Fable 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">LMSYS 99</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>LMSYS Arena 99分，SWE-bench 95.5%，因出口管制曾下线</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top2">2</td>
+            <td class="model-name">GPT-5.2 (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 51</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>全能均衡，生态成熟，Codex周活500万+</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top3">3</td>
+            <td class="model-name">GLM-5.2</td>
+            <td class="model-vendor">智谱 AI</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">AAI 51 / CA 1595</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge open">开源</span></td>
+            <td>Code Arena全球可用第1，编程第4，智能体第2，Design Arena第1</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">4</td>
+            <td class="model-name">Claude Opus 4.5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 50</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>长文本与安全严谨性突出，幻觉少</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">5</td>
+            <td class="model-name">豆包 Doubao-Seed-2.1 Pro</td>
+            <td class="model-vendor">字节跳动</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">国产第1</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>性能接近GPT-5.5，日均180万亿Tokens调用，月活3.45亿</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">6</td>
+            <td class="model-name">GPT-5.2 Codex (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 49</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>编程专项优化，SWE-bench 95.5%</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">7</td>
+            <td class="model-name">Gemini 3 Pro (high)</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">AAI 48</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>多模态与搜索整合最强，速度快</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">8</td>
+            <td class="model-name">Kimi K2.6</td>
+            <td class="model-vendor">月之暗面</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">AAI 47</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>超长上下文和Agent能力突出，性价比极高</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">9</td>
+            <td class="model-name">通义千问 Qwen3.7-Max</td>
+            <td class="model-vendor">阿里巴巴</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">CA 1540+</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>唯一突破1540分的国产模型，企业级生态完善</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">10</td>
+            <td class="model-name">DeepSeek V4-Pro</td>
+            <td class="model-vendor">深度求索</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">本地70.48</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>开源第1，数学71.93，代码74.95，智能体78.12，V4.1即将发布</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">11</td>
+            <td class="model-name">Claude Mythos 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>与Fable 5共享架构，首次开放Mythos级能力</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">12</td>
+            <td class="model-name">Gemini 3.1 Pro</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>多模态能力持续增强，与Google生态深度整合</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">13</td>
+            <td class="model-name">Llama 4</td>
+            <td class="model-vendor">Meta</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>开源旗舰，本地部署首选之一</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">14</td>
+            <td class="model-name">文心一言 Ernie 5.0</td>
+            <td class="model-vendor">百度</td>
+            <td><span class="region-tag cn">国内</span></td>
+            <td class="score-cell">LMSYS 1446</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>国家队选手，稳扎稳打，中文理解能力强</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">15</td>
+            <td class="model-name">Gemma 4</td>
+            <td class="model-vendor">Google</td>
+            <td><span class="region-tag intl">国外</span></td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>轻量开源模型，端侧部署友好</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </section>
 
-  <!-- Category 2: Vibe Coding -->
-  <section class="category" data-cat="2">
-    <div class="category-header">
-      <div class="category-icon">🎵</div>
+  <!-- ===== Domestic Section ===== -->
+  <section class="section" data-type="cn">
+    <div class="section-header">
+      <div class="section-icon">🇨🇳</div>
       <div>
-        <h2>Vibe Coding 效率提升</h2>
-        <p>助力氛围编程、提升AI编码工作流效率的开源项目</p>
+        <h2>国内 AI 大模型</h2>
+        <p>国产大模型权威排名与厂商最新动态</p>
       </div>
     </div>
-    <div class="projects-grid" id="grid-2">
-      <div class="state-msg"><div class="spinner"></div>正在从 GitHub 获取数据...</div>
+
+    <!-- Domestic Ranking Table -->
+    <div class="ranking-table-wrap">
+      <div class="ranking-table-title">
+        📊 SuperCLUE 中文大模型综合排名 + Code Arena 编程能力
+        <span class="source-tag">数据来源：SuperCLUE / Code Arena · 2026年6月</span>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>模型</th>
+            <th>厂商</th>
+            <th>综合排名</th>
+            <th>Code Arena</th>
+            <th>状态</th>
+            <th>亮点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-cell top1">1</td>
+            <td class="model-name">豆包 Doubao-Seed-2.1 Pro</td>
+            <td class="model-vendor">字节跳动</td>
+            <td class="score-cell">国产第1（月活3.45亿）</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>性能接近 GPT-5.5，日均 180 万亿 Tokens 调用</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top2">2</td>
+            <td class="model-name">GLM-5.2</td>
+            <td class="model-vendor">智谱 AI</td>
+            <td class="score-cell">Artificial Analysis 第4（51分）</td>
+            <td class="score-cell">1595（全球可用第1）</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge open">开源</span></td>
+            <td>开源模型 SOTA，编程全球第4，智能体第2，Design Arena 第1</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top3">3</td>
+            <td class="model-name">Kimi K2.6</td>
+            <td class="model-vendor">月之暗面</td>
+            <td class="score-cell">Artificial Analysis 第5</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>超长上下文和 Agent 能力突出，性价比极高</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">4</td>
+            <td class="model-name">通义千问 Qwen3.7-Max</td>
+            <td class="model-vendor">阿里巴巴</td>
+            <td class="score-cell">国产第1梯队</td>
+            <td class="score-cell">1540+（全球第4）</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>唯一突破 1540 分的国产模型，企业级生态完善</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">5</td>
+            <td class="model-name">DeepSeek V4-Pro</td>
+            <td class="model-vendor">深度求索</td>
+            <td class="score-cell">开源第1（本地横评）</td>
+            <td class="score-cell">74.95（代码）</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>总分 70.48，数学 71.93，智能体 78.12，V4.1即将发布</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">6</td>
+            <td class="model-name">文心一言 Ernie 5.0</td>
+            <td class="model-vendor">百度</td>
+            <td class="score-cell">LMSYS 1446分</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>国家队选手，稳扎稳打，中文理解能力强</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">7</td>
+            <td class="model-name">MiniMax M3</td>
+            <td class="model-vendor">MiniMax</td>
+            <td class="score-cell">国产第1梯队</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>中文任务接近 GPT-4o 水平，多模态能力突出</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">8</td>
+            <td class="model-name">腾讯混元</td>
+            <td class="model-vendor">腾讯</td>
+            <td class="score-cell">国产第2梯队</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>背靠腾讯生态，微信 AI 助手「小微」灰度上线</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">9</td>
+            <td class="model-name">讯飞星火</td>
+            <td class="model-vendor">科大讯飞</td>
+            <td class="score-cell">国产第2梯队</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>A股第一，多语种实时翻译，达沃斯现场跑通</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">10</td>
+            <td class="model-name">天工大模型</td>
+            <td class="model-vendor">昆仑万维</td>
+            <td class="score-cell">国产第9</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>AI Agent 国内 Top3~5，海外商业化 A 股第一</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Domestic News -->
+    <div class="news-grid">
+      <div class="news-card" style="animation-delay:0s">
+        <div class="news-header">
+          <span class="news-tag release">模型发布</span>
+          <span class="news-date">2026-06-17</span>
+        </div>
+        <div class="news-title">智谱 AI 开源 GLM-5.2，Code Arena 全球可用模型第一</div>
+        <div class="news-body">智谱 AI 正式开源旗舰模型 GLM-5.2。在百万开发者盲测的 Code Arena 编程榜单中取得 1595 分，总榜第二，由于排名第一的 Claude Fable 5 被出口管制封锁，GLM-5.2 实际成为全球可商用模型第一。在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a><span class="source-sep">/</span><a href="https://www.ithome.com" target="_blank" rel="noopener">IT之家</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.05s">
+        <div class="news-header">
+          <span class="news-tag release">模型发布</span>
+          <span class="news-date">2026-06-23</span>
+        </div>
+        <div class="news-title">字节豆包 2.1 Pro 发布，性能直逼 GPT-5.5</div>
+        <div class="news-body">在 2026 年火山引擎 Force 大会上，字节跳动旗下豆包大模型最新旗舰版本 Doubao-Seed-2.1 Pro 正式亮相。官方 Benchmark 数据显示，其性能已接近 GPT-5.5、Claude Opus 4.7 以及 Gemini 3.1 Pro。豆包大模型日均 Tokens 调用量达 180 万亿，对比上线时增长超 1500 倍。豆包已从「追赶者」进化至「规模化运营者」。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.volcengine.com" target="_blank" rel="noopener">火山引擎 Force 大会</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.1s">
+        <div class="news-header">
+          <span class="news-tag release">模型发布</span>
+          <span class="news-date">2026-06-24</span>
+        </div>
+        <div class="news-title">阿里千问开源 Qwen-AgentWorld 原生语言世界模型</div>
+        <div class="news-body">阿里千问团队正式开源 Qwen-AgentWorld，号称首个原生语言世界模型（LWM），可在文本、代码、网页、办公、移动、桌面、具身等七大领域统一模拟智能体交互环境。环境建模从预训练阶段即作为目标，贯穿 CPT → SFT → RL 全流程，被视为 Agent 时代的基础设施级开源工作。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://qwen.ai" target="_blank" rel="noopener">阿里千问团队</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.15s">
+        <div class="news-header">
+          <span class="news-tag release">即将发布</span>
+          <span class="news-date">2026-06-23</span>
+        </div>
+        <div class="news-title">DeepSeek V4.1 即将发布，迭代节奏加速至两个月一更</div>
+        <div class="news-body">据 The Information 爆料，DeepSeek 计划在 6 月推出 V4.1 版本。从 V4 到 V4.1，间隔不到两个月。国产大模型的迭代节奏已从「半年一更」加速进入「两个月一更」。DeepSeek V4-Pro 在本地大模型横评中以 70.48 总分排名第一，数学 71.93、代码 74.95、智能体 78.12。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.2s">
+        <div class="news-header">
+          <span class="news-tag offer">优惠信息</span>
+          <span class="news-date">2026-06-24</span>
+        </div>
+        <div class="news-title">豆包专业版上线，标准套餐 68 元/月</div>
+        <div class="news-body">字节豆包专业版今日上线，基于豆包 2.1 系列大模型，标准套餐连续包月 68 元。专业版接入全新「办公任务模式」，可执行 Agent 类任务、操作本地文件。免费用户也可体验 2.1 Turbo 版本的办公模式。这是国内大模型从聊天向 Agent 生产力工具加速转型的关键信号。豆包 Q1 月活达 3.45 亿，超过千问与 DeepSeek 之和。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bytedance.com" target="_blank" rel="noopener">字节跳动</a><span class="source-sep">/</span><a href="https://www.questmobile.com.cn" target="_blank" rel="noopener">QuestMobile</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.25s">
+        <div class="news-header">
+          <span class="news-tag offer">免费福利</span>
+          <span class="news-date">2026-06-17</span>
+        </div>
+        <div class="news-title">智谱 GLM-5.2 模型免费用，开源即巅峰</div>
+        <div class="news-body">智谱 AI 开源 GLM-5.2 的同时宣布模型可免费使用。该模型在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名冲到第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一——超过了 Claude Fable 5。开源模型吊打闭源成为现实。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.3s">
+        <div class="news-header">
+          <span class="news-tag breakthrough">技术突破</span>
+          <span class="news-date">2026-06-24</span>
+        </div>
+        <div class="news-title">虚幻引擎 5.8 收官发布，MegaLights 转正</div>
+        <div class="news-body">Epic Games 发布 UE 5.8，这是虚幻引擎 5 计划内的最后一个大版本，下一站直接迈向 UE6。本次更新中 MegaLights 进入生产可用状态，MetaHuman 升级到人群系统级别，并新增无标记动捕能力，AIGC 内容生产门槛进一步降低。对 Unity MCP 生态也是重要信号：游戏引擎与 AI 的融合正在加速。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.unrealengine.com" target="_blank" rel="noopener">Epic Games 官方</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.35s">
+        <div class="news-header">
+          <span class="news-tag deal">行业动态</span>
+          <span class="news-date">2026-06-24</span>
+        </div>
+        <div class="news-title">滴滴、千问、豆包打响 AI 打车入口战</div>
+        <div class="news-body">AI 打车正在重写互联网底层规则——从「人找服务」转向「意图先行、服务后置」。滴滴、阿里千问、字节豆包均在加紧布局 AI 入口，谁能成为用户的「默认意图层」，谁就握住下一代流量分配权。微信 AI 助手「小微」灰度上线，内嵌于微信生态，13 亿月活用户即将「无感」体验 AI。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.tmtpost.com" target="_blank" rel="noopener">钛媒体</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
+      </div>
     </div>
   </section>
 
-  <!-- Category 3: Unity MCP -->
-  <section class="category" data-cat="3">
-    <div class="category-header">
-      <div class="category-icon">🎮</div>
+  <!-- ===== International Section ===== -->
+  <section class="section" data-type="intl">
+    <div class="section-header">
+      <div class="section-icon">🌍</div>
       <div>
-        <h2>Unity MCP 项目</h2>
-        <p>Model Context Protocol 在 Unity 游戏开发中的应用与集成</p>
+        <h2>国外 AI 大模型</h2>
+        <p>国际权威榜单排名与引擎厂商最新动态</p>
       </div>
     </div>
-    <div class="projects-grid" id="grid-3">
-      <div class="state-msg"><div class="spinner"></div>正在从 GitHub 获取数据...</div>
+
+    <!-- International Ranking Table -->
+    <div class="ranking-table-wrap">
+      <div class="ranking-table-title">
+        📊 Artificial Analysis Intelligence Index v4.0 综合排名
+        <span class="source-tag">数据来源：Artificial Analysis · 2026年6月</span>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>模型</th>
+            <th>厂商</th>
+            <th>综合得分</th>
+            <th>状态</th>
+            <th>亮点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-cell top1">1</td>
+            <td class="model-name">GPT-5.2 (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td class="score-cell">51</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>全能均衡，生态成熟，Codex周活500万+</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top2">2</td>
+            <td class="model-name">Claude Opus 4.5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td class="score-cell">50</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>长文本与安全严谨性突出，幻觉少</td>
+          </tr>
+          <tr>
+            <td class="rank-cell top3">3</td>
+            <td class="model-name">GPT-5.2 Codex (high)</td>
+            <td class="model-vendor">OpenAI</td>
+            <td class="score-cell">49</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>编程专项优化，SWE-bench 95.5%</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">4</td>
+            <td class="model-name">Gemini 3 Pro (high)</td>
+            <td class="model-vendor">Google</td>
+            <td class="score-cell">48</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>多模态与搜索整合最强，速度快</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">5</td>
+            <td class="model-name">Kimi K2.5</td>
+            <td class="model-vendor">Moonshot AI</td>
+            <td class="score-cell">47</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>性价比极高，比Claude Opus 4.5便宜数倍</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">6</td>
+            <td class="model-name">Claude Fable 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>Anthropic最强模型，LMSYS Arena 99分，因出口管制曾下线</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">7</td>
+            <td class="model-name">Claude Mythos 5</td>
+            <td class="model-vendor">Anthropic</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge new">新发布</span><span class="badge closed">不开源</span></td>
+            <td>与Fable 5共享架构，安全配置不同，首次开放Mythos级能力</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">8</td>
+            <td class="model-name">Gemini 3.1 Pro</td>
+            <td class="model-vendor">Google</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge closed">不开源</span></td>
+            <td>多模态能力持续增强，与Google生态深度整合</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">9</td>
+            <td class="model-name">Llama 4</td>
+            <td class="model-vendor">Meta</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>开源旗舰，本地部署首选之一</td>
+          </tr>
+          <tr>
+            <td class="rank-cell">10</td>
+            <td class="model-name">Gemma 4</td>
+            <td class="model-vendor">Google</td>
+            <td class="score-cell">—</td>
+            <td class="status-cell"><span class="badge open">开源</span></td>
+            <td>轻量开源模型，端侧部署友好</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- International News -->
+    <div class="news-grid">
+      <div class="news-card" style="animation-delay:0s">
+        <div class="news-header">
+          <span class="news-tag release">模型发布</span>
+          <span class="news-date">2026-06-09</span>
+        </div>
+        <div class="news-title">Anthropic 发布 Claude Fable 5 与 Mythos 5</div>
+        <div class="news-body">Anthropic 同时发布两款旗舰模型，首次将 Mythos 级能力开放给普通用户。Fable 5 在软件工程、知识工作、视觉识别、科学研究和长上下文处理等多个领域刷新纪录，LMSYS Arena 达 99 分，SWE-bench Verified 达 95.5%。但因美国出口管制要求，曾短暂下线所有用户访问。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic 官方</a><span class="source-sep">/</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.05s">
+        <div class="news-header">
+          <span class="news-tag deal">企业合作</span>
+          <span class="news-date">2026-06-22</span>
+        </div>
+        <div class="news-title">OpenAI 签下三星 12 万员工大单</div>
+        <div class="news-body">OpenAI 签下史上最大企业订单——三星 12 万员工全面接入 ChatGPT 企业版与 Codex。Codex 周活跃用户突破 500 万，其中非开发者增速是程序员的 3 倍。三星同步启动「AI 大转型」：总裁层集训、全员 AI 教育、新设 AI 专职组织。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.1s">
+        <div class="news-header">
+          <span class="news-tag breakthrough">技术突破</span>
+          <span class="news-date">2026-06-15</span>
+        </div>
+        <div class="news-title">GitHub Agent HQ 集成 Claude 与 Codex 多代理编码</div>
+        <div class="news-body">GitHub 在 Agent HQ 中加入 Anthropic Claude 和 OpenAI Codex，Copilot 用户可实现多代理编码工作流。多个 AI Agent 可协同完成复杂开发任务，标志着 AI 编码从单工具辅助进入多 Agent 协作时代。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.15s">
+        <div class="news-header">
+          <span class="news-tag warning">行业动态</span>
+          <span class="news-date">2026-06-23</span>
+        </div>
+        <div class="news-title">AI 芯片股重挫，万亿资本开支遭遇回报拷问</div>
+        <div class="news-body">纳指重挫 2.33%，英伟达跌 3.50%，AMD 大跌 7.52%。核心逻辑：AI 万亿资本开支何时兑现回报。当华尔街开始追问「这些投入什么时候产生实质性利润」，市场情绪天平随之倾斜。OpenAI 与 Anthropic 双双冲刺 IPO，AI 行业即将公开财务底牌。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bloomberg.com" target="_blank" rel="noopener">彭博社</a><span class="source-sep">/</span><a href="https://www.wsj.com" target="_blank" rel="noopener">Wall Street Journal</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.2s">
+        <div class="news-header">
+          <span class="news-tag warning">数据隐忧</span>
+          <span class="news-date">2026-06-20</span>
+        </div>
+        <div class="news-title">科学家用 AI 训练 AI，数据质量成新灰犀牛</div>
+        <div class="news-body">《新科学家》调查报道：受雇于 Scale AI、Outlier 等数据标注平台的工作人员，正在用 ChatGPT 完成「提供高质量人类数据」的任务。如果「人类标注」实际由 AI 生成，模型学到的可能是一代代自我循环的「二手知识」，数据溯源和标注质量监管成为产业核心课题。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.newscientist.com" target="_blank" rel="noopener">New Scientist</a></div>
+      </div>
+
+      <div class="news-card" style="animation-delay:0.25s">
+        <div class="news-header">
+          <span class="news-tag deal">企业动态</span>
+          <span class="news-date">2026-06-23</span>
+        </div>
+        <div class="news-title">夏季达沃斯开幕，AI 成为全场关键词</div>
+        <div class="news-body">世界经济论坛第 17 届新领军者年会在大连开幕，来自 90 多个国家的 1700 余名代表齐聚。AI 成为绝对关键词。荷兰特文特大学教授警告 AI 能耗被严重低估，联合国报告称到 2030 年 AI 数据中心用水量将相当于 13 亿人的年基本生活用水。</div>
+        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.weforum.org" target="_blank" rel="noopener">世界经济论坛</a><span class="source-sep">/</span><a href="https://www.un.org" target="_blank" rel="noopener">联合国报告</a></div>
+      </div>
     </div>
   </section>
 
@@ -645,433 +1061,23 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ===== Footer ===== -->
 <footer>
-  <p>数据来源：<a href="https://docs.github.com/en/rest/search" target="_blank" rel="noopener">GitHub Search API</a> · 页面打开时自动获取最新项目信息</p>
-  <p>由 <strong>TRAE</strong> 驱动 · 搜索排序：Stars 降序 · <a href="ai-rankings.html">查看 AI 大模型排名与新闻 →</a></p>
+  <p>排名数据来源：<a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">Artificial Analysis</a> · <a href="https://www.superclueai.com/" target="_blank" rel="noopener">SuperCLUE</a> · Code Arena · LMSYS Chatbot Arena</p>
+  <p>新闻信息整理自各厂商官方公告及权威媒体报道 · 由 <strong>TRAE</strong> 驱动</p>
+  <p><a href="index.html">← 返回 GitHub 热门项目追踪</a></p>
 </footer>
 
 <script>
-// ===== Configuration =====
-var CATEGORIES = [
-  { id: 1, query: 'AI+coding+assistant+LLM', label: 'AI大模型分析与编码效率' },
-  { id: 2, query: 'vibe+coding', label: 'Vibe Coding 效率提升' },
-  { id: 3, query: 'Unity+MCP', label: 'Unity MCP 项目' }
-];
-
-var API_BASE = 'https://api.github.com/search/repositories';
-var CACHE_PREFIX = 'gh-tracker-cache-';
-var CACHE_TTL = 30 * 60 * 1000; // 30 minutes
-var HISTORY_PREFIX = 'gh-tracker-history-'; // daily history for new-entry detection
-
-// ===== Project Chinese Descriptions =====
-var PROJECT_DESC = {
-  // Category 1: AI Coding
-  'iOfficeAI/AionUi': '主要功能：为OpenClaw、Claude Code、Codex等20+命令行AI工具提供统一的本地协作界面。实现目的：解决多AI工具切换繁琐的问题，让用户在一个界面中管理和定制多个AI助手。产生效果：显著降低AI工具使用门槛，提升多工具协同效率。',
-  'the-open-agent/openagent': '主要功能：基于LLM、RAG和Agent循环的下一代个人AI助手，支持计算机操控、浏览器使用和编码代理。实现目的：打造一个能自主完成复杂任务的通用AI Agent。产生效果：实现从对话到行动的跨越，AI可直接操作浏览器和系统完成实际工作。',
-  'Natively-AI-assistant/natively-cluely-ai-assistant': '主要功能：开源AI会议助手、面试副驾驶和笔记工具，支持实时转录、AI会议纪要、本地RAG。实现目的：提供Cluely、Otter等商业产品的免费开源替代方案。产生效果：在本地运行保护隐私，无需订阅费用即可获得专业级会议辅助能力。',
-  'madox2/vim-ai': '主要功能：为Vim和Neovim提供AI代码助手插件，集成OpenAI和ChatGPT。实现目的：让Vim用户无需离开编辑器即可使用AI辅助编码。产生效果：在传统编辑器中引入AI能力，提升Vim开发者的编码效率和体验。',
-  'editor-code-assistant/eca': '主要功能：编辑器无关的AI结对编程框架，提供跨编辑器的AI辅助能力。实现目的：打破AI编码助手与特定编辑器的绑定，实现一套能力多处复用。产生效果：开发者可在任意编辑器中获得一致的AI编程辅助体验。',
-  'Palm1r/QodeAssist': '主要功能：Qt Creator的AI编码助手插件，提供代码补全、问答等AI辅助功能。实现目的：为Qt/C++开发者填补AI编码工具的空白。产生效果：让Qt Creator用户也能享受AI驱动的编码效率提升。',
-  'agent-sh/agnix': '主要功能：AI编码助手的Linter和LSP工具，验证CLAUDE.md、AGENTS.md、SKILL.md等配置文件。实现目的：解决AI编码助手配置文件缺乏规范校验的问题。产生效果：自动检测和修复配置错误，提升AI辅助开发的可靠性和一致性。',
-  'strands-agents/mcp-server': '主要功能：为GenAI工具提供Strands Agents文档的MCP服务器。实现目的：让AI编码助手能准确理解和使用Strands Agents框架。产生效果：开发者可通过任意AI工具进行Strands Agents的Vibe Coding开发。',
-  'FlamxGames/godot-ai-assistant-hub': '主要功能：在Godot引擎中嵌入AI助手，支持代码读写和编辑器操作。实现目的：为Godot游戏开发者提供AI辅助开发能力。产生效果：降低游戏开发门槛，AI可直接在Godot编辑器中辅助编写代码。',
-  'Govcraft/rust-docs-mcp-server': '主要功能：MCP服务器，实时获取Rust crate文档并通过嵌入和LLM提供准确上下文。实现目的：防止AI助手生成过时的Rust代码建议。产生效果：确保AI生成的Rust代码基于最新文档，大幅减少因API变更导致的代码错误。',
-
-  // Category 2: Vibe Coding
-  'shanraisshan/claude-code-best-practice': '主要功能：从Vibe Coding到Agentic Engineering的Claude Code最佳实践指南。实现目的：系统化整理Claude Code的高效使用方法和工程化实践。产生效果：帮助开发者从随性编码升级到工程化AI开发，显著提升Claude Code使用效率。',
-  'BloopAI/vibe-kanban': '主要功能：为Claude Code、Codex等编码Agent提供看板式任务管理工具。实现目的：解决AI编码Agent任务规划和进度追踪的痛点。产生效果：让AI编码效率提升10倍，实现多任务并行和可视化进度管理。',
-  '2025Emma/vibe-coding-cn': '主要功能：Vibe Coding中文社区项目，汇集氛围编程的中文资源和实践。实现目的：为中文开发者提供Vibe Coding的本土化学习材料。产生效果：降低中文用户接触Vibe Coding的门槛，促进国内AI编程社区发展。',
-  'datawhalechina/easy-vibe': '主要功能：Vibe Coding 2026入门课程，从零基础到精通的阶梯式教程。实现目的：让编程新手也能快速上手AI辅助编程。产生效果：系统化培养AI编程能力，帮助初学者快速进入Vibe Coding世界。',
-  'liyupi/ai-guide': '主要功能：程序员鱼皮的AI资源大全，涵盖OpenClaw教程、大模型玩法、Prompt大全、AI编程教程等。实现目的：一站式整合AI学习资源，降低信息获取成本。产生效果：成为国内最受欢迎的AI学习导航之一，帮助大量开发者快速掌握AI技术。',
-  'coleam00/context-engineering-intro': '主要功能：上下文工程入门指南，讲解如何让AI编码助手真正发挥作用。实现目的：将Vibe Coding从感觉驱动升级为工程化方法论。产生效果：系统化提升AI编码质量，减少无效提示和重复修改。',
-  'refly-ai/refly': '主要功能：首个开源Agent技能构建器，通过Vibe工作流定义技能并运行于Claude Code、Cursor等平台。实现目的：将AI技能从临时提示升级为可复用基础设施。产生效果：实现一次定义、多平台运行，大幅降低Agent开发成本。',
-  'datawhalechina/vibe-vibe': '主要功能：首个系统化Vibe Coding开源教程，从零基础到全栈实战。实现目的：让人人都能借助AI实现自己的想法与创意。产生效果：全民AI学习第一课，推动AI编程的普及化教育。',
-  'zai-org/GLM-5': '主要功能：智谱GLM-5大模型，从Vibe Coding到Agentic Engineering的跨越。实现目的：打造国产顶尖开源大模型，推动AI编程能力升级。产生效果：在多项基准测试中达到国际一流水平，加速国内AI编程生态发展。',
-  'cloudflare/vibesdk': '主要功能：基于Cloudflare技术栈的开源Vibe Coding平台构建工具。实现目的：帮助开发者快速搭建自己的Vibe Coding平台。产生效果：降低Vibe Coding平台搭建门槛，推动AI编程工具的定制化发展。',
-
-  // Category 3: Unity MCP
-  'CoplayDev/unity-mcp': '主要功能：Unity MCP服务器，作为AI助手与Unity编辑器之间的桥梁，提供资产管理、场景控制、脚本编辑等工具。实现目的：让LLM能够直接操控Unity编辑器完成游戏开发任务。产生效果：实现AI驱动的Unity自动化开发，大幅提升游戏开发效率。',
-  'IvanMurzak/Unity-MCP': '主要功能：Unity引擎的AI技能、MCP工具和CLI，支持完整AI开发和测试循环。实现目的：提供高效的Token使用和高级工具，任意C#方法可一行代码转为工具。产生效果：兼容Claude Code、Gemini、Copilot、Cursor等主流AI工具，免费使用。',
-  'sahibzada-allahyar/YC-Killer': '主要功能：企业级AI Agent库，提供YC创业公司的开源替代方案。实现目的：民主化AI访问，提供免费开源的高质量AI Agent。产生效果：降低AI应用开发门槛，为开发者提供商业级AI Agent的参考实现。',
-  'CoderGamester/mcp-unity': '主要功能：连接Unity编辑器的MCP插件，专为Cursor、Claude Code、Codex、Windsurf等IDE设计。实现目的：让主流AI编程工具能够直接与Unity编辑器交互。产生效果：在AI辅助开发环境中实现Unity项目的智能开发和管理。',
-  'jackwrichards/UnityMCP': '主要功能：Unity MCP项目，为AI助手提供Unity编辑器操控能力。实现目的：探索MCP协议在Unity开发中的应用。产生效果：为Unity AI开发提供基础MCP集成方案。',
-  'hatayama/unity-cli-loop': '主要功能：让AI驱动Unity，从编辑器到Play Mode的完整循环。实现目的：实现AI对Unity编辑器和运行时环境的全流程控制。产生效果：AI可自主完成Unity项目的编辑、测试和调试闭环。',
-  'AnkleBreaker-Studio/unity-mcp-server': '主要功能：提供268个工具的Unity MCP服务器，覆盖场景管理、GameObjects、组件、构建、性能分析、Shader Graph、物理、NavMesh、动画等。实现目的：为AI辅助游戏开发提供最全面的工具集。产生效果：连接Claude、Cursor等MCP客户端，实现Unity全功能AI操控。',
-  'youngwoocho02/unity-cli': '主要功能：命令行控制Unity编辑器，无MCP、无Python、无依赖的单二进制工具。实现目的：提供最轻量的Unity命令行控制方案。产生效果：简化Unity自动化流程，适合CI/CD和AI工具链集成。',
-  'liyingsong99/AIBridge': '主要功能：AI Unity开发工具集，结合项目本地工作流、AIBridge技能、CLI和运行时工具、代码索引、视觉验证等。实现目的：打造围绕Unity项目的完整AI开发循环。产生效果：实现AI辅助的Unity开发全流程自动化，从编码到测试到调试。',
-  'Glade-tool/glade-mcp': '主要功能：连接MCP兼容AI客户端到Unity或Godot，提供235+细粒度工具、Unity系统提示、游戏设计文档上下文等。实现目的：为游戏开发者提供最全面的AI辅助开发工具链。产生效果：支持Claude Code、Cursor、Windsurf等主流工具，实现游戏设计与开发的一体化AI辅助。'
-};
-
-// Language colors (GitHub standard)
-var LANG_COLORS = {
-  'JavaScript': '#f1e05a', 'Python': '#3572A5', 'TypeScript': '#3178c6',
-  'C#': '#178600', 'C++': '#f34b7d', 'C': '#555555', 'Go': '#00ADD8',
-  'Rust': '#dea584', 'Java': '#b07219', 'Kotlin': '#A97BFF', 'Swift': '#F05138',
-  'Dart': '#00B4AB', 'Ruby': '#701516', 'PHP': '#4F5D95', 'Shell': '#89e051',
-  'HTML': '#e34c26', 'CSS': '#563d7c', 'Vue': '#41b883', 'Lua': '#000080',
-  'Zig': '#ec915c', 'Scala': '#c22d40', 'Clojure': '#db5855', 'Elixir': '#6e4a7e',
-  'Haskell': '#5e5086', 'OCaml': '#3be133', 'R': '#198CE7', 'Perl': '#0298c3',
-  'Objective-C': '#438eff', 'Jupyter Notebook': '#DA5B0B', 'Dockerfile': '#384d54',
-  'Makefile': '#427819', 'PowerShell': '#012456', 'GDScript': '#355570'
-};
-
-// ===== Utilities =====
-function formatNumber(n) {
-  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-  if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-  return String(n);
-}
-
-function timeAgo(dateStr) {
-  if (!dateStr) return '—';
-  var now = new Date();
-  var date = new Date(dateStr);
-  var diff = (now - date) / 1000;
-  if (diff < 60) return '刚刚';
-  if (diff < 3600) return Math.floor(diff / 60) + '分钟前';
-  if (diff < 86400) return Math.floor(diff / 3600) + '小时前';
-  if (diff < 2592000) return Math.floor(diff / 86400) + '天前';
-  if (diff < 31536000) return Math.floor(diff / 2592000) + '个月前';
-  return Math.floor(diff / 31536000) + '年前';
-}
-
-function formatTimestamp(date) {
-  var y = date.getFullYear();
-  var mo = String(date.getMonth() + 1).padStart(2, '0');
-  var d = String(date.getDate()).padStart(2, '0');
-  var h = String(date.getHours()).padStart(2, '0');
-  var mi = String(date.getMinutes()).padStart(2, '0');
-  var s = String(date.getSeconds()).padStart(2, '0');
-  return y + '-' + mo + '-' + d + ' ' + h + ':' + mi + ':' + s;
-}
-
-function getTodayKey() {
+// 立即设置时间戳，避免延迟
+(function() {
   var d = new Date();
-  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-}
-
-function getLangColor(lang) {
-  if (!lang) return '#7d8590';
-  return LANG_COLORS[lang] || '#7d8590';
-}
-
-function escapeHtml(text) {
-  if (!text) return '';
-  var div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-// ===== Daily History (for new-entry detection) =====
-function getYesterdayTop10(catId) {
-  try {
-    var raw = localStorage.getItem(HISTORY_PREFIX + catId);
-    if (!raw) return null;
-    var data = JSON.parse(raw);
-    return data.repos || [];
-  } catch (e) {
-    return null;
-  }
-}
-
-function saveTodayTop10(catId, items) {
-  try {
-    var today = getTodayKey();
-    var existing = localStorage.getItem(HISTORY_PREFIX + catId);
-    var existingDate = existing ? JSON.parse(existing).date : null;
-    // Only save if not already saved today
-    if (existingDate !== today) {
-      // Before saving today's, the existing data becomes "yesterday's"
-      // But we just overwrite with today's data + date
-      localStorage.setItem(HISTORY_PREFIX + catId, JSON.stringify({
-        date: today,
-        repos: items.map(function(i) { return i.full_name; })
-      }));
-    }
-  } catch (e) {}
-}
-
-function isNewEntry(catId, repoFullName) {
-  var yesterday = getYesterdayTop10(catId);
-  if (!yesterday || yesterday.length === 0) return false; // First ever visit, no comparison
-  return yesterday.indexOf(repoFullName) === -1;
-}
-
-// ===== API Fetch =====
-async function fetchProjects(query) {
-  var url = API_BASE + '?q=' + query + '&sort=stars&order=desc&per_page=10';
-  var response = await fetch(url, {
-    headers: { 'Accept': 'application/vnd.github.v3+json' }
-  });
-
-  if (!response.ok) {
-    if (response.status === 403) {
-      var remaining = response.headers.get('X-RateLimit-Remaining');
-      if (remaining === '0') {
-        var reset = response.headers.get('X-RateLimit-Reset');
-        var resetTime = reset ? new Date(parseInt(reset) * 1000) : null;
-        var waitMsg = resetTime ? '，请于 ' + formatTimestamp(resetTime) + ' 后重试' : '';
-        throw new Error('GitHub API 速率限制已达到' + waitMsg);
-      }
-    }
-    throw new Error('API 请求失败 (HTTP ' + response.status + ')');
-  }
-
-  var data = await response.json();
-  return data.items || [];
-}
-
-// ===== Cache =====
-function getCache(catId) {
-  try {
-    var raw = localStorage.getItem(CACHE_PREFIX + catId);
-    if (!raw) return null;
-    var cache = JSON.parse(raw);
-    if (Date.now() - cache.timestamp > CACHE_TTL) return null;
-    return cache;
-  } catch (e) { return null; }
-}
-
-function setCache(catId, items) {
-  try {
-    localStorage.setItem(CACHE_PREFIX + catId, JSON.stringify({
-      items: items, timestamp: Date.now()
-    }));
-  } catch (e) {}
-}
-
-// ===== New Entry Tracking =====
-var newEntries = { 1: [], 2: [], 3: [] };
-
-function checkNewEntries(catId, items) {
-  var newRepos = [];
-  items.forEach(function(item) {
-    if (isNewEntry(catId, item.full_name)) {
-      newRepos.push(item.full_name);
-    }
-  });
-  newEntries[catId] = newRepos;
-  return newRepos;
-}
-
-function updateNewEntryBanner() {
-  var allNew = [];
-  CATEGORIES.forEach(function(cat) {
-    newEntries[cat.id].forEach(function(repo) {
-      allNew.push({ repo: repo, catLabel: cat.label });
-    });
-  });
-
-  var banner = document.getElementById('new-entry-banner');
-  var content = document.getElementById('new-entry-content');
-
-  if (allNew.length === 0) {
-    banner.classList.remove('show');
-    return;
-  }
-
-  var repoHtml = allNew.map(function(e) {
-    return '<span class="new-project-name">' + escapeHtml(e.repo) + '</span><span style="color:var(--muted);font-size:0.72rem">(' + escapeHtml(e.catLabel) + ')</span>';
-  }).join('<span style="color:var(--muted);margin:0 0.3rem">·</span>');
-
-  content.innerHTML = '<strong>🆕 今日新进入前10：</strong> ' + repoHtml;
-  banner.classList.add('show');
-}
-
-// ===== Rendering =====
-function formatCnDesc(desc) {
-  // Split by 主要功能/实现目的/产生效果 and render each on its own line with colored tags
-  var parts = desc.split(/(?=主要功能：|实现目的：|产生效果：)/);
-  var html = '';
-  parts.forEach(function(p) {
-    p = p.trim();
-    if (!p) return;
-    var tag = '';
-    var tagClass = '';
-    var rest = '';
-    if (p.startsWith('主要功能：')) {
-      tag = '主要功能：';
-      tagClass = 'func';
-      rest = p.substring(5);
-    } else if (p.startsWith('实现目的：')) {
-      tag = '实现目的：';
-      tagClass = 'purpose';
-      rest = p.substring(5);
-    } else if (p.startsWith('产生效果：')) {
-      tag = '产生效果：';
-      tagClass = 'effect';
-      rest = p.substring(5);
-    } else {
-      rest = p;
-    }
-    // Remove trailing period
-    rest = rest.replace(/。$/, '');
-    html += '<span class="cn-line">' + (tag ? '<span class="cn-tag ' + tagClass + '">' + escapeHtml(tag) + '</span>' : '') + escapeHtml(rest) + '</span>';
-  });
-  return html;
-}
-
-function renderCard(item, index, catId) {
-  var parts = item.full_name.split('/');
-  var owner = parts[0];
-  var repo = parts.slice(1).join('/');
-  var rankClass = index < 3 ? ' top3' : '';
-  var langColor = getLangColor(item.language);
-  var topics = (item.topics || []).slice(0, 3);
-  var topicsHtml = topics.map(function(t) {
-    return '<span class="topic-tag">' + escapeHtml(t) + '</span>';
-  }).join('');
-
-  var desc = item.description || '暂无描述';
-  var cnDesc = PROJECT_DESC[item.full_name] || '';
-  var isNew = isNewEntry(catId, item.full_name);
-  var newCardClass = isNew ? ' is-new' : '';
-  var newBadge = isNew ? '<span class="new-badge">NEW</span>' : '';
-
-  return '<a class="project-card' + newCardClass + '" href="' + item.html_url + '" target="_blank" rel="noopener" style="animation-delay:' + (index * 0.05) + 's">'
-    + '<div class="card-header">'
-    +   '<div class="repo-name"><span class="owner">' + escapeHtml(owner) + '/</span>' + escapeHtml(repo) + newBadge + '</div>'
-    +   '<div class="rank-badge' + rankClass + '">' + (index + 1) + '</div>'
-    + '</div>'
-    + '<div class="star-display">'
-    +   '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>'
-    +   formatNumber(item.stargazers_count) + ' Stars'
-    + '</div>'
-    + '<div class="description">' + escapeHtml(desc) + '</div>'
-    + (topicsHtml ? '<div class="topics">' + topicsHtml + '</div>' : '')
-    + (cnDesc ? '<div class="cn-desc"><span class="cn-label">项目说明</span>' + formatCnDesc(cnDesc) + '</div>' : '')
-    + '<div class="card-footer">'
-    +   '<span class="stat-item">'
-    +     '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>'
-    +     formatNumber(item.forks_count)
-    +   '</span>'
-    +   (item.language ? '<span class="stat-item"><span class="lang-dot" style="background:' + langColor + '"></span>' + escapeHtml(item.language) + '</span>' : '')
-    +   '<span class="stat-item">更新于 ' + timeAgo(item.pushed_at) + '</span>'
-    + '</div>'
-    + '</a>';
-}
-
-function renderLoading(gridId) {
-  var el = document.getElementById(gridId);
-  el.innerHTML = '<div class="state-msg"><div class="spinner"></div>正在从 GitHub 获取数据...</div>';
-}
-
-function renderError(gridId, message, catId) {
-  var el = document.getElementById(gridId);
-  el.innerHTML = '<div class="state-msg error">'
-    + '⚠️ ' + escapeHtml(message)
-    + '<br><button class="retry-btn" onclick="loadCategory(' + catId + ')">重试</button>'
-    + '</div>';
-}
-
-function renderProjects(catId, items) {
-  var gridId = 'grid-' + catId;
-  var el = document.getElementById(gridId);
-
-  if (!items || items.length === 0) {
-    el.innerHTML = '<div class="state-msg">暂无项目数据</div>';
-    return;
-  }
-
-  // Unity MCP: only keep top 4
-  var displayItems = catId === 3 ? items.slice(0, 4) : items;
-
-  var html = displayItems.map(function(item, index) {
-    return renderCard(item, index, catId);
-  }).join('');
-
-  el.innerHTML = html;
-}
-
-// ===== Timestamp =====
-function updateTimestamp(loading) {
-  var el = document.getElementById('timestamp');
-  var text = document.getElementById('timestamp-text');
-  if (loading) {
-    el.classList.add('loading');
-    text.textContent = '正在获取最新数据...';
-  } else {
-    el.classList.remove('loading');
-    text.textContent = '数据获取时间：' + formatTimestamp(new Date());
-  }
-}
-
-// ===== Load Category =====
-async function loadCategory(catId) {
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  if (!cat) return;
-
-  renderLoading('grid-' + catId);
-
-  try {
-    var items = await fetchProjects(cat.query);
-    // Check for new entries before saving history
-    checkNewEntries(catId, items);
-    // Save today's top 10 for future comparison
-    saveTodayTop10(catId, items);
-    setCache(catId, items);
-    renderProjects(catId, items);
-    updateNewEntryBanner();
-  } catch (error) {
-    // Try cache fallback
-    var cache = getCache(catId);
-    if (cache && cache.items) {
-      renderProjects(catId, cache.items);
-      updateNewEntryBanner();
-      var gridEl = document.getElementById('grid-' + catId);
-      var warning = document.createElement('div');
-      warning.className = 'state-msg';
-      warning.style.gridColumn = '1 / -1';
-      warning.style.marginTop = '0.5rem';
-      warning.innerHTML = '⚠️ 实时获取失败，已显示缓存数据（' + formatTimestamp(new Date(cache.timestamp)) + '）';
-      gridEl.appendChild(warning);
-    } else {
-      renderError('grid-' + catId, error.message, catId);
-    }
-  }
-}
-
-// ===== Refresh All =====
-async function refreshAll() {
-  var btn = document.getElementById('refresh-btn');
-  btn.classList.add('spinning');
-  updateTimestamp(true);
-
-  var promises = CATEGORIES.map(function(cat) {
-    return loadCategory(cat.id);
-  });
-
-  await Promise.all(promises);
-
-  btn.classList.remove('spinning');
-  updateTimestamp(false);
-}
-
-// ===== Init =====
-(function init() {
-  // Try to load from cache first for instant display
-  var hasCache = false;
-  CATEGORIES.forEach(function(cat) {
-    var cache = getCache(cat.id);
-    if (cache && cache.items) {
-      renderProjects(cat.id, cache.items);
-      hasCache = true;
-    }
-  });
-
-  if (hasCache) {
-    var cacheTimes = CATEGORIES.map(function(cat) {
-      var c = getCache(cat.id);
-      return c ? c.timestamp : 0;
-    });
-    var latestCache = Math.max.apply(null, cacheTimes);
-    if (latestCache > 0) {
-      var text = document.getElementById('timestamp-text');
-      text.textContent = '缓存时间：' + formatTimestamp(new Date(latestCache)) + '（正在更新...）';
-    }
-  }
-
-  // Always fetch fresh data
-  refreshAll();
+  var y = d.getFullYear();
+  var mo = String(d.getMonth() + 1).padStart(2, '0');
+  var da = String(d.getDate()).padStart(2, '0');
+  var h = String(d.getHours()).padStart(2, '0');
+  var mi = String(d.getMinutes()).padStart(2, '0');
+  var s = String(d.getSeconds()).padStart(2, '0');
+  var el = document.getElementById('ts-text');
+  if (el) el.textContent = '数据更新时间：' + y + '-' + mo + '-' + da + ' ' + h + ':' + mi + ':' + s;
 })();
 </script>
 
