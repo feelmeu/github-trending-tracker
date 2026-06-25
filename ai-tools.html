@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#1a1a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="主流AI工具与大模型·分类全景图">
+<meta property="og:description" content="帮助非技术用户快速理解AI工具生态、分类逻辑与搭建原理">
+<meta property="og:type" content="website">
+<title>主流AI工具与大模型分类图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #1a1a2e;
+    min-height: 100vh;
+    padding: 0;
+    color: #e0e0e0;
+    overflow-x: hidden;
+  }
+  .page-bg {
+    background: radial-gradient(ellipse at 50% 40%, #2a1f4e 0%, #1a1a2e 50%, #0f0f1a 100%);
+    min-height: 100vh;
+    padding: 20px 0 40px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00d2ff, #7b2ff7, #ff6ac1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+    padding-top: 16px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  .mindmap-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .mindmap-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .section-divider {
+    max-width: 1100px;
+    margin: 30px auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(123,47,247,0.3), transparent);
+  }
+  .table-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .table-section h2 {
+    font-size: 18px;
+    text-align: center;
+    color: #b388ff;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  thead th {
+    background: rgba(123,47,247,0.15);
+    padding: 12px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    color: #d1c4e9;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  tbody td {
+    padding: 10px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  tbody tr:hover { background: rgba(255,255,255,0.025); }
+  .region-intl { color: #00d2ff; font-weight: 600; }
+  .region-domestic { color: #ff6ac1; font-weight: 600; }
+  .principle-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .principle-grid .step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .principle-grid .step h4 {
+    font-size: 13px;
+    color: #ffa726;
+    margin-bottom: 6px;
+  }
+  .principle-grid .step p {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.8;
+  }
+  .principle-grid .step code {
+    background: rgba(255,255,255,0.07);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: #66bb6a;
+  }
+  .summary-box {
+    max-width: 1060px;
+    margin: 30px auto 0;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 22px 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .summary-box h3 {
+    color: #ffa726;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  .summary-box p {
+    font-size: 13px;
+    line-height: 2;
+    color: #bbb;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 11px;
+    color: #444;
+    padding-bottom: 20px;
+  }
+
+  /* ===== MiMoCode 安装说明 ===== */
+  .summary-box a:hover {
+    text-decoration: underline !important;
+  }
+
+  /* ===== 手机端适配 ===== */
+  @media (max-width: 768px) {
+    h1 { font-size: 20px; padding-top: 12px; }
+    .subtitle { font-size: 11px; margin-bottom: 12px; }
+    .mindmap-container { padding: 0 8px; }
+    .mindmap-container svg { min-width: 0; }
+    .section-divider { margin: 20px auto; }
+    .table-section { padding: 0 12px; }
+    .table-section h2 { font-size: 15px; margin-bottom: 10px; }
+    table { width: 100%; table-layout: fixed; font-size: 10px; white-space: nowrap; text-align: center; }
+    colgroup col:nth-child(1) { width: 12%; }
+    colgroup col:nth-child(2) { width: 20%; }
+    colgroup col:nth-child(3) { width: 18%; }
+    colgroup col:nth-child(4) { width: 26%; }
+    colgroup col:nth-child(5) { width: 24%; }
+    thead th, tbody td { padding: 5px 4px; font-size: 9px; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+    .principle-grid { padding: 0 12px; gap: 10px; }
+    .principle-grid .step { padding: 14px; }
+    .principle-grid .step h4 { font-size: 12px; }
+    .principle-grid .step p { font-size: 11px; line-height: 1.7; }
+    .summary-box { max-width: 100%; margin: 20px 12px 0; padding: 16px 18px; }
+    .summary-box h3 { font-size: 14px; }
+    .summary-box p { font-size: 12px; line-height: 1.8; }
+    .footer { font-size: 10px; margin-top: 24px; }
+    .summary-box div[style*="grid"] { grid-template-columns: 1fr; }
+    .mindmap-container svg text { font-size: 13px; }
+    .mindmap-container svg text[font-size="9"] { font-size: 10px; }
+    .mindmap-container svg text[font-size="10"] { font-size: 11px; }
+    .mindmap-container svg text[font-size="14"] { font-size: 15px; }
+  }
+</style>
+<style>
+  .navbar {
+    background: rgba(26, 26, 46, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .navbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .navbar-brand {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .navbar-brand .brand-icon { font-size: 1.2rem; }
+  .navbar-links { display: flex; gap: 0.3rem; }
+  .navbar-links a {
+    font-size: 0.85rem;
+    color: #888;
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    transition: 0.25s;
+  }
+  .navbar-links a:hover { color: #e0e0e0; background: rgba(255,255,255,0.06); }
+  .navbar-links a.active { color: #00d2ff; background: rgba(0,210,255,0.1); }
+  @media (max-width: 768px) {
+    .navbar-inner { height: 46px; }
+    .navbar-brand { font-size: 0.85rem; }
+    .navbar-links a { font-size: 0.78rem; padding: 0.35rem 0.7rem; }
+  }
+</style>
+</head>
+<body>
+<!-- ===== Navigation Bar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="ai-tools.html">
+      <span class="brand-icon">🗺️</span>
+      <span>AI 工具全景</span>
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">AI排名与新闻</a>
+      <a href="github-trending.html">GitHub项目追踪</a>
+      <a href="ai-tools.html" class="active">AI工具全景</a>
+    </div>
+  </div>
+</nav>
+<div class="page-bg">
+
+<h1>主流 AI 工具与大模型 · 分类全景图</h1>
+<p class="subtitle">帮助非技术用户快速理解 AI 工具生态、分类逻辑与搭建原理</p>
+
+<!-- ====================================================================
+     SVG 思维导图
+     所有连线端点已精确计算到节点边框
+     ==================================================================== -->
+<div class="mindmap-container">
+<svg viewBox="0 0 1380 920" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-20,0)">
+  <defs>
+    <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a3a8a"/>
+      <stop offset="100%" stop-color="#2a1f5e"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- ===================== 连线层 =====================
+       中心圆: cx=700 cy=460 r=80
+       国外: x=880 y=214 w=100 h=52  → 中心(930,240) left(880,240) right(980,240)
+       国内: x=880 y=634 w=100 h=52  → 中心(930,660) left(880,660) right(980,660)
+       搭建原理: x=420 y=434 w=130 h=52 → 中心(485,460) left(420,460) right(550,460)
+       基础大模型(国外): x=1060 y=125 w=120 h=50 → 中心(1120,150) left(1060,150) right(1180,150)
+       编程工具(国外): x=1060 y=308 w=120 h=44 → 中心(1120,330) left(1060,330) right(1180,330)
+       基础大模型(国内): x=1060 y=545 w=120 h=50 → 中心(1120,570) left(1060,570) right(1180,570)
+       编程工具(国内): x=1060 y=728 w=120 h=44 → 中心(1120,750) left(1060,750) right(1180,750)
+       =============================== -->
+
+  <!-- === 中心 → 三个主分支 === -->
+  <line x1="762" y1="410" x2="880" y2="240" stroke="#00d2ff" stroke-width="2.5" opacity="0.5"/>
+  <line x1="765" y1="510" x2="880" y2="660" stroke="#ff6ac1" stroke-width="2.5" opacity="0.5"/>
+  <line x1="620" y1="458" x2="550" y2="460" stroke="#4db6ac" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- === 国外 → 两个子节点 (对称 ±90px) === -->
+  <line x1="980" y1="240" x2="1020" y2="150" stroke="#00d2ff" stroke-width="1.8" opacity="0.4"/>
+  <line x1="980" y1="240" x2="1020" y2="330" stroke="#00d2ff" stroke-width="1.8" opacity="0.4"/>
+
+  <!-- === 国内 → 两个子节点 (对称 ±90px，角度一致) === -->
+  <line x1="980" y1="660" x2="1020" y2="570" stroke="#ff6ac1" stroke-width="1.8" opacity="0.4"/>
+  <line x1="980" y1="660" x2="1020" y2="750" stroke="#ff6ac1" stroke-width="1.8" opacity="0.4"/>
+
+  <!-- === 搭建原理 → 四个叶子 === -->
+  <line x1="420" y1="460" x2="280" y2="336" stroke="#3a9990" stroke-width="1.2" opacity="0.35"/>
+  <line x1="420" y1="460" x2="280" y2="416" stroke="#3a9990" stroke-width="1.2" opacity="0.35"/>
+  <line x1="420" y1="460" x2="280" y2="496" stroke="#3a9990" stroke-width="1.2" opacity="0.35"/>
+  <line x1="420" y1="460" x2="280" y2="581" stroke="#3a9990" stroke-width="1.2" opacity="0.35"/>
+
+  <!-- === 基础大模型(国外) → 四个叶子 (对称 ±17.5, ±52.5) === -->
+  <line x1="1140" y1="150" x2="1180" y2="98"  stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="150" x2="1180" y2="133" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="150" x2="1180" y2="168" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="150" x2="1180" y2="203" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+
+  <!-- === 编程工具(国外) → 五个叶子 (对称 ±0, ±35, ±70) === -->
+  <line x1="1140" y1="330" x2="1180" y2="260" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="330" x2="1180" y2="295" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="330" x2="1180" y2="330" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="330" x2="1180" y2="365" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="330" x2="1180" y2="400" stroke="#3388aa" stroke-width="1.2" opacity="0.35"/>
+
+  <!-- === 基础大模型(国内) → 五个叶子 (对称 ±0, ±35, ±70) === -->
+  <line x1="1140" y1="570" x2="1180" y2="500" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="570" x2="1180" y2="535" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="570" x2="1180" y2="570" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="570" x2="1180" y2="605" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="570" x2="1180" y2="640" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+
+  <!-- === 编程工具(国内) → 四个叶子 (对称 ±17.5, ±52.5) === -->
+  <line x1="1140" y1="750" x2="1180" y2="698" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="750" x2="1180" y2="733" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="750" x2="1180" y2="768" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+  <line x1="1140" y1="750" x2="1180" y2="803" stroke="#aa4477" stroke-width="1.2" opacity="0.35"/>
+
+
+  <!-- ===================== 节点层 ===================== -->
+
+  <!-- ===== 中心节点 ===== -->
+  <g filter="url(#shadow)">
+    <circle cx="700" cy="460" r="80" fill="url(#centerGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <circle cx="700" cy="460" r="80" fill="none" stroke="rgba(123,47,247,0.35)" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="700" y="447" text-anchor="middle" fill="#e8e0ff" font-size="14" font-weight="700">主流AI工具与大模型</text>
+    <text x="700" y="465" text-anchor="middle" fill="#b0a0d0" font-size="11" font-weight="500">国内 / 国外全景</text>
+    <text x="700" y="480" text-anchor="middle" fill="#8a7db0" font-size="9">AI Tools &amp; LLMs Landscape</text>
+  </g>
+
+  <!-- ===== 国外 ===== -->
+  <g filter="url(#shadow)">
+    <rect x="880" y="214" width="100" height="52" rx="10" fill="rgba(0,170,230,0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+    <text x="930" y="236" text-anchor="middle" fill="#00d2ff" font-size="14" font-weight="700">国 外</text>
+    <text x="930" y="254" text-anchor="middle" fill="#5599bb" font-size="10">International</text>
+  </g>
+
+  <!-- 国外 · 基础大模型 (center y=150) -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="125" width="120" height="50" rx="8" fill="rgba(0,170,230,0.12)" stroke="rgba(0,210,255,0.4)" stroke-width="1"/>
+    <text x="1080" y="147" text-anchor="middle" fill="#88ccdd" font-size="12" font-weight="600">基础大模型</text>
+    <text x="1080" y="163" text-anchor="middle" fill="#6699aa" font-size="9">Foundation Models</text>
+  </g>
+  <!-- 叶子: 中心y=98,133,168,203 h=30 -->
+  <g>
+    <rect x="1180" y="83"  width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="103" text-anchor="middle" fill="#99ccee" font-size="11">GPT-4o / 4.1 · OpenAI</text>
+  </g>
+  <g>
+    <rect x="1180" y="118" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="138" text-anchor="middle" fill="#99ccee" font-size="11">Claude 4 · Anthropic</text>
+  </g>
+  <g>
+    <rect x="1180" y="153" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="173" text-anchor="middle" fill="#99ccee" font-size="11">Gemini 2.5 Pro · Google</text>
+  </g>
+  <g>
+    <rect x="1180" y="188" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="208" text-anchor="middle" fill="#99ccee" font-size="11">Llama 4 · Meta</text>
+  </g>
+
+  <!-- 国外 · 编程与代理工具 (center y=330) -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="308" width="120" height="44" rx="8" fill="rgba(0,170,230,0.12)" stroke="rgba(0,210,255,0.4)" stroke-width="1"/>
+    <text x="1080" y="328" text-anchor="middle" fill="#88ccdd" font-size="11" font-weight="600">编程与代理工具</text>
+    <text x="1080" y="343" text-anchor="middle" fill="#6699aa" font-size="9">Coding &amp; Agent</text>
+  </g>
+  <!-- 叶子: 中心y=260,295,330,365,400 h=30 -->
+  <g>
+    <rect x="1180" y="245" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="265" text-anchor="middle" fill="#99ccee" font-size="11">ChatGPT · OpenAI</text>
+  </g>
+  <g>
+    <rect x="1180" y="280" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="300" text-anchor="middle" fill="#99ccee" font-size="11">Claude Code · Anthropic</text>
+  </g>
+  <g>
+    <rect x="1180" y="315" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="335" text-anchor="middle" fill="#99ccee" font-size="11">Codex CLI · OpenAI</text>
+  </g>
+  <g>
+    <rect x="1180" y="350" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="370" text-anchor="middle" fill="#99ccee" font-size="11">GitHub Copilot · Microsoft</text>
+  </g>
+  <g>
+    <rect x="1180" y="385" width="160" height="30" rx="6" fill="rgba(0,140,200,0.1)" stroke="rgba(0,180,240,0.25)" stroke-width="1"/>
+    <text x="1260" y="405" text-anchor="middle" fill="#99ccee" font-size="11">Cursor · Anysphere</text>
+  </g>
+
+  <!-- ===== 国内 ===== -->
+  <g filter="url(#shadow)">
+    <rect x="880" y="634" width="100" height="52" rx="10" fill="rgba(255,80,160,0.15)" stroke="#ff6ac1" stroke-width="1.5"/>
+    <text x="930" y="656" text-anchor="middle" fill="#ff6ac1" font-size="14" font-weight="700">国 内</text>
+    <text x="930" y="674" text-anchor="middle" fill="#cc6699" font-size="10">Domestic</text>
+  </g>
+
+  <!-- 国内 · 基础大模型 (center y=570) -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="545" width="120" height="50" rx="8" fill="rgba(255,80,160,0.1)" stroke="rgba(255,106,193,0.35)" stroke-width="1"/>
+    <text x="1080" y="567" text-anchor="middle" fill="#dd88aa" font-size="12" font-weight="600">基础大模型</text>
+    <text x="1080" y="583" text-anchor="middle" fill="#aa6688" font-size="9">Foundation Models</text>
+  </g>
+  <!-- 叶子: 中心y=500,535,570,605,640 h=30 -->
+  <g>
+    <rect x="1180" y="485" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="505" text-anchor="middle" fill="#cc88aa" font-size="11">DeepSeek V3/R1 · 深度求索</text>
+  </g>
+  <g>
+    <rect x="1180" y="520" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="540" text-anchor="middle" fill="#cc88aa" font-size="11">Qwen · 阿里巴巴</text>
+  </g>
+  <g>
+    <rect x="1180" y="555" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="575" text-anchor="middle" fill="#cc88aa" font-size="11">豆包 Seed · 字节跳动</text>
+  </g>
+  <g>
+    <rect x="1180" y="590" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="610" text-anchor="middle" fill="#cc88aa" font-size="11">ERNIE · 百度</text>
+  </g>
+  <g>
+    <rect x="1180" y="625" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="645" text-anchor="middle" fill="#cc88aa" font-size="11">Kimi · 月之暗面</text>
+  </g>
+
+  <!-- 国内 · 编程与代理工具 (center y=750) -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="728" width="120" height="44" rx="8" fill="rgba(255,80,160,0.1)" stroke="rgba(255,106,193,0.35)" stroke-width="1"/>
+    <text x="1080" y="748" text-anchor="middle" fill="#dd88aa" font-size="11" font-weight="600">编程与代理工具</text>
+    <text x="1080" y="763" text-anchor="middle" fill="#aa6688" font-size="9">Coding &amp; Agent</text>
+  </g>
+  <!-- 叶子: 中心y=698,733,768,803 h=30 -->
+  <g>
+    <rect x="1180" y="683" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="703" text-anchor="middle" fill="#cc88aa" font-size="11">Trae · 字节跳动</text>
+  </g>
+  <g>
+    <rect x="1180" y="718" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="738" text-anchor="middle" fill="#cc88aa" font-size="11">通义灵码 · 阿里</text>
+  </g>
+  <g>
+    <rect x="1180" y="753" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="773" text-anchor="middle" fill="#cc88aa" font-size="11">CodeBuddy · 腾讯</text>
+  </g>
+  <g>
+    <rect x="1180" y="788" width="160" height="30" rx="6" fill="rgba(200,60,120,0.08)" stroke="rgba(255,100,180,0.2)" stroke-width="1"/>
+    <text x="1260" y="808" text-anchor="middle" fill="#cc88aa" font-size="11">Comate · 百度</text>
+  </g>
+
+  <!-- ===== 搭建原理 ===== -->
+  <g filter="url(#shadow)">
+    <rect x="420" y="434" width="130" height="52" rx="10" fill="rgba(77,182,172,0.15)" stroke="#4db6ac" stroke-width="1.5"/>
+    <text x="485" y="456" text-anchor="middle" fill="#4db6ac" font-size="13" font-weight="700">搭建原理</text>
+    <text x="485" y="474" text-anchor="middle" fill="#5a9e96" font-size="9">Building Principles</text>
+  </g>
+  <!-- 叶子: 中心y=336,416,496,581 -->
+  <g>
+    <rect x="80" y="319" width="200" height="34" rx="6" fill="rgba(60,150,140,0.1)" stroke="rgba(77,182,172,0.3)" stroke-width="1"/>
+    <text x="180" y="341" text-anchor="middle" fill="#7cc8be" font-size="11">海量数据预训练</text>
+  </g>
+  <g>
+    <rect x="80" y="399" width="200" height="34" rx="6" fill="rgba(60,150,140,0.1)" stroke="rgba(77,182,172,0.3)" stroke-width="1"/>
+    <text x="180" y="421" text-anchor="middle" fill="#7cc8be" font-size="11">指令微调 + RLHF</text>
+  </g>
+  <g>
+    <rect x="80" y="479" width="200" height="34" rx="6" fill="rgba(60,150,140,0.1)" stroke="rgba(77,182,172,0.3)" stroke-width="1"/>
+    <text x="180" y="501" text-anchor="middle" fill="#7cc8be" font-size="11">工具调用与代理化</text>
+  </g>
+  <g>
+    <rect x="80" y="559" width="200" height="44" rx="6" fill="rgba(60,150,140,0.08)" stroke="rgba(77,182,172,0.25)" stroke-width="1"/>
+    <text x="180" y="577" text-anchor="middle" fill="#6aafa5" font-size="10">最终形成</text>
+    <text x="180" y="593" text-anchor="middle" fill="#7cc8be" font-size="10" font-weight="600">ChatGPT / Claude Code / Trae</text>
+  </g>
+
+  <!-- ===== 图例 ===== -->
+  <g transform="translate(80,890)">
+    <rect x="0" y="-10" width="12" height="12" rx="3" fill="rgba(0,170,230,0.25)" stroke="#00d2ff" stroke-width="0.8"/>
+    <text x="18" y="0" fill="#777" font-size="10">海外 International</text>
+    <rect x="170" y="-10" width="12" height="12" rx="3" fill="rgba(255,80,160,0.2)" stroke="#ff6ac1" stroke-width="0.8"/>
+    <text x="188" y="0" fill="#777" font-size="10">国内 Domestic</text>
+    <rect x="320" y="-10" width="12" height="12" rx="3" fill="rgba(77,182,172,0.2)" stroke="#4db6ac" stroke-width="0.8"/>
+    <text x="338" y="0" fill="#777" font-size="10">搭建原理 Principles</text>
+    <text x="530" y="0" fill="#555" font-size="9">层级：中心 → 分类 → 子类 → 具体工具</text>
+  </g>
+
+</g>
+</svg>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="table-section">
+  <h2>📊 主流 AI 工具对比速查表</h2>
+  <div class="table-wrap">
+  <table>
+    <colgroup>
+      <col><col><col><col><col>
+    </colgroup>
+    <thead>
+      <tr><th>地区</th><th>工具</th><th>开发商</th><th>核心能力</th><th>适合场景</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="region-intl">海外</td><td><b>ChatGPT</b></td><td>OpenAI</td><td>对话/图片/搜索/插件</td><td>全能助手</td></tr>
+      <tr><td class="region-intl">海外</td><td><b>Claude</b></td><td>Anthropic</td><td>长文本/代码/分析</td><td>深度写作/推理</td></tr>
+      <tr><td class="region-intl">海外</td><td><b>Claude Code</b></td><td>Anthropic</td><td>命令行编程代理</td><td>软件开发</td></tr>
+      <tr><td class="region-intl">海外</td><td><b>Cursor</b></td><td>Anysphere</td><td>AI IDE/代码对话</td><td>前后端开发</td></tr>
+      <tr><td class="region-intl">海外</td><td><b>Codex</b></td><td>OpenAI</td><td>云端代码/自动化</td><td>脚本/自动化</td></tr>
+      <tr><td class="region-intl">海外</td><td><b>Gemini</b></td><td>Google</td><td>搜索整合/多模态</td><td>信息检索</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>Trae</b></td><td>字节跳动</td><td>AI IDE/类Cursor</td><td>前端/全栈</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>通义灵码</b></td><td>阿里巴巴</td><td>IDE插件+独立IDE</td><td>Java/Python</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>豆包</b></td><td>字节跳动</td><td>对话/搜索/图片</td><td>日常/创作</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>DeepSeek</b></td><td>深度求索</td><td>开源/对话/编程</td><td>技术/API</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>Kimi</b></td><td>月之暗面</td><td>超长上下文200K+</td><td>长文档/论文</td></tr>
+      <tr><td class="region-domestic">国内</td><td><b>文心一言</b></td><td>百度</td><td>对话/搜索整合</td><td>百度生态</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="table-section"><h2>🔧 AI 工具的搭建原理（三层架构）</h2></div>
+<div class="principle-grid" style="margin-top:16px;">
+  <div class="step"><h4>① 训练大模型（底层）</h4><p>用海量文本（书籍、网页、代码）对神经网络进行预训练，使其学会语言规律。<br>类比：一个读过互联网所有书籍的"超级学生"。<br>关键技术：<code>Transformer</code> 架构 + <code>RLHF</code> 人类反馈强化学习。<br>成本：训练一次需要数千万~数亿美元。</p></div>
+  <div class="step"><h4>② API 开放（中间层）</h4><p>厂商将大模型封装为 <code>API</code>，按调用次数/Token 收费。<br>开发者无需自己训练模型，调用 API 即可获得 AI 能力。<br>类比：水电公司发电 → 你家插上插头就能用电。<br>典型价格：约 ¥0.01~0.1 / 千 Token（1 Token ≈ 0.75 个英文单词）。</p></div>
+  <div class="step"><h4>③ 产品包装（应用层）</h4><p>在 API 基础上添加 UI 界面、记忆系统、工具调用、文件上传等功能。<br><b>ChatGPT</b> = GPT API + 对话界面 + 插件系统 + 联网搜索<br><b>Claude Code</b> = Claude API + 终端环境 + 文件读写 + Git 操作<br><b>Trae</b> = 豆包 API + VS Code 编辑器 + 项目上下文感知<br><b>Copilot</b> = GPT/Claude API + IDE 插件 + 代码补全逻辑</p></div>
+  <div class="step"><h4>④ Agent 自主代理（最新趋势）</h4><p>让 AI 不只是回答问题，而是自主规划、调用工具、执行多步骤任务。<br>例如 Claude Code：你说"帮我重构这个项目"，它会：<br><code>1. 读取所有文件</code> → <code>2. 分析代码结构</code> → <code>3. 制定重构计划</code> → <code>4. 逐个修改文件</code> → <code>5. 运行测试验证</code><br>这就是 <b>AI Agent</b> — 从"工具"进化为"助手"。</p></div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="summary-box">
+  <h3>💡 一句话理解 AI 工具</h3>
+  <p>
+    <b>大模型</b>是引擎，<b>AI 工具</b>是车，<b>你</b>是司机。<br>
+    海外 <span style="color:#00d2ff;">蓝色系</span> = OpenAI / Anthropic / Google 驱动；国内 <span style="color:#ff6ac1;">粉色系</span> = 阿里 / 字节 / 百度 / 月之暗面驱动。<br>
+    <b>ChatGPT</b> 是万能瑞士军刀，<b>Claude Code</b> 是程序员专属，<b>Trae</b> 是国产 Cursor 平替，<b>Kimi</b> 擅长长文档处理。<br>
+    选哪个？<span style="color:#66bb6a;">看你用它做什么。</span>
+  </p>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ===== 生成说明 ===== -->
+<div class="summary-box" style="margin-top:0;">
+  <h3 style="color:#88ccdd;">🤖 本页面由 MiMo AI 生成</h3>
+  <p style="margin-bottom:12px;">
+    本页面所有内容、SVG 思维导图、数据表格及样式均由 <b>MiMo Code Agent</b>（小米自研 AI 编程助手）根据用户对话指令自动生成，无需手动编写代码。
+  </p>
+  <div style="background:rgba(255,255,255,0.04); border-radius:8px; padding:14px 18px; border:1px solid rgba(255,255,255,0.06);">
+    <p style="color:#999; font-size:11px; margin-bottom:6px; font-weight:600;">完整提示词（Prompt）：</p>
+    <p style="color:#bbb; font-size:12px; line-height:1.8; font-style:italic;">
+      "帮我制作一个主流AI工具与大模型的分类全景图网页。页面包含：<br>
+      ① SVG 思维导图，中心节点连接三个分支——搭建原理（青绿色）、国外（蓝色系）、国内（粉色系），每个分支下有基础大模型和编程与代理工具两个子节点，子节点再展开具体工具叶子节点，所有连线严格连接到节点边框，子节点采用中英文双语，叶子节点统一为'模型名 · 公司名'格式，国外和国内子节点对称分布、连线开合角度一致；<br>
+      ② AI 工具对比速查表，包含地区、工具名称、开发商、核心能力、适合场景五列，文字居中，列宽自适应内容；<br>
+      ③ 搭建原理说明，用四宫格展示从训练大模型到 API 开放、产品包装、Agent 自主代理的三层架构；<br>
+      ④ 一句话总结和 MiMo Code 安装说明。<br>
+      整体风格为深色系科技感，严谨美观，适配手机端浏览。"
+    </p>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<p class="footer">Generated by MiMo Code · 2026-06-15 · 版本 3.0</p>
+
+</div>
+</body>
+</html>
