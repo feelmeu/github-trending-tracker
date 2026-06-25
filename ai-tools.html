@@ -193,16 +193,16 @@
 </style>
 <style>
   .navbar {
-    background: rgba(26, 26, 46, 0.92);
+    background: rgba(22, 27, 34, 0.85);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid #30363d;
     padding: 0 1.5rem;
     position: sticky;
     top: 0;
     z-index: 100;
   }
   .navbar-inner {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -212,7 +212,7 @@
   .navbar-brand {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #e0e0e0;
+    color: #e6edf3;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -222,14 +222,14 @@
   .navbar-links { display: flex; gap: 0.3rem; }
   .navbar-links a {
     font-size: 0.85rem;
-    color: #888;
+    color: #7d8590;
     text-decoration: none;
     padding: 0.4rem 0.9rem;
     border-radius: 8px;
-    transition: 0.25s;
+    transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .navbar-links a:hover { color: #e0e0e0; background: rgba(255,255,255,0.06); }
-  .navbar-links a.active { color: #00d2ff; background: rgba(0,210,255,0.1); }
+  .navbar-links a:hover { color: #e6edf3; background: #1c2128; }
+  .navbar-links a.active { color: #58a6ff; background: rgba(88,166,255,0.1); }
   @media (max-width: 768px) {
     .navbar-inner { height: 46px; }
     .navbar-brand { font-size: 0.85rem; }
