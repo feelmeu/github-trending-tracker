@@ -264,6 +264,13 @@ body {
 .model-name { font-weight: 600; }
 .model-vendor { color: var(--muted); font-size: 0.78rem; }
 
+/* 国内表厂商列宽度：容纳4个汉字 */
+.section[data-type="cn"] .ranking-table th:nth-child(3),
+.section[data-type="cn"] .ranking-table td:nth-child(3) {
+  min-width: 4.5em;
+  white-space: nowrap;
+}
+
 .region-tag {
   display: inline-block;
   font-size: 0.65rem;
