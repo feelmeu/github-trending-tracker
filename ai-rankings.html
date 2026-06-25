@@ -270,7 +270,30 @@ body {
   font-weight: 700;
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  margin-left: 0.3rem;
+}
+
+/* 地区列居中（混排表第4列） */
+.section[data-type="mixed"] .ranking-table thead th:nth-child(4),
+.section[data-type="mixed"] .ranking-table tbody td:nth-child(4) {
+  text-align: center;
+}
+
+/* 状态列居中 - 混排表第6列 */
+.section[data-type="mixed"] .ranking-table thead th:nth-child(6),
+.section[data-type="mixed"] .ranking-table tbody td:nth-child(6) {
+  text-align: center;
+}
+
+/* 状态列居中 - 国外表第5列 */
+.section[data-type="intl"] .ranking-table thead th:nth-child(5),
+.section[data-type="intl"] .ranking-table tbody td:nth-child(5) {
+  text-align: center;
+}
+
+/* 状态列居中 - 国内表第6列 */
+.section[data-type="cn"] .ranking-table thead th:nth-child(6),
+.section[data-type="cn"] .ranking-table tbody td:nth-child(6) {
+  text-align: center;
 }
 
 .region-tag.intl { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
