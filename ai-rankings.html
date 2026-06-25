@@ -298,14 +298,11 @@ body {
   box-sizing: border-box;
 }
 
-.badge + .badge { margin-top: 0.2rem; }
+.badge + .badge { margin-left: 0; margin-top: 0.2rem; }
 
 /* 状态列：badge 居中堆叠 */
 .status-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+  text-align: center;
 }
 
 .badge.new { background: rgba(63,185,80,0.15); color: var(--accent-green); border: 1px solid rgba(63,185,80,0.3); }
@@ -446,7 +443,7 @@ footer a:hover { text-decoration: underline; }
   .model-vendor { font-size: 0.7rem; }
   .region-tag { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
   .badge { font-size: 0.6rem; padding: 0.05rem 0.3rem; width: 5em; box-sizing: border-box; }
-  .badge + .badge { margin-top: 0.15rem; }
+  .badge + .badge { margin-left: 0; margin-top: 0.15rem; }
   .score-cell { font-size: 0.72rem; }
   .rank-cell { width: 28px; font-size: 0.75rem; }
 }
