@@ -156,6 +156,50 @@ body {
   50% { opacity: 0.5; transform: scale(0.85); }
 }
 
+/* ===== Refresh Button ===== */
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg3);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 0.45rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.refresh-btn:hover {
+  background: var(--bg2);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.refresh-btn:active { transform: scale(0.96); }
+.refresh-btn svg { width: 16px; height: 16px; transition: transform 0.5s; }
+.refresh-btn.spinning svg { animation: spin 0.8s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.timestamp.loading .dot { background: var(--accent-orange); }
+
+/* ===== Ranking Source Note ===== */
+.ranking-source-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0.5rem 0.8rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking-source-note .note-icon { font-size: 0.8rem; }
+
 /* ===== Container ===== */
 .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
 
@@ -489,10 +533,14 @@ footer a:hover { text-decoration: underline; }
       <p class="subtitle">国内外权威榜单 · 引擎厂商最新动态 — 涵盖模型发布、技术突破与优惠信息</p>
     </div>
     <div class="hero-right">
-      <span class="timestamp">
+      <span id="timestamp" class="timestamp">
         <span class="dot"></span>
         <span id="ts-text">数据更新时间：—</span>
       </span>
+      <button id="refresh-btn" class="refresh-btn" onclick="refreshData()">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM1.5 8a6.5 6.5 0 1 1 11.05 4.61l-.86-.86A5.23 5.23 0 0 0 12.5 8 4.5 4.5 0 0 1 8 12.5a5.23 5.23 0 0 0-2.75-.69l-.86.86A6.48 6.48 0 0 1 1.5 8z M8 3.5a4.5 4.5 0 0 1 4.5 4.5h-1.5a3 3 0 0 0-3-3V3.5z"/></svg>
+        刷新数据
+      </button>
     </div>
   </div>
 </header>
@@ -667,6 +715,10 @@ footer a:hover { text-decoration: underline; }
         </tbody>
       </table>
       </div>
+      <div class="ranking-source-note" id="mixed-note">
+        <span class="note-icon">🕒</span>
+        <span>排行榜数据采集时间：—</span>
+      </div>
     </div>
   </section>
 
@@ -781,6 +833,10 @@ footer a:hover { text-decoration: underline; }
           </tr>
         </tbody>
       </table>
+      </div>
+      <div class="ranking-source-note" id="cn-note">
+        <span class="note-icon">🕒</span>
+        <span>排行榜数据采集时间：—</span>
       </div>
     </div>
 
@@ -980,6 +1036,10 @@ footer a:hover { text-decoration: underline; }
         </tbody>
       </table>
       </div>
+      <div class="ranking-source-note" id="intl-note">
+        <span class="note-icon">🕒</span>
+        <span>排行榜数据采集时间：—</span>
+      </div>
     </div>
 
     <!-- International News -->
@@ -1056,8 +1116,7 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script>
-// 立即设置时间戳，避免延迟
-(function() {
+function formatNow() {
   var d = new Date();
   var y = d.getFullYear();
   var mo = String(d.getMonth() + 1).padStart(2, '0');
@@ -1065,9 +1124,50 @@ footer a:hover { text-decoration: underline; }
   var h = String(d.getHours()).padStart(2, '0');
   var mi = String(d.getMinutes()).padStart(2, '0');
   var s = String(d.getSeconds()).padStart(2, '0');
-  var el = document.getElementById('ts-text');
-  if (el) el.textContent = '数据更新时间：' + y + '-' + mo + '-' + da + ' ' + h + ':' + mi + ':' + s;
-})();
+  return y + '-' + mo + '-' + da + ' ' + h + ':' + mi + ':' + s;
+}
+
+function updateTimestamp(loading) {
+  var tsEl = document.getElementById('timestamp');
+  var txtEl = document.getElementById('ts-text');
+  if (loading) {
+    if (tsEl) tsEl.classList.add('loading');
+    if (txtEl) txtEl.textContent = '正在刷新数据...';
+  } else {
+    if (tsEl) tsEl.classList.remove('loading');
+    if (txtEl) txtEl.textContent = '数据更新时间：' + formatNow();
+  }
+}
+
+function updateRankingNotes() {
+  var timeStr = formatNow();
+  var sources = {
+    'mixed-note': '综合来源：Artificial Analysis / Code Arena / SuperCLUE / LMSYS',
+    'cn-note': '数据来源：SuperCLUE',
+    'intl-note': '综合来源：Artificial Analysis / LMSYS Chatbot Arena'
+  };
+  Object.keys(sources).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.innerHTML = '<span class="note-icon">🕒</span><span>排行榜数据采集时间：' + timeStr + ' · ' + sources[id] + '</span>';
+    }
+  });
+}
+
+function refreshData() {
+  var btn = document.getElementById('refresh-btn');
+  if (btn) btn.classList.add('spinning');
+  updateTimestamp(true);
+  setTimeout(function() {
+    updateTimestamp(false);
+    updateRankingNotes();
+    if (btn) btn.classList.remove('spinning');
+  }, 1200);
+}
+
+// 初始化
+updateTimestamp(false);
+updateRankingNotes();
 </script>
 
 </body>
