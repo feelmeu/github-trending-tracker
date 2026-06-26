@@ -887,15 +887,10 @@ function updateTimestamp(loading) {
 }
 
 function updateRankingNotes() {
-  var sources = {
-    'mixed-note': 'Artificial Analysis Intelligence Index v4.1 + SuperCLUE',
-    'cn-note': 'SuperCLUE 中文大模型综合排名',
-    'intl-note': 'Artificial Analysis Intelligence Index v4.1'
-  };
-  Object.keys(sources).forEach(function(id) {
+  Object.keys({ 'mixed-note': '', 'cn-note': '', 'intl-note': '' }).forEach(function(id) {
     var el = document.getElementById(id);
     if (el) {
-      el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取 · ' + sources[id] + '</span>';
+      el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取</span>';
     }
   });
 }
@@ -1096,7 +1091,7 @@ function loadRankings() {
       Object.keys(noteMap).forEach(function(id) {
         var el = document.getElementById(id);
         if (el) {
-          el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取于 ' + timeStr + ' · ' + noteMap[id] + '</span>';
+          el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取于 ' + timeStr + '</span>';
         }
       });
     })
