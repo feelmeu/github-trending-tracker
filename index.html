@@ -931,7 +931,7 @@ function renderRealtimeNews(allItems) {
   var grid = document.getElementById('realtime-news-grid');
   if (!grid) return;
   if (!allItems || allItems.length === 0) {
-    grid.innerHTML = '<div class="state-msg">暂无法获取实时资讯，请稍后刷新重试</div>';
+    grid.innerHTML = '';
     return;
   }
   // Sort by date descending, take top 8
