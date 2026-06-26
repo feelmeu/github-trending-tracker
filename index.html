@@ -579,7 +579,6 @@ footer a:hover { text-decoration: underline; }
       <div class="section-icon">📡</div>
       <div>
         <h2>实时 AI 资讯</h2>
-        <p>每次打开或刷新自动获取最新资讯 · 数据来源：36氪 · IT之家 · 机器之心</p>
       </div>
     </div>
     <div class="news-grid" id="realtime-news-grid">
@@ -895,14 +894,14 @@ function updateTimestamp(loading) {
 
 function updateRankingNotes() {
   var sources = {
-    'mixed-note': '综合来源：Artificial Analysis / Code Arena / SuperCLUE / LMSYS',
-    'cn-note': '数据来源：SuperCLUE',
-    'intl-note': '综合来源：Artificial Analysis / LMSYS Chatbot Arena'
+    'mixed-note': 'Artificial Analysis Intelligence Index v4.1 + SuperCLUE',
+    'cn-note': 'SuperCLUE 中文大模型综合排名',
+    'intl-note': 'Artificial Analysis Intelligence Index v4.1'
   };
   Object.keys(sources).forEach(function(id) {
     var el = document.getElementById(id);
     if (el) {
-      el.innerHTML = '<span class="note-icon">📌</span><span>排行榜数据截止：2026年6月 · ' + sources[id] + '</span>';
+      el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取 · ' + sources[id] + '</span>';
     }
   });
 }
@@ -1103,7 +1102,7 @@ function loadRankings() {
       Object.keys(noteMap).forEach(function(id) {
         var el = document.getElementById(id);
         if (el) {
-          el.innerHTML = '<span class="note-icon">🕒</span><span>数据抓取时间：' + timeStr + ' · ' + noteMap[id] + '</span>';
+          el.innerHTML = '<span class="note-icon">🤖</span><span>由 GitHub Actions 自动任务获取于 ' + timeStr + ' · ' + noteMap[id] + '</span>';
         }
       });
     })
