@@ -141,8 +141,8 @@ body {
   gap: 0.5rem;
   padding: 1rem 0;
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 52px;
+  z-index: 90;
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
 }
@@ -413,6 +413,7 @@ footer .sources .src-url:hover {
 @media (max-width: 768px) {
   .cover h1 { font-size: 1.7rem; }
   .country-header h2 { font-size: 1.4rem; }
+  .country-nav { top: 46px; }
   .back-top { bottom: 1.2rem; right: 1.2rem; }
 }
 </style>
@@ -442,14 +443,14 @@ footer .sources .src-url:hover {
 <header class="cover">
   <div class="eyebrow">Global Box Office · 2026 H1</div>
   <h1>2026年上半年全球电影票房排行榜</h1>
-  <p class="subtitle">中国、全球、日本、韩国、法国、印度上半年票房 TOP10,涵盖类型与评分,一览全球电影市场格局。</p>
+  <p class="subtitle">中国、美国、日本、韩国、法国、印度上半年票房 TOP10,涵盖类型与评分,一览全球电影市场格局。</p>
   <div class="meta">数据区间 2026年1—6月&nbsp;&nbsp;|&nbsp;&nbsp;发布日期 2026-07-03</div>
 </header>
 
 <!-- ===== Country Nav ===== -->
 <nav class="country-nav" aria-label="国家导航">
   <a href="#china" style="--nav-c:#c0392b"><span class="dot"></span>中国</a>
-  <a href="#usa" style="--nav-c:#1e5a8a"><span class="dot"></span>全球</a>
+  <a href="#usa" style="--nav-c:#1e5a8a"><span class="dot"></span>美国</a>
   <a href="#japan" style="--nav-c:#b8336a"><span class="dot"></span>日本</a>
   <a href="#korea" style="--nav-c:#4a3a8c"><span class="dot"></span>韩国</a>
   <a href="#france" style="--nav-c:#1a3a5c"><span class="dot"></span>法国</a>
@@ -487,14 +488,14 @@ footer .sources .src-url:hover {
   <p class="section-note">第6、7、10名票房为估算值。豆瓣评分来自豆瓣电影"2026年北美票房榜"豆列<sup><a href="#cite-3">[3]</a></sup>。</p>
 </section>
 
-<!-- ===== Global ===== -->
+<!-- ===== USA ===== -->
 <section id="usa" class="country-section">
   <div class="country-header">
-    <span class="flag" aria-hidden="true">🌍</span>
-    <h2>全球</h2>
+    <span class="flag" aria-hidden="true">🇺🇸</span>
+    <h2>美国</h2>
     <span class="badge">TOP 10</span>
   </div>
-  <p class="country-desc">2026 年上半年全球票房 TOP10(美元)。动画《超级马力欧:银河大电影》以 10.09 亿美元夺冠,迈克尔·杰克逊传记片《巨星之路》以 9.78 亿美元紧随其后。数据来源:Box Office Mojo<sup><a href="#cite-4">[4]</a></sup><sup><a href="#cite-5">[5]</a></sup>。</p>
+  <p class="country-desc">2026 年上半年美国本土票房 TOP10(美元)。动画《超级马力欧:银河大电影》以 4.30 亿美元夺冠,迈克尔·杰克逊传记片《巨星之路》以 3.69 亿美元紧随其后。数据来源:Box Office Mojo<sup><a href="#cite-4">[4]</a></sup><sup><a href="#cite-5">[5]</a></sup>。</p>
 
   <div class="table-wrap">
     <table>
@@ -502,20 +503,20 @@ footer .sources .src-url:hover {
         <th>#</th><th>电影名称</th><th>类型</th><th>票房(美元)</th><th>评分</th>
       </tr></thead>
       <tbody>
-        <tr><td class="rank">1</td><td class="title-cell"><strong>超级马力欧:银河大电影</strong><span class="en-name">The Super Mario Galaxy Movie</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$1.009B</td><td class="rating"><span class="score">7.0</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">2</td><td class="title-cell"><strong>巨星之路</strong><span class="en-name">Michael</span></td><td class="genre"><span class="tag-genre">传记</span><span class="tag-genre">音乐</span></td><td class="boxoffice">$978M</td><td class="rating"><span class="score">7.5</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">3</td><td class="title-cell"><strong>挽救计划</strong><span class="en-name">Project Hail Mary</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">惊悚</span></td><td class="boxoffice">$684M</td><td class="rating"><span class="score">8.6</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">4</td><td class="title-cell"><strong>穿普拉达的女王2</strong><span class="en-name">The Devil Wears Prada 2</span></td><td class="genre"><span class="tag-genre">剧情</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$678M</td><td class="rating"><span class="score">6.6</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">5</td><td class="title-cell"><strong>飞驰人生3</strong><span class="en-name">Pegasus 3</span></td><td class="genre"><span class="tag-genre">喜剧</span><span class="tag-genre">运动</span></td><td class="boxoffice">$656M</td><td class="rating"><span class="score">7.4</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">6</td><td class="title-cell"><strong>玩具总动员5</strong><span class="en-name">Toy Story 5</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">冒险</span></td><td class="boxoffice">$594M</td><td class="rating"><span class="score">8.1</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">7</td><td class="title-cell"><strong>执念</strong><span class="en-name">Obsession</span></td><td class="genre"><span class="tag-genre">恐怖</span></td><td class="boxoffice">$373M</td><td class="rating"><span class="score">—</span></td></tr>
-        <tr><td class="rank">8</td><td class="title-cell"><strong>河狸变身计划</strong><span class="en-name">Hoppers</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$372M</td><td class="rating"><span class="score">7.4</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">9</td><td class="title-cell"><strong>后室</strong><span class="en-name">Backrooms</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">恐怖</span></td><td class="boxoffice">$331M</td><td class="rating"><span class="score">6.6</span><span class="source">豆瓣</span></td></tr>
-        <tr><td class="rank">10</td><td class="title-cell"><strong>星球大战:曼达洛人与古古</strong><span class="en-name">The Mandalorian &amp; Grogu</span></td><td class="genre"><span class="tag-genre">动作</span><span class="tag-genre">科幻</span></td><td class="boxoffice">$328M</td><td class="rating"><span class="score">7.4</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">1</td><td class="title-cell"><strong>超级马力欧:银河大电影</strong><span class="en-name">The Super Mario Galaxy Movie</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$429.7M</td><td class="rating"><span class="score">7.0</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">2</td><td class="title-cell"><strong>巨星之路</strong><span class="en-name">Michael</span></td><td class="genre"><span class="tag-genre">传记</span><span class="tag-genre">音乐</span></td><td class="boxoffice">$368.7M</td><td class="rating"><span class="score">7.5</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">3</td><td class="title-cell"><strong>挽救计划</strong><span class="en-name">Project Hail Mary</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">惊悚</span></td><td class="boxoffice">$344.0M</td><td class="rating"><span class="score">8.6</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">4</td><td class="title-cell"><strong>执念</strong><span class="en-name">Obsession</span></td><td class="genre"><span class="tag-genre">恐怖</span></td><td class="boxoffice">$220.1M</td><td class="rating"><span class="score">—</span></td></tr>
+        <tr><td class="rank">5</td><td class="title-cell"><strong>穿普拉达的女王2</strong><span class="en-name">The Devil Wears Prada 2</span></td><td class="genre"><span class="tag-genre">剧情</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$219.5M</td><td class="rating"><span class="score">6.6</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">6</td><td class="title-cell"><strong>玩具总动员5</strong><span class="en-name">Toy Story 5</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">冒险</span></td><td class="boxoffice">$200.7M</td><td class="rating"><span class="score">8.1</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">7</td><td class="title-cell"><strong>后室</strong><span class="en-name">Backrooms</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">恐怖</span></td><td class="boxoffice">$175.1M</td><td class="rating"><span class="score">6.6</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">8</td><td class="title-cell"><strong>星球大战:曼达洛人与古古</strong><span class="en-name">The Mandalorian &amp; Grogu</span></td><td class="genre"><span class="tag-genre">动作</span><span class="tag-genre">科幻</span></td><td class="boxoffice">$173.0M</td><td class="rating"><span class="score">7.4</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">9</td><td class="title-cell"><strong>河狸变身计划</strong><span class="en-name">Hoppers</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$166.0M</td><td class="rating"><span class="score">7.4</span><span class="source">豆瓣</span></td></tr>
+        <tr><td class="rank">10</td><td class="title-cell"><strong>阿凡达3:火与灰</strong><span class="en-name">Avatar: Fire and Ash</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">动作</span></td><td class="boxoffice">$154.0M</td><td class="rating"><span class="score">—</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p class="section-note">玩具总动员5仍在映,全球票房将持续增长。数据为 2026 日历年累计票房。</p>
+  <p class="section-note">阿凡达3于2025年12月19日上映,表中为2026日历年累计票房。数据为 Box Office Mojo 日历年度票房(Calendar Grosses)。</p>
 </section>
 
 <!-- ===== Japan ===== -->
