@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03 10:05:22",
+  "lastUpdated": "2026-07-03 21:10:27",
   "timezone": "Asia/Shanghai (UTC+8)",
   "dateStr": "2026年07月03日",
   "dataSource": "last manual update",
@@ -46,6 +46,18 @@
       },
       {
         "rank": 4,
+        "name": "Claude Sonnet 5",
+        "vendor": "Anthropic",
+        "region": "intl",
+        "score": "AAI 53",
+        "status": [
+          "new",
+          "closed"
+        ],
+        "highlight": "Agent Arena 第二，智能体性能强劲"
+      },
+      {
+        "rank": 5,
         "name": "GLM-5.2",
         "vendor": "智谱 AI",
         "region": "cn",
@@ -54,10 +66,10 @@
           "new",
           "open"
         ],
-        "highlight": "开源权重模型 SOTA，全球第四，编程第4"
+        "highlight": "开源权重模型 SOTA，Code Arena 第一"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Gemini 3.5 Flash",
         "vendor": "Google",
         "region": "intl",
@@ -66,17 +78,6 @@
           "closed"
         ],
         "highlight": "速度与智能兼顾，性价比突出"
-      },
-      {
-        "rank": 6,
-        "name": "Claude Sonnet 4.6",
-        "vendor": "Anthropic",
-        "region": "intl",
-        "score": "AAI 47",
-        "status": [
-          "closed"
-        ],
-        "highlight": "自适应推理，编码与智能体能力均衡"
       },
       {
         "rank": 7,
@@ -259,6 +260,17 @@
       },
       {
         "rank": 4,
+        "name": "Claude Sonnet 5",
+        "vendor": "Anthropic",
+        "score": "53",
+        "status": [
+          "new",
+          "closed"
+        ],
+        "highlight": "Agent Arena 第二，智能体性能强劲"
+      },
+      {
+        "rank": 5,
         "name": "GLM-5.2",
         "vendor": "Z AI",
         "score": "51",
@@ -266,10 +278,10 @@
           "new",
           "open"
         ],
-        "highlight": "开源权重模型 SOTA，全球第四"
+        "highlight": "开源权重模型 SOTA，Code Arena 第一"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Gemini 3.5 Flash",
         "vendor": "Google",
         "score": "50",
@@ -277,16 +289,6 @@
           "closed"
         ],
         "highlight": "速度与智能兼顾，性价比突出"
-      },
-      {
-        "rank": 6,
-        "name": "Claude Sonnet 4.6",
-        "vendor": "Anthropic",
-        "score": "47",
-        "status": [
-          "closed"
-        ],
-        "highlight": "自适应推理，编码与智能体能力均衡"
       },
       {
         "rank": 7,
