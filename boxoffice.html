@@ -502,7 +502,7 @@ footer .sources .src-url:hover {
       <thead><tr>
         <th>#</th><th>电影名称</th><th>类型</th><th>票房(美元)</th><th>评分</th>
       </tr></thead>
-      <tbody>
+      <tbody id="usa-tbody">
         <tr><td class="rank">1</td><td class="title-cell"><strong>超级马力欧:银河大电影</strong><span class="en-name">The Super Mario Galaxy Movie</span></td><td class="genre"><span class="tag-genre">动画</span><span class="tag-genre">喜剧</span></td><td class="boxoffice">$429.7M</td><td class="rating"><span class="score">7.0</span><span class="source">豆瓣</span></td></tr>
         <tr><td class="rank">2</td><td class="title-cell"><strong>巨星之路</strong><span class="en-name">Michael</span></td><td class="genre"><span class="tag-genre">传记</span><span class="tag-genre">音乐</span></td><td class="boxoffice">$368.7M</td><td class="rating"><span class="score">7.5</span><span class="source">豆瓣</span></td></tr>
         <tr><td class="rank">3</td><td class="title-cell"><strong>挽救计划</strong><span class="en-name">Project Hail Mary</span></td><td class="genre"><span class="tag-genre">科幻</span><span class="tag-genre">惊悚</span></td><td class="boxoffice">$344.0M</td><td class="rating"><span class="score">8.6</span><span class="source">豆瓣</span></td></tr>
@@ -516,7 +516,7 @@ footer .sources .src-url:hover {
       </tbody>
     </table>
   </div>
-  <p class="section-note">阿凡达3于2025年12月19日上映,表中为2026日历年累计票房。数据为 Box Office Mojo 日历年度票房(Calendar Grosses)。</p>
+  <p class="section-note" id="usa-note">阿凡达3于2025年12月19日上映,表中为2026日历年累计票房。数据为 Box Office Mojo 日历年度票房(Calendar Grosses)。</p>
 </section>
 
 <!-- ===== Japan ===== -->
@@ -700,6 +700,44 @@ footer .sources .src-url:hover {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
+})();
+</script>
+
+<!-- ===== Dynamic US Box Office Data Loading ===== -->
+<script>
+(function() {
+  fetch('boxoffice-data.json?t=' + Date.now())
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      var tbody = document.getElementById('usa-tbody');
+      if (!tbody || !data.movies) return;
+
+      var html = '';
+      data.movies.forEach(function(m) {
+        var genres = (m.genre || []).map(function(g) {
+          return '<span class="tag-genre">' + g + '</span>';
+        }).join('');
+        var rating = m.rating
+          ? '<span class="score">' + m.rating + '</span><span class="source">豆瓣</span>'
+          : '<span class="score">—</span>';
+        html += '<tr>' +
+          '<td class="rank">' + m.rank + '</td>' +
+          '<td class="title-cell"><strong>' + m.name_cn + '</strong><span class="en-name">' + m.name_en + '</span></td>' +
+          '<td class="genre">' + genres + '</td>' +
+          '<td class="boxoffice">' + m.gross + '</td>' +
+          '<td class="rating">' + rating + '</td>' +
+          '</tr>';
+      });
+      tbody.innerHTML = html;
+
+      var note = document.getElementById('usa-note');
+      if (note && data.lastUpdated) {
+        note.textContent = '🤖 由 GitHub Actions 自动更新于 ' + data.lastUpdated;
+      }
+    })
+    .catch(function(err) {
+      console.log('Box office data load failed, using static data');
+    });
 })();
 </script>
 
