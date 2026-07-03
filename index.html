@@ -523,6 +523,24 @@ footer a:hover { text-decoration: underline; }
   .score-cell { font-size: 0.72rem; }
   .rank-cell { width: 28px; font-size: 0.75rem; }
 }
+@media (max-width: 600px) {
+  .navbar { padding: 0 0.5rem; }
+  .navbar-links {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    gap: 0.15rem;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .navbar-links::-webkit-scrollbar { display: none; }
+  .navbar-links a { font-size: 0.72rem; padding: 0.3rem 0.5rem; white-space: nowrap; }
+  .navbar-brand .brand-icon { display: none; }
+}
+@media (max-width: 480px) {
+  .navbar-brand { font-size: 0.78rem; }
+  .navbar-links a { font-size: 0.68rem; padding: 0.25rem 0.4rem; }
+}
 
 @media (max-width: 480px) {
   .hero-content { flex-direction: column; align-items: flex-start; }
