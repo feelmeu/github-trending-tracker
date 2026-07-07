@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-07 06:59:54",
+  "lastUpdated": "2026-07-08 06:53:52",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -22,7 +22,7 @@
         "传记",
         "音乐"
       ],
-      "gross": "$371.3M",
+      "gross": "$371.4M",
       "rating": "7.5"
     },
     {
@@ -33,7 +33,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$365.7M",
+      "gross": "$370.2M",
       "rating": "8.1"
     },
     {
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$245.2M",
+      "gross": "$246.2M",
       "rating": ""
     },
     {
@@ -87,7 +87,7 @@
         "动作",
         "科幻"
       ],
-      "gross": "$176.8M",
+      "gross": "$176.9M",
       "rating": "7.4"
     },
     {
