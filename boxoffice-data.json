@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-08 06:53:52",
+  "lastUpdated": "2026-07-09 06:57:52",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -16,25 +16,25 @@
     },
     {
       "rank": 2,
-      "name_en": "Michael",
-      "name_cn": "巨星之路",
-      "genre": [
-        "传记",
-        "音乐"
-      ],
-      "gross": "$371.4M",
-      "rating": "7.5"
-    },
-    {
-      "rank": 3,
       "name_en": "Toy Story 5",
       "name_cn": "玩具总动员5",
       "genre": [
         "动画",
         "冒险"
       ],
-      "gross": "$370.2M",
+      "gross": "$376.9M",
       "rating": "8.1"
+    },
+    {
+      "rank": 3,
+      "name_en": "Michael",
+      "name_cn": "巨星之路",
+      "genre": [
+        "传记",
+        "音乐"
+      ],
+      "gross": "$371.5M",
+      "rating": "7.5"
     },
     {
       "rank": 4,
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$246.2M",
+      "gross": "$247.5M",
       "rating": ""
     },
     {
@@ -87,7 +87,7 @@
         "动作",
         "科幻"
       ],
-      "gross": "$176.9M",
+      "gross": "$177.0M",
       "rating": "7.4"
     },
     {
