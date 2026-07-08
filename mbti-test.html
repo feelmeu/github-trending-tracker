@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>MBTI 人格类型测试 | 基于荣格心理类型理论</title>
-<meta name="description" content="基于荣格心理类型理论和 MBTI 四维度框架的 32 题人格测试">
+<meta name="description" content="基于荣格心理类型理论和 MBTI 四维度框架的 93 题人格测试，与官方 Form M 题量一致">
 <style>
 @font-face {
   font-family: 'WorkSans';
@@ -656,11 +656,11 @@ body {
 <div class="intro-screen" id="introScreen">
   <div class="intro-icon">🧠</div>
   <h1>MBTI 人格类型测试</h1>
-  <p class="subtitle">基于卡尔·荣格《心理类型》理论与 Myers-Briggs 四维度框架，通过 32 道情境选择题测量你的认知偏好。</p>
+  <p class="subtitle">基于卡尔·荣格《心理类型》理论与 Myers-Briggs 四维度框架，通过 93 道情境选择题测量你的认知偏好，与官方 Form M 题量一致。</p>
 
   <div class="intro-info">
     <div class="intro-info-item">
-      <span class="num">32</span>
+      <span class="num">93</span>
       <span class="label">道题目</span>
     </div>
     <div class="intro-info-item">
@@ -735,7 +735,7 @@ body {
 // 32 questions: 8 per dichotomy (E/I, S/N, T/F, J/P)
 // Based on Jung's Psychological Types and MBTI assessment framework
 var questions = [
-  // E/I (8 questions)
+  // ===== E/I — 24 questions =====
   { id: 1, dim: 'EI', left: { text: '在社交聚会结束后，我感到精力被消耗，需要独处来恢复', val: 'I' }, right: { text: '在社交聚会中，我越交流越有精神，感到能量充沛', val: 'E' } },
   { id: 2, dim: 'EI', left: { text: '我倾向于先在内心思考清楚，然后再表达出来', val: 'I' }, right: { text: '我倾向于边说边想，通过交谈来理清思路', val: 'E' } },
   { id: 3, dim: 'EI', left: { text: '我更喜欢一对一的深入交谈，而非群体闲聊', val: 'I' }, right: { text: '我喜欢在人群中交流，群体讨论让我更活跃', val: 'E' } },
@@ -744,36 +744,97 @@ var questions = [
   { id: 6, dim: 'EI', left: { text: '别人通常认为我是一个安静、内敛的人', val: 'I' }, right: { text: '别人通常认为我是一个开朗、活跃的人', val: 'E' } },
   { id: 7, dim: 'EI', left: { text: '我倾向于与少数几个密友保持深度关系', val: 'I' }, right: { text: '我倾向于拥有广泛的社交圈，认识很多人', val: 'E' } },
   { id: 8, dim: 'EI', left: { text: '长时间与人相处后，我需要独处来"充电"', val: 'I' }, right: { text: '长时间独处后，我渴望与人互动来获得能量', val: 'E' } },
+  { id: 9, dim: 'EI', left: { text: '参加活动时，我更倾向于作为旁观者而非中心', val: 'I' }, right: { text: '参加活动时，我倾向于成为活跃的中心人物', val: 'E' } },
+  { id: 10, dim: 'EI', left: { text: '我在表达观点前需要充分思考，不喜欢即兴发言', val: 'I' }, right: { text: '我喜欢即兴发言，在表达中逐渐完善自己的想法', val: 'E' } },
+  { id: 11, dim: 'EI', left: { text: '遇到问题时，我倾向于独自思考解决方案', val: 'I' }, right: { text: '遇到问题时，我倾向于与他人讨论来找到解决方案', val: 'E' } },
+  { id: 12, dim: 'EI', left: { text: '我更享受安静的独处时光，而非热闹的聚会', val: 'I' }, right: { text: '我更享受与他人共度的热闹时光，而非独自一人', val: 'E' } },
+  { id: 13, dim: 'EI', left: { text: '我倾向于把想法藏在心里，只在必要时才分享', val: 'I' }, right: { text: '我倾向于把想法说出来，通过交流来加工思考', val: 'E' } },
+  { id: 14, dim: 'EI', left: { text: '在不熟悉的人群中，我通常保持低调', val: 'I' }, right: { text: '在不熟悉的人群中，我很快就能与人聊起来', val: 'E' } },
+  { id: 15, dim: 'EI', left: { text: '周末或休息日，我更愿意待在家里或安静的地方', val: 'I' }, right: { text: '周末或休息日，我更愿意出去与人见面或参加活动', val: 'E' } },
+  { id: 16, dim: 'EI', left: { text: '处理信息时，我需要安静的环境来集中注意力', val: 'I' }, right: { text: '有背景声音或他人在场时，我也能很好地工作', val: 'E' } },
+  { id: 17, dim: 'EI', left: { text: '我对浅层社交感到疲惫，更渴望有意义的深谈', val: 'I' }, right: { text: '我享受各种形式的社交，包括轻松的闲聊', val: 'E' } },
+  { id: 18, dim: 'EI', left: { text: '工作中我更喜欢独立完成任务', val: 'I' }, right: { text: '工作中我更喜欢与团队协作完成任务', val: 'E' } },
+  { id: 19, dim: 'EI', left: { text: '别人有时觉得我难以接近或过于沉默', val: 'I' }, right: { text: '别人有时觉得我说得太多或过于热情', val: 'E' } },
+  { id: 20, dim: 'EI', left: { text: '学习时，我更喜欢自己阅读和消化', val: 'I' }, right: { text: '学习时，我更喜欢讨论和互动', val: 'E' } },
+  { id: 21, dim: 'EI', left: { text: '我倾向于在行动前充分准备和规划', val: 'I' }, right: { text: '我倾向于在行动中调整和适应', val: 'E' } },
+  { id: 22, dim: 'EI', left: { text: '我的内心世界很丰富，有时比外部世界更吸引我', val: 'I' }, right: { text: '外部世界的刺激和互动让我感到充实和满足', val: 'E' } },
+  { id: 23, dim: 'EI', left: { text: '电话或消息让我感到被打扰的时候多于期待', val: 'I' }, right: { text: '电话或消息让我感到与外界连接，通常是期待的', val: 'E' } },
+  { id: 24, dim: 'EI', left: { text: '即使亲密关系中，我也需要大量独处空间', val: 'I' }, right: { text: '即使需要独处，我也很快想回到人群中去', val: 'E' } },
 
-  // S/N (8 questions)
-  { id: 9, dim: 'SN', left: { text: '我更关注事物的具体事实和可验证的细节', val: 'S' }, right: { text: '我更关注事物之间的联系和潜在的可能性', val: 'N' } },
-  { id: 10, dim: 'SN', left: { text: '我更相信亲身经验和实践验证过的知识', val: 'S' }, right: { text: '我更相信灵感和对事物本质的直觉把握', val: 'N' } },
-  { id: 11, dim: 'SN', left: { text: '我擅长处理需要精确细节的实际工作', val: 'S' }, right: { text: '我擅长处理需要创新和想象力的工作', val: 'N' } },
-  { id: 12, dim: 'SN', left: { text: '我倾向于按步骤、有方法地完成任务', val: 'S' }, right: { text: '我倾向于跳跃式地工作，灵感来时效率最高', val: 'N' } },
-  { id: 13, dim: 'SN', left: { text: '我更喜欢"脚踏实地"的话题和实际信息', val: 'S' }, right: { text: '我更喜欢探讨抽象概念和未来设想', val: 'N' } },
-  { id: 14, dim: 'SN', left: { text: '学习新事物时，我重视实用性和可操作性', val: 'S' }, right: { text: '学习新事物时，我重视理论框架和深层原理', val: 'N' } },
-  { id: 15, dim: 'SN', left: { text: '我更倾向于用过去的经验来指导现在', val: 'S' }, right: { text: '我更倾向于用对未来的愿景来驱动现在', val: 'N' } },
-  { id: 16, dim: 'SN', left: { text: '描述事件时，我会注重准确还原事实细节', val: 'S' }, right: { text: '描述事件时，我会加入自己的解读和隐喻', val: 'N' } },
+  // ===== S/N — 23 questions =====
+  { id: 25, dim: 'SN', left: { text: '我更关注事物的具体事实和可验证的细节', val: 'S' }, right: { text: '我更关注事物之间的联系和潜在的可能性', val: 'N' } },
+  { id: 26, dim: 'SN', left: { text: '我更相信亲身经验和实践验证过的知识', val: 'S' }, right: { text: '我更相信灵感和对事物本质的直觉把握', val: 'N' } },
+  { id: 27, dim: 'SN', left: { text: '我擅长处理需要精确细节的实际工作', val: 'S' }, right: { text: '我擅长处理需要创新和想象力的工作', val: 'N' } },
+  { id: 28, dim: 'SN', left: { text: '我倾向于按步骤、有方法地完成任务', val: 'S' }, right: { text: '我倾向于跳跃式地工作，灵感来时效率最高', val: 'N' } },
+  { id: 29, dim: 'SN', left: { text: '我更喜欢"脚踏实地"的话题和实际信息', val: 'S' }, right: { text: '我更喜欢探讨抽象概念和未来设想', val: 'N' } },
+  { id: 30, dim: 'SN', left: { text: '学习新事物时，我重视实用性和可操作性', val: 'S' }, right: { text: '学习新事物时，我重视理论框架和深层原理', val: 'N' } },
+  { id: 31, dim: 'SN', left: { text: '我更倾向于用过去的经验来指导现在', val: 'S' }, right: { text: '我更倾向于用对未来的愿景来驱动现在', val: 'N' } },
+  { id: 32, dim: 'SN', left: { text: '描述事件时，我会注重准确还原事实细节', val: 'S' }, right: { text: '描述事件时，我会加入自己的解读和隐喻', val: 'N' } },
+  { id: 33, dim: 'SN', left: { text: '我更擅长记住具体的事实、数据和流程', val: 'S' }, right: { text: '我更擅长记住概念、印象和整体感受', val: 'N' } },
+  { id: 34, dim: 'SN', left: { text: '阅读时，我更喜欢实用性强、信息明确的内容', val: 'S' }, right: { text: '阅读时，我更喜欢激发想象、引人深思的内容', val: 'N' } },
+  { id: 35, dim: 'SN', left: { text: '面对新项目，我首先想到的是现有资源和约束条件', val: 'S' }, right: { text: '面对新项目，我首先想到的是理想愿景和可能性', val: 'N' } },
+  { id: 36, dim: 'SN', left: { text: '我认为"做得好"比"想得妙"更重要', val: 'S' }, right: { text: '我认为"方向对"比"执行快"更重要', val: 'N' } },
+  { id: 37, dim: 'SN', left: { text: '我倾向于信任已被验证的方法和工具', val: 'S' }, right: { text: '我倾向于尝试新的、未被验证的可能性', val: 'N' } },
+  { id: 38, dim: 'SN', left: { text: '在交谈中，我更关注对方说了什么具体内容', val: 'S' }, right: { text: '在交谈中，我更关注对方没有说出来的潜台词', val: 'N' } },
+  { id: 39, dim: 'SN', left: { text: '解决问题时，我倾向于从已有方案中选取最优', val: 'S' }, right: { text: '解决问题时，我倾向于创造一个全新的方案', val: 'N' } },
+  { id: 40, dim: 'SN', left: { text: '我对细节有很强的记忆力，比如颜色、数字、人名', val: 'S' }, right: { text: '我对整体印象和氛围的记忆强于具体细节', val: 'N' } },
+  { id: 41, dim: 'SN', left: { text: '做一件事时，我关注"怎么做好"的具体步骤', val: 'S' }, right: { text: '做一件事时，我关注"为什么做"的意义和方向', val: 'N' } },
+  { id: 42, dim: 'SN', left: { text: '我更喜欢工作中明确的指令和可量化的目标', val: 'S' }, right: { text: '我更喜欢开放式的探索和没有标准答案的任务', val: 'N' } },
+  { id: 43, dim: 'SN', left: { text: '评估一个想法时，我首先考虑它是否可行', val: 'S' }, right: { text: '评估一个想法时，我首先考虑它是否有启发性', val: 'N' } },
+  { id: 44, dim: 'SN', left: { text: '我更重视"眼见为实"的直接经验', val: 'S' }, right: { text: '我更重视"第六感"式的直觉判断', val: 'N' } },
+  { id: 45, dim: 'SN', left: { text: '我倾向于关注当下正在发生的事', val: 'S' }, right: { text: '我倾向于思考未来可能发生的事', val: 'N' } },
+  { id: 46, dim: 'SN', left: { text: '学习技能时，我需要一步一步地动手练习', val: 'S' }, right: { text: '学习技能时，我先理解整体概念再动手', val: 'N' } },
+  { id: 47, dim: 'SN', left: { text: '我更喜欢"照相机式"地精确还原记忆', val: 'S' }, right: { text: '我更喜欢"印象派式"地重构和诠释记忆', val: 'N' } },
 
-  // T/F (8 questions)
-  { id: 17, dim: 'TF', left: { text: '做决定时，我优先考虑逻辑是否自洽和客观标准', val: 'T' }, right: { text: '做决定时，我优先考虑对人的影响和价值观', val: 'F' } },
-  { id: 18, dim: 'TF', left: { text: '我认为公正就是一视同仁地适用规则', val: 'T' }, right: { text: '我认为公正需要考虑每个人的具体情况', val: 'F' } },
-  { id: 19, dim: 'TF', left: { text: '被人批评时，我更在意批评是否在逻辑上成立', val: 'T' }, right: { text: '被人批评时，我更在意对方的语气和态度', val: 'F' } },
-  { id: 20, dim: 'TF', left: { text: '我认为"真话"比"好听话"更重要', val: 'T' }, right: { text: '我认为表达方式与内容同样重要', val: 'F' } },
-  { id: 21, dim: 'TF', left: { text: '分析问题时，我追求客观中立，尽量排除个人情感', val: 'T' }, right: { text: '分析问题时，我认为情感和价值观也是重要信息', val: 'F' } },
-  { id: 22, dim: 'TF', left: { text: '我更容易注意到事物中的逻辑漏洞', val: 'T' }, right: { text: '我更容易察觉到他人的情绪变化', val: 'F' } },
-  { id: 23, dim: 'TF', left: { text: '与人产生分歧时，我倾向于用事实和论据来说服', val: 'T' }, right: { text: '与人产生分歧时，我倾向于寻求理解和共识', val: 'F' } },
-  { id: 24, dim: 'TF', left: { text: '我赞赏"理性"的人，即使有时显得冷淡', val: 'T' }, right: { text: '我赞赏"有温度"的人，即使有时不够理性', val: 'F' } },
+  // ===== T/F — 23 questions =====
+  { id: 48, dim: 'TF', left: { text: '做决定时，我优先考虑逻辑是否自洽和客观标准', val: 'T' }, right: { text: '做决定时，我优先考虑对人的影响和价值观', val: 'F' } },
+  { id: 49, dim: 'TF', left: { text: '我认为公正就是一视同仁地适用规则', val: 'T' }, right: { text: '我认为公正需要考虑每个人的具体情况', val: 'F' } },
+  { id: 50, dim: 'TF', left: { text: '被人批评时，我更在意批评是否在逻辑上成立', val: 'T' }, right: { text: '被人批评时，我更在意对方的语气和态度', val: 'F' } },
+  { id: 51, dim: 'TF', left: { text: '我认为"真话"比"好听话"更重要', val: 'T' }, right: { text: '我认为表达方式与内容同样重要', val: 'F' } },
+  { id: 52, dim: 'TF', left: { text: '分析问题时，我追求客观中立，尽量排除个人情感', val: 'T' }, right: { text: '分析问题时，我认为情感和价值观也是重要信息', val: 'F' } },
+  { id: 53, dim: 'TF', left: { text: '我更容易注意到事物中的逻辑漏洞', val: 'T' }, right: { text: '我更容易察觉到他人的情绪变化', val: 'F' } },
+  { id: 54, dim: 'TF', left: { text: '与人产生分歧时，我倾向于用事实和论据来说服', val: 'T' }, right: { text: '与人产生分歧时，我倾向于寻求理解和共识', val: 'F' } },
+  { id: 55, dim: 'TF', left: { text: '我赞赏"理性"的人，即使有时显得冷淡', val: 'T' }, right: { text: '我赞赏"有温度"的人，即使有时不够理性', val: 'F' } },
+  { id: 56, dim: 'TF', left: { text: '做判断时，我更看重客观标准和效率', val: 'T' }, right: { text: '做判断时，我更看重人际关系和感受', val: 'F' } },
+  { id: 57, dim: 'TF', left: { text: '看到别人犯错时，我倾向于直接指出问题', val: 'T' }, right: { text: '看到别人犯错时，我倾向于顾及对方感受再开口', val: 'F' } },
+  { id: 58, dim: 'TF', left: { text: '我认为原则比人情更重要', val: 'T' }, right: { text: '我认为人情和原则需要平衡考虑', val: 'F' } },
+  { id: 59, dim: 'TF', left: { text: '评价他人时，我更看重能力和结果', val: 'T' }, right: { text: '评价他人时，我更看重态度和用心程度', val: 'F' } },
+  { id: 60, dim: 'TF', left: { text: '面对冲突，我倾向于就事论事地解决', val: 'T' }, right: { text: '面对冲突，我倾向于先修复关系再处理问题', val: 'F' } },
+  { id: 61, dim: 'TF', left: { text: '我更容易被不合逻辑的论证激怒', val: 'T' }, right: { text: '我更容易被冷漠或不友善的态度伤害', val: 'F' } },
+  { id: 62, dim: 'TF', left: { text: '给予反馈时，我倾向于直接、简洁、聚焦事实', val: 'T' }, right: { text: '给予反馈时，我会注意措辞，确保对方能接受', val: 'F' } },
+  { id: 63, dim: 'TF', left: { text: '我认为"对的事"即使不受欢迎也应该坚持', val: 'T' }, right: { text: '我认为"对的方式"和"对的事"一样重要', val: 'F' } },
+  { id: 64, dim: 'TF', left: { text: '在团队中，我更常扮演"冷静分析者"的角色', val: 'T' }, right: { text: '在团队中，我更常扮演"关怀协调者"的角色', val: 'F' } },
+  { id: 65, dim: 'TF', left: { text: '面对两难选择，我用利弊分析来决定', val: 'T' }, right: { text: '面对两难选择，我用价值观和感受来决定', val: 'F' } },
+  { id: 66, dim: 'TF', left: { text: '我认为过度共情会影响判断的客观性', val: 'T' }, right: { text: '我认为缺乏共情会让判断变得冰冷', val: 'F' } },
+  { id: 67, dim: 'TF', left: { text: '我更尊重"说理清晰"的人', val: 'T' }, right: { text: '我更尊重"善解人意"的人', val: 'F' } },
+  { id: 68, dim: 'TF', left: { text: '制定规则时，我追求一致性和可预测性', val: 'T' }, right: { text: '制定规则时，我追求灵活性和人性化', val: 'F' } },
+  { id: 69, dim: 'TF', left: { text: '我倾向于用"是否合理"来衡量一个决定', val: 'T' }, right: { text: '我倾向于用"是否恰当"来衡量一个决定', val: 'F' } },
+  { id: 70, dim: 'TF', left: { text: '当有人违反规则时，我认为应按制度处理', val: 'T' }, right: { text: '当有人违反规则时，我想了解背后的原因', val: 'F' } },
 
-  // J/P (8 questions)
-  { id: 25, dim: 'JP', left: { text: '我偏好制定计划并按计划行事', val: 'J' }, right: { text: '我偏好保持灵活，随时应对变化', val: 'P' } },
-  { id: 26, dim: 'JP', left: { text: '我喜欢把事情提前确定和安排好', val: 'J' }, right: { text: '我喜欢保留多种选择，到最后再决定', val: 'P' } },
-  { id: 27, dim: 'JP', left: { text: '完成任务时，我追求有始有终、按期完成', val: 'J' }, right: { text: '我喜欢在过程中不断探索，不急于收尾', val: 'P' } },
-  { id: 28, dim: 'JP', left: { text: '我的生活和工作空间通常整洁有序', val: 'J' }, right: { text: '我的生活和工作空间通常比较随意', val: 'P' } },
-  { id: 29, dim: 'JP', left: { text: '面对截止日期，我倾向于尽早开始', val: 'J' }, right: { text: '面对截止日期，我在压力下效率最高', val: 'P' } },
-  { id: 30, dim: 'JP', left: { text: '我认为规则和结构让生活更高效', val: 'J' }, right: { text: '我认为规则和结构会限制创造力', val: 'P' } },
-  { id: 31, dim: 'JP', left: { text: '我更享受"完成"一件事情的满足感', val: 'J' }, right: { text: '我更享受"开始"一件事情的新鲜感', val: 'P' } },
-  { id: 32, dim: 'JP', left: { text: '出行前，我会详细规划行程和预订', val: 'J' }, right: { text: '出行前，我倾向于只定大方向，随性而行', val: 'P' } }
+  // ===== J/P — 23 questions =====
+  { id: 71, dim: 'JP', left: { text: '我偏好制定计划并按计划行事', val: 'J' }, right: { text: '我偏好保持灵活，随时应对变化', val: 'P' } },
+  { id: 72, dim: 'JP', left: { text: '我喜欢把事情提前确定和安排好', val: 'J' }, right: { text: '我喜欢保留多种选择，到最后再决定', val: 'P' } },
+  { id: 73, dim: 'JP', left: { text: '完成任务时，我追求有始有终、按期完成', val: 'J' }, right: { text: '我喜欢在过程中不断探索，不急于收尾', val: 'P' } },
+  { id: 74, dim: 'JP', left: { text: '我的生活和工作空间通常整洁有序', val: 'J' }, right: { text: '我的生活和工作空间通常比较随意', val: 'P' } },
+  { id: 75, dim: 'JP', left: { text: '面对截止日期，我倾向于尽早开始', val: 'J' }, right: { text: '面对截止日期，我在压力下效率最高', val: 'P' } },
+  { id: 76, dim: 'JP', left: { text: '我认为规则和结构让生活更高效', val: 'J' }, right: { text: '我认为规则和结构会限制创造力', val: 'P' } },
+  { id: 77, dim: 'JP', left: { text: '我更享受"完成"一件事情的满足感', val: 'J' }, right: { text: '我更享受"开始"一件事情的新鲜感', val: 'P' } },
+  { id: 78, dim: 'JP', left: { text: '出行前，我会详细规划行程和预订', val: 'J' }, right: { text: '出行前，我倾向于只定大方向，随性而行', val: 'P' } },
+  { id: 79, dim: 'JP', left: { text: '我喜欢列清单并逐一完成', val: 'J' }, right: { text: '我更喜欢随兴所至地做事', val: 'P' } },
+  { id: 80, dim: 'JP', left: { text: '我倾向于把日常事务固定化和流程化', val: 'J' }, right: { text: '我倾向于每天做不同的事，保持新鲜感', val: 'P' } },
+  { id: 81, dim: 'JP', left: { text: '做决定时，我倾向于尽快确定方向', val: 'J' }, right: { text: '做决定时，我倾向于收集更多信息再定', val: 'P' } },
+  { id: 82, dim: 'JP', left: { text: '我对"未完成的事"感到焦虑，想尽快了结', val: 'J' }, right: { text: '我对"被定死的事"感到束缚，想保持弹性', val: 'P' } },
+  { id: 83, dim: 'JP', left: { text: '工作中，我偏好明确的角色分工和时间表', val: 'J' }, right: { text: '工作中，我偏好根据情况灵活调整', val: 'P' } },
+  { id: 84, dim: 'JP', left: { text: '我的日程表通常排得比较满', val: 'J' }, right: { text: '我的日程表通常留有较多空白', val: 'P' } },
+  { id: 85, dim: 'JP', left: { text: '我倾向于提前准备，避免临场应付', val: 'J' }, right: { text: '我倾向于临场发挥，享受即兴的乐趣', val: 'P' } },
+  { id: 86, dim: 'JP', left: { text: '我认为"说到做到"是基本的品质', val: 'J' }, right: { text: '我认为"随机应变"是重要的能力', val: 'P' } },
+  { id: 87, dim: 'JP', left: { text: '面对变化，我倾向于调整计划但保持目标', val: 'J' }, right: { text: '面对变化，我倾向于顺势而为，甚至改变目标', val: 'P' } },
+  { id: 88, dim: 'JP', left: { text: '项目开始时，我先把框架和里程碑定好', val: 'J' }, right: { text: '项目开始时，我先探索再逐步明确方向', val: 'P' } },
+  { id: 89, dim: 'JP', left: { text: '我对"确定性"有较强需求', val: 'J' }, right: { text: '我对"可能性"有较强渴望', val: 'P' } },
+  { id: 90, dim: 'JP', left: { text: '休息和娱乐也倾向于提前安排好', val: 'J' }, right: { text: '休息和娱乐倾向于临时决定', val: 'P' } },
+  { id: 91, dim: 'JP', left: { text: '我会因计划被打乱而感到不适', val: 'J' }, right: { text: '计划被打乱时，我反而觉得有趣或兴奋', val: 'P' } },
+  { id: 92, dim: 'JP', left: { text: '我更倾向于"先工作后享受"', val: 'J' }, right: { text: '我更倾向于"工作和享受可以交替进行"', val: 'P' } },
+  { id: 93, dim: 'JP', left: { text: '我对生活有清晰的长期规划和目标', val: 'J' }, right: { text: '我对生活保持开放，看看会带来什么', val: 'P' } }
 ];
 
 // ===== MBTI Type Descriptions =====
