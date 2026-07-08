@@ -607,6 +607,117 @@ body {
   border-top: 1px solid var(--rule);
 }
 
+/* ===== Save Progress ===== */
+.save-indicator {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  z-index: 200;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+.save-indicator.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.save-indicator .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ===== Resume Banner ===== */
+.resume-banner {
+  background: rgba(88,166,255,0.08);
+  border: 1px solid rgba(88,166,255,0.3);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin-bottom: 2rem;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: floatUp 0.5s ease;
+}
+.resume-banner.show { display: flex; }
+.resume-banner .resume-info {
+  font-size: 0.85rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.resume-banner .resume-info .pct {
+  font-family: 'IBMPlexMono', monospace;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+.resume-banner .resume-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.btn-resume {
+  background: var(--accent-blue);
+  color: #0d1117;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-resume:hover { background: #79b8ff; }
+.btn-discard {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-discard:hover { border-color: var(--accent-red); color: var(--accent-red); }
+
+/* ===== Quiz Footer Save Info ===== */
+.quiz-save-info {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.74rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+.quiz-save-info .save-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .intro-screen { padding: 2rem 1rem 3rem; }
@@ -654,6 +765,18 @@ body {
 
 <!-- ===== Intro Screen ===== -->
 <div class="intro-screen" id="introScreen">
+  <div class="resume-banner" id="resumeBanner">
+    <div class="resume-info">
+      <span>📋 检测到未完成的测试进度</span>
+      <span class="pct" id="resumePct">0%</span>
+      <span>已完成</span>
+    </div>
+    <div class="resume-actions">
+      <button class="btn-resume" onclick="resumeQuiz()">继续测试 →</button>
+      <button class="btn-discard" onclick="discardProgress()">放弃进度</button>
+    </div>
+  </div>
+
   <div class="intro-icon">🧠</div>
   <h1>MBTI 人格类型测试</h1>
   <p class="subtitle">基于卡尔·荣格《心理类型》理论与 Myers-Briggs 四维度框架，通过 93 道情境选择题测量你的认知偏好，与官方 Form M 题量一致。</p>
@@ -722,6 +845,10 @@ body {
   <div class="quiz-nav">
     <button class="btn-prev" id="btnPrev" onclick="prevQuestion()" disabled>← 上一题</button>
     <button class="btn-next" id="btnNext" onclick="nextQuestion()" disabled>下一题 →</button>
+  </div>
+  <div class="quiz-save-info" id="quizSaveInfo">
+    <span class="save-dot"></span>
+    <span>进度已自动保存，可随时关闭页面后继续</span>
   </div>
 </div>
 
@@ -870,14 +997,109 @@ var funcRoles = ['主导功能', '辅助功能', '第三功能', '劣势功能']
 // ===== State =====
 var currentQ = 0;
 var answers = []; // { qId, value, score }
+var SAVE_KEY = 'mbti_test_progress';
+var saveTimer = null;
+
+function saveProgress() {
+  try {
+    var answered = answers.filter(function(a) { return a !== null; }).length;
+    if (answered === 0) return;
+    var data = {
+      currentQ: currentQ,
+      answers: answers,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    showSaveIndicator();
+  } catch(e) {
+    console.log('Save failed:', e);
+  }
+}
+
+function showSaveIndicator() {
+  var indicator = document.getElementById('saveIndicator');
+  if (!indicator) return;
+  indicator.classList.add('show');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(function() {
+    indicator.classList.remove('show');
+  }, 1500);
+}
+
+function loadProgress() {
+  try {
+    var raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch(e) {
+    return null;
+  }
+}
+
+function checkSavedProgress() {
+  var saved = loadProgress();
+  if (!saved || !saved.answers) return;
+
+  var answered = saved.answers.filter(function(a) { return a !== null; }).length;
+  if (answered === 0) {
+    localStorage.removeItem(SAVE_KEY);
+    return;
+  }
+
+  // Check if saved answers are compatible with current question set
+  if (saved.answers.length !== questions.length) {
+    localStorage.removeItem(SAVE_KEY);
+    return;
+  }
+
+  var pct = Math.round((answered / questions.length) * 100);
+  var banner = document.getElementById('resumeBanner');
+  var pctEl = document.getElementById('resumePct');
+  if (banner && pctEl) {
+    pctEl.textContent = pct + '%';
+    banner.classList.add('show');
+  }
+}
+
+function resumeQuiz() {
+  var saved = loadProgress();
+  if (!saved) return;
+
+  currentQ = saved.currentQ || 0;
+  answers = saved.answers;
+
+  // Make sure currentQ is within bounds and points to an unanswered or current question
+  if (currentQ >= questions.length) currentQ = questions.length - 1;
+
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('quizScreen').classList.add('active');
+  renderQuestion();
+  showSaveIndicator();
+}
+
+function discardProgress() {
+  localStorage.removeItem(SAVE_KEY);
+  var banner = document.getElementById('resumeBanner');
+  if (banner) banner.classList.remove('show');
+}
+
+function clearProgress() {
+  localStorage.removeItem(SAVE_KEY);
+}
 
 function startQuiz() {
+  clearProgress();
   currentQ = 0;
   answers = new Array(questions.length).fill(null);
   document.getElementById('introScreen').classList.add('hidden');
   document.getElementById('quizScreen').classList.add('active');
   renderQuestion();
 }
+
+// Check for saved progress on page load
+(function init() {
+  checkSavedProgress();
+})();
 
 function renderQuestion() {
   var q = questions[currentQ];
@@ -988,6 +1210,7 @@ function selectScale(idx) {
 
   highlightSelection(idx);
   document.getElementById('btnNext').disabled = false;
+  saveProgress();
 }
 
 function highlightSelection(idx) {
@@ -1002,6 +1225,7 @@ function prevQuestion() {
   if (currentQ > 0) {
     currentQ--;
     renderQuestion();
+    saveProgress();
   }
 }
 
@@ -1010,12 +1234,15 @@ function nextQuestion() {
   if (currentQ < questions.length - 1) {
     currentQ++;
     renderQuestion();
+    saveProgress();
   } else {
     showResult();
   }
 }
 
 function showResult() {
+  // Clear saved progress since test is complete
+  clearProgress();
   // Calculate scores per dimension
   var dims = { EI: { left: 'E', right: 'I', scores: [] }, SN: { left: 'S', right: 'N', scores: [] }, TF: { left: 'T', right: 'F', scores: [] }, JP: { left: 'J', right: 'P', scores: [] } };
 
@@ -1137,9 +1364,12 @@ function showResult() {
   retryBtn.className = 'btn-retry';
   retryBtn.textContent = '↻ 重新测试';
   retryBtn.onclick = function() {
+    clearProgress();
     document.getElementById('resultScreen').classList.remove('active');
     document.getElementById('introScreen').classList.remove('hidden');
     document.getElementById('introScreen').style.display = 'block';
+    var banner = document.getElementById('resumeBanner');
+    if (banner) banner.classList.remove('show');
     window.scrollTo(0, 0);
   };
   screen.appendChild(retryBtn);
@@ -1177,5 +1407,11 @@ function getDetailedDesc(type) {
   return descs[type] || descs['INTJ'];
 }
 </script>
+<!-- ===== Save Indicator ===== -->
+<div class="save-indicator" id="saveIndicator">
+  <span class="dot"></span>
+  <span>进度已保存</span>
+</div>
+
 </body>
 </html>
