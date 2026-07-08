@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>MBTI 人格类型测试 | 基于荣格心理类型理论</title>
+<meta name="description" content="基于荣格心理类型理论和 MBTI 四维度框架的 32 题人格测试">
+<style>
+@font-face {
+  font-family: 'WorkSans';
+  src: url('fonts/WorkSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WorkSans';
+  src: url('fonts/WorkSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ===== Navigation Bar ===== */
+.navbar {
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #30363d;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+.navbar-brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e6edf3;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar-brand .brand-icon { font-size: 1.2rem; }
+.navbar-links { display: flex; gap: 0.3rem; }
+.navbar-links a {
+  font-size: 0.85rem;
+  color: #7d8590;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar-links a:hover { color: #e6edf3; background: #1c2128; }
+.navbar-links a.active { color: #58a6ff; background: rgba(88,166,255,0.1); }
+@media (max-width: 768px) {
+  .navbar-inner { height: 46px; }
+  .navbar-brand { font-size: 0.85rem; }
+  .navbar-links a { font-size: 0.78rem; padding: 0.35rem 0.7rem; }
+}
+@media (max-width: 600px) {
+  .navbar { padding: 0 0.5rem; }
+  .navbar-links {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    gap: 0.15rem;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .navbar-links::-webkit-scrollbar { display: none; }
+  .navbar-links a { font-size: 0.72rem; padding: 0.3rem 0.5rem; white-space: nowrap; }
+  .navbar-brand .brand-icon { display: none; }
+}
+@media (max-width: 480px) {
+  .navbar-brand { font-size: 0.78rem; }
+  .navbar-links a { font-size: 0.68rem; padding: 0.25rem 0.4rem; }
+}
+
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #1c2128;
+  --ink: #e6edf3;
+  --muted: #7d8590;
+  --rule: #30363d;
+  --accent-blue: #58a6ff;
+  --accent-green: #3fb950;
+  --accent-purple: #bc8cff;
+  --accent-orange: #d29922;
+  --accent-red: #f85149;
+  --accent-cyan: #39d0d8;
+  --radius: 10px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'WorkSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Intro Screen ===== */
+.intro-screen {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+  display: block;
+}
+.intro-screen.hidden { display: none; }
+
+.intro-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: floatUp 0.8s ease;
+}
+
+.intro-screen h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+  animation: floatUp 0.8s ease 0.1s both;
+}
+
+.intro-screen .subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: floatUp 0.8s ease 0.2s both;
+}
+
+.intro-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  animation: floatUp 0.8s ease 0.3s both;
+}
+.intro-info-item {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+}
+.intro-info-item .num {
+  font-family: 'IBMPlexMono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  display: block;
+}
+.intro-info-item .label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.intro-dimensions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  animation: floatUp 0.8s ease 0.4s both;
+}
+.dim-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+.dim-card .dim-icon { font-size: 1.3rem; flex-shrink: 0; }
+.dim-card .dim-info h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.dim-card .dim-info p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-blue);
+  color: #0d1117;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.85rem 2.5rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  animation: floatUp 0.8s ease 0.5s both;
+}
+.btn-start:hover {
+  background: #79b8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(88,166,255,0.3);
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Quiz Screen ===== */
+.quiz-screen {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+  display: none;
+}
+.quiz-screen.active { display: block; }
+
+.progress-bar {
+  height: 5px;
+  background: var(--bg2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 3px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+.progress-text {
+  font-family: 'IBMPlexMono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  animation: slideIn 0.4s ease;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.question-num {
+  font-family: 'IBMPlexMono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-purple);
+  margin-bottom: 0.6rem;
+}
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+
+.choice-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.choice-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+.choice-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.choice-option {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  line-height: 1.5;
+}
+.choice-option:hover {
+  border-color: var(--accent-blue);
+  background: rgba(88,166,255,0.08);
+}
+.choice-option.selected {
+  border-color: var(--accent-blue);
+  background: rgba(88,166,255,0.12);
+  box-shadow: 0 0 0 1px var(--accent-blue);
+}
+.choice-option.left { text-align: right; }
+.choice-option.right { text-align: left; }
+
+.choice-scale {
+  display: flex;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+.scale-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg3);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: 'IBMPlexMono', monospace;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scale-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--ink);
+}
+.scale-btn.selected {
+  background: var(--accent-blue);
+  color: #0d1117;
+  border-color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.btn-prev, .btn-next {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid var(--rule);
+  background: var(--bg3);
+  color: var(--ink);
+}
+.btn-prev:hover, .btn-next:hover {
+  border-color: var(--accent-blue);
+}
+.btn-prev:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.btn-next {
+  background: var(--accent-blue);
+  color: #0d1117;
+  border-color: var(--accent-blue);
+}
+.btn-next:hover {
+  background: #79b8ff;
+}
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Result Screen ===== */
+.result-screen {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: none;
+}
+.result-screen.active { display: block; animation: fadeIn 0.6s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.result-type {
+  font-family: 'IBMPlexMono', monospace;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+.result-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.result-tagline {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.result-dimensions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.dim-bar {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.dim-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.dim-bar-labels {
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.dim-bar-letter {
+  font-family: 'IBMPlexMono', monospace;
+  font-weight: 700;
+}
+.dim-bar-letter.dominant { color: var(--accent-blue); }
+.dim-bar-letter.recessive { color: var(--muted); }
+.dim-bar-pct {
+  font-family: 'IBMPlexMono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+.dim-bar-track {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.dim-bar-track::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--rule);
+}
+.dim-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dim-bar-fill.left {
+  margin-left: auto;
+  background: linear-gradient(90deg, transparent, var(--accent-blue));
+}
+.dim-bar-fill.right {
+  background: linear-gradient(90deg, var(--accent-blue), transparent);
+}
+
+.result-section {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.result-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.result-section p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cognitive-functions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.func-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: 'IBMPlexMono', monospace;
+  font-weight: 600;
+}
+.func-tag.dominant { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
+.func-tag.auxiliary { background: rgba(188,140,255,0.15); color: var(--accent-purple); }
+.func-tag.tertiary { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+.func-tag.inferior { background: rgba(210,153,34,0.15); color: var(--accent-orange); }
+
+.strengths-weaknesses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.sw-col h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.sw-col.strengths h4 { color: var(--accent-green); }
+.sw-col.weaknesses h4 { color: var(--accent-orange); }
+.sw-col ul {
+  list-style: none;
+  padding: 0;
+}
+.sw-col li {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+.sw-col.strengths li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+  font-weight: 700;
+}
+.sw-col.weaknesses li::before {
+  content: '!';
+  position: absolute;
+  left: 0;
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.btn-retry {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.7rem 2rem;
+  background: var(--bg3);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-retry:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg2);
+}
+
+.result-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .intro-screen { padding: 2rem 1rem 3rem; }
+  .intro-screen h1 { font-size: 1.6rem; }
+  .intro-info { grid-template-columns: 1fr; }
+  .intro-dimensions { grid-template-columns: 1fr; }
+  .question-card { padding: 1.5rem 1.2rem; }
+  .question-text { font-size: 1rem; }
+  .choice-option { font-size: 0.85rem; padding: 0.8rem; }
+  .result-type { font-size: 3rem; }
+  .result-dimensions { grid-template-columns: 1fr; }
+  .strengths-weaknesses { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .intro-screen h1 { font-size: 1.4rem; }
+  .question-card { padding: 1.2rem 1rem; }
+  .question-text { font-size: 0.92rem; }
+  .choice-option { font-size: 0.78rem; padding: 0.7rem 0.5rem; }
+  .choice-row { flex-direction: column; gap: 0.4rem; }
+  .choice-scale { justify-content: center; }
+  .result-type { font-size: 2.5rem; }
+  .quiz-nav .btn-prev, .quiz-nav .btn-next { padding: 0.5rem 1rem; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navigation Bar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="mbti-test.html">
+      <span class="brand-icon">🧠</span>
+      <span>MBTI 人格测试</span>
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">AI排名与新闻</a>
+      <a href="github-trending.html">GitHub项目追踪</a>
+      <a href="ai-tools.html">AI工具全景</a>
+      <a href="nev-sales.html">汽车销量榜</a>
+      <a href="boxoffice.html">电影票房榜</a>
+      <a href="mbti-test.html" class="active">MBTI测试</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Intro Screen ===== -->
+<div class="intro-screen" id="introScreen">
+  <div class="intro-icon">🧠</div>
+  <h1>MBTI 人格类型测试</h1>
+  <p class="subtitle">基于卡尔·荣格《心理类型》理论与 Myers-Briggs 四维度框架，通过 32 道情境选择题测量你的认知偏好。</p>
+
+  <div class="intro-info">
+    <div class="intro-info-item">
+      <span class="num">32</span>
+      <span class="label">道题目</span>
+    </div>
+    <div class="intro-info-item">
+      <span class="num">4</span>
+      <span class="label">个维度</span>
+    </div>
+    <div class="intro-info-item">
+      <span class="num">16</span>
+      <span class="label">种人格</span>
+    </div>
+  </div>
+
+  <div class="intro-dimensions">
+    <div class="dim-card">
+      <span class="dim-icon">⚡</span>
+      <div class="dim-info">
+        <h3>外向 E / 内向 I</h3>
+        <p>能量来源：从外部互动获取能量，还是从内在独处恢复精力</p>
+      </div>
+    </div>
+    <div class="dim-card">
+      <span class="dim-icon">👁️</span>
+      <div class="dim-info">
+        <h3>感觉 S / 直觉 N</h3>
+        <p>信息获取：关注具体事实与细节，还是整体模式与可能性</p>
+      </div>
+    </div>
+    <div class="dim-card">
+      <span class="dim-icon">⚖️</span>
+      <div class="dim-info">
+        <h3>思维 T / 情感 F</h3>
+        <p>决策方式：依据逻辑客观分析，还是基于价值观与人际和谐</p>
+      </div>
+    </div>
+    <div class="dim-card">
+      <span class="dim-icon">📋</span>
+      <div class="dim-info">
+        <h3>判断 J / 知觉 P</h3>
+        <p>生活方式：偏好计划与结构，还是灵活应变与保持开放</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()">开始测试 →</button>
+</div>
+
+<!-- ===== Quiz Screen ===== -->
+<div class="quiz-screen" id="quizScreen">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-text">
+    <span id="progressLabel">第 1 / 32 题</span>
+    <span id="progressPct">3%</span>
+  </div>
+  <div class="question-card" id="questionCard">
+    <!-- Dynamic content -->
+  </div>
+  <div class="quiz-nav">
+    <button class="btn-prev" id="btnPrev" onclick="prevQuestion()" disabled>← 上一题</button>
+    <button class="btn-next" id="btnNext" onclick="nextQuestion()" disabled>下一题 →</button>
+  </div>
+</div>
+
+<!-- ===== Result Screen ===== -->
+<div class="result-screen" id="resultScreen">
+  <!-- Dynamic content -->
+</div>
+
+<script>
+// ===== Question Bank =====
+// 32 questions: 8 per dichotomy (E/I, S/N, T/F, J/P)
+// Based on Jung's Psychological Types and MBTI assessment framework
+var questions = [
+  // E/I (8 questions)
+  { id: 1, dim: 'EI', left: { text: '在社交聚会结束后，我感到精力被消耗，需要独处来恢复', val: 'I' }, right: { text: '在社交聚会中，我越交流越有精神，感到能量充沛', val: 'E' } },
+  { id: 2, dim: 'EI', left: { text: '我倾向于先在内心思考清楚，然后再表达出来', val: 'I' }, right: { text: '我倾向于边说边想，通过交谈来理清思路', val: 'E' } },
+  { id: 3, dim: 'EI', left: { text: '我更喜欢一对一的深入交谈，而非群体闲聊', val: 'I' }, right: { text: '我喜欢在人群中交流，群体讨论让我更活跃', val: 'E' } },
+  { id: 4, dim: 'EI', left: { text: '在新环境中，我先观察一段时间再参与', val: 'I' }, right: { text: '在新环境中，我很快就能主动参与并融入', val: 'E' } },
+  { id: 5, dim: 'EI', left: { text: '我的注意力更容易集中在内心世界', val: 'I' }, right: { text: '我的注意力更容易被外部发生的事吸引', val: 'E' } },
+  { id: 6, dim: 'EI', left: { text: '别人通常认为我是一个安静、内敛的人', val: 'I' }, right: { text: '别人通常认为我是一个开朗、活跃的人', val: 'E' } },
+  { id: 7, dim: 'EI', left: { text: '我倾向于与少数几个密友保持深度关系', val: 'I' }, right: { text: '我倾向于拥有广泛的社交圈，认识很多人', val: 'E' } },
+  { id: 8, dim: 'EI', left: { text: '长时间与人相处后，我需要独处来"充电"', val: 'I' }, right: { text: '长时间独处后，我渴望与人互动来获得能量', val: 'E' } },
+
+  // S/N (8 questions)
+  { id: 9, dim: 'SN', left: { text: '我更关注事物的具体事实和可验证的细节', val: 'S' }, right: { text: '我更关注事物之间的联系和潜在的可能性', val: 'N' } },
+  { id: 10, dim: 'SN', left: { text: '我更相信亲身经验和实践验证过的知识', val: 'S' }, right: { text: '我更相信灵感和对事物本质的直觉把握', val: 'N' } },
+  { id: 11, dim: 'SN', left: { text: '我擅长处理需要精确细节的实际工作', val: 'S' }, right: { text: '我擅长处理需要创新和想象力的工作', val: 'N' } },
+  { id: 12, dim: 'SN', left: { text: '我倾向于按步骤、有方法地完成任务', val: 'S' }, right: { text: '我倾向于跳跃式地工作，灵感来时效率最高', val: 'N' } },
+  { id: 13, dim: 'SN', left: { text: '我更喜欢"脚踏实地"的话题和实际信息', val: 'S' }, right: { text: '我更喜欢探讨抽象概念和未来设想', val: 'N' } },
+  { id: 14, dim: 'SN', left: { text: '学习新事物时，我重视实用性和可操作性', val: 'S' }, right: { text: '学习新事物时，我重视理论框架和深层原理', val: 'N' } },
+  { id: 15, dim: 'SN', left: { text: '我更倾向于用过去的经验来指导现在', val: 'S' }, right: { text: '我更倾向于用对未来的愿景来驱动现在', val: 'N' } },
+  { id: 16, dim: 'SN', left: { text: '描述事件时，我会注重准确还原事实细节', val: 'S' }, right: { text: '描述事件时，我会加入自己的解读和隐喻', val: 'N' } },
+
+  // T/F (8 questions)
+  { id: 17, dim: 'TF', left: { text: '做决定时，我优先考虑逻辑是否自洽和客观标准', val: 'T' }, right: { text: '做决定时，我优先考虑对人的影响和价值观', val: 'F' } },
+  { id: 18, dim: 'TF', left: { text: '我认为公正就是一视同仁地适用规则', val: 'T' }, right: { text: '我认为公正需要考虑每个人的具体情况', val: 'F' } },
+  { id: 19, dim: 'TF', left: { text: '被人批评时，我更在意批评是否在逻辑上成立', val: 'T' }, right: { text: '被人批评时，我更在意对方的语气和态度', val: 'F' } },
+  { id: 20, dim: 'TF', left: { text: '我认为"真话"比"好听话"更重要', val: 'T' }, right: { text: '我认为表达方式与内容同样重要', val: 'F' } },
+  { id: 21, dim: 'TF', left: { text: '分析问题时，我追求客观中立，尽量排除个人情感', val: 'T' }, right: { text: '分析问题时，我认为情感和价值观也是重要信息', val: 'F' } },
+  { id: 22, dim: 'TF', left: { text: '我更容易注意到事物中的逻辑漏洞', val: 'T' }, right: { text: '我更容易察觉到他人的情绪变化', val: 'F' } },
+  { id: 23, dim: 'TF', left: { text: '与人产生分歧时，我倾向于用事实和论据来说服', val: 'T' }, right: { text: '与人产生分歧时，我倾向于寻求理解和共识', val: 'F' } },
+  { id: 24, dim: 'TF', left: { text: '我赞赏"理性"的人，即使有时显得冷淡', val: 'T' }, right: { text: '我赞赏"有温度"的人，即使有时不够理性', val: 'F' } },
+
+  // J/P (8 questions)
+  { id: 25, dim: 'JP', left: { text: '我偏好制定计划并按计划行事', val: 'J' }, right: { text: '我偏好保持灵活，随时应对变化', val: 'P' } },
+  { id: 26, dim: 'JP', left: { text: '我喜欢把事情提前确定和安排好', val: 'J' }, right: { text: '我喜欢保留多种选择，到最后再决定', val: 'P' } },
+  { id: 27, dim: 'JP', left: { text: '完成任务时，我追求有始有终、按期完成', val: 'J' }, right: { text: '我喜欢在过程中不断探索，不急于收尾', val: 'P' } },
+  { id: 28, dim: 'JP', left: { text: '我的生活和工作空间通常整洁有序', val: 'J' }, right: { text: '我的生活和工作空间通常比较随意', val: 'P' } },
+  { id: 29, dim: 'JP', left: { text: '面对截止日期，我倾向于尽早开始', val: 'J' }, right: { text: '面对截止日期，我在压力下效率最高', val: 'P' } },
+  { id: 30, dim: 'JP', left: { text: '我认为规则和结构让生活更高效', val: 'J' }, right: { text: '我认为规则和结构会限制创造力', val: 'P' } },
+  { id: 31, dim: 'JP', left: { text: '我更享受"完成"一件事情的满足感', val: 'J' }, right: { text: '我更享受"开始"一件事情的新鲜感', val: 'P' } },
+  { id: 32, dim: 'JP', left: { text: '出行前，我会详细规划行程和预订', val: 'J' }, right: { text: '出行前，我倾向于只定大方向，随性而行', val: 'P' } }
+];
+
+// ===== MBTI Type Descriptions =====
+var typeData = {
+  INTJ: { name: '建筑师', tagline: '富有想象力的战略思考者，一切皆有计划', funcs: ['Ni','Te','Fi','Se'], strengths: ['独立思考，战略视野长远', '善于发现系统性问题并优化', '对知识有强烈追求欲', '决策果断且坚持'], weaknesses: ['可能过于追求完美而忽视现实', '不擅长处理他人情感', '可能显得固执或傲慢', '对低效容忍度低'] },
+  INTP: { name: '逻辑学家', tagline: '具有创造力的发明家，对知识有不可遏制的渴求', funcs: ['Ti','Ne','Si','Fe'], strengths: ['逻辑分析能力极强', '善于发现抽象规律', '思维开放，乐于接受新理论', '客观冷静'], weaknesses: ['可能忽视实际执行', '社交中可能显得疏离', '过度分析导致决策迟缓', '对日常琐事缺乏耐心'] },
+  ENTJ: { name: '指挥官', tagline: '大胆且富有想象力的领导者，总能找到方法', funcs: ['Te','Ni','Se','Fi'], strengths: ['天生的领导力与组织力', '战略规划与执行力强', '高效决策', '意志坚定'], weaknesses: ['可能过于强势', '对效率低下的情况容忍度极低', '可能忽视他人感受', '工作狂倾向'] },
+  ENTP: { name: '辩论家', tagline: '聪明好奇的思想者，无法抗拒思想上的挑战', funcs: ['Ne','Ti','Fe','Si'], strengths: ['创新思维与创造力', '善于看到多种可能性', '辩论与说服能力强', '适应力强'], weaknesses: ['可能缺乏持续性', '容易对常规工作感到厌倦', '可能无意中冒犯他人', '计划性不足'] },
+  INFJ: { name: '提倡者', tagline: '安静而神秘，同时鼓舞人心的理想主义者', funcs: ['Ni','Fe','Ti','Se'], strengths: ['深刻的洞察力与直觉', '强烈的理想主义和使命感', '善于理解他人深层需求', '有创造力'], weaknesses: ['可能过于敏感', '容易精力耗竭', '对冲突高度不适', '完美主义倾向'] },
+  INFP: { name: '调停者', tagline: '诗意、善良的利他主义者，渴望帮助善因', funcs: ['Fi','Ne','Si','Te'], strengths: ['强烈的价值观和同理心', '创造力和想象力丰富', '善于看到他人潜能', '真诚忠诚'], weaknesses: ['可能过于理想化', '对批评敏感', '可能难以做出不受欢迎的决定', '容易自我苛责'] },
+  ENFJ: { name: '主人公', tagline: '富有魅力、鼓舞人心的领导者，能让听众着迷', funcs: ['Fe','Ni','Se','Ti'], strengths: ['卓越的人际沟通能力', '善于激励和引导他人', '强烈的责任感与同理心', '组织协调能力'], weaknesses: ['可能过于在意他人评价', '容易忽视自身需求', '对冲突感到不安', '可能过度操控'] },
+  ENFP: { name: '竞选者', tagline: '热情、有创造力、爱社交的自由灵魂', funcs: ['Ne','Fi','Te','Si'], strengths: ['热情感染力强', '善于发现人的潜能', '适应力与创造力强', '真诚关心他人'], weaknesses: ['可能缺乏专注力', '容易对新事物过度兴奋', '可能逃避冲突', '计划性不足'] },
+  ISTJ: { name: '物流师', tagline: '实际而注重事实的可靠者', funcs: ['Si','Te','Fi','Ne'], strengths: ['可靠负责，值得信赖', '注重细节和事实', '执行力强，有条理', '尊重传统与规则'], weaknesses: ['可能过于保守', '对变化适应较慢', '可能缺乏灵活性', '不擅长表达情感'] },
+  ISFJ: { name: '守卫者', tagline: '非常专注而温暖的守护者，时刻准备保护爱的人', funcs: ['Si','Fe','Ti','Ne'], strengths: ['忠诚可靠，关心他人', '注重细节和实际需求', '有耐心和毅力', '善于维护和谐'], weaknesses: ['可能过于自我牺牲', '对变化感到不安', '难以拒绝他人', '可能压抑自身需求'] },
+  ESTJ: { name: '总经理', tagline: '出色的管理者，在管理事务方面无与伦比', funcs: ['Te','Si','Ne','Fi'], strengths: ['组织管理能力强', '务实高效，注重结果', '果断坚定', '维护秩序与规则'], weaknesses: ['可能过于刻板', '对情感需求不敏感', '可能不够灵活', '对非传统方式容忍度低'] },
+  ESFJ: { name: '执政官', tagline: '极有同情心，爱交际、受欢迎，乐于助人', funcs: ['Fe','Si','Ne','Ti'], strengths: ['热心肠，乐于帮助他人', '善于维护社交关系', '有责任感，可靠', '注重和谐与合作'], weaknesses: ['可能过于在意他人看法', '害怕冲突与拒绝', '可能缺乏客观性', '对变化适应较慢'] },
+  ISTP: { name: '鉴赏家', tagline: '大胆而实际的实验家，擅长使用工具', funcs: ['Ti','Se','Ni','Fe'], strengths: ['动手能力强，善于解决实际问题', '冷静沉着，适应力强', '逻辑分析清晰', '独立自主'], weaknesses: ['可能过于内敛', '对规则和承诺不耐烦', '可能忽视他人感受', '容易感到无聊'] },
+  ISFP: { name: '探险家', tagline: '灵活、有魅力的艺术家，随时探索新事物', funcs: ['Fi','Se','Ni','Te'], strengths: ['艺术感和审美能力强', '真诚温和，有同理心', '适应力强', '注重当下体验'], weaknesses: ['可能过于敏感', '缺乏长期规划', '可能逃避冲突', '容易自我怀疑'] },
+  ESTP: { name: '企业家', tagline: '聪明、精力充沛的人，真正享受生活', funcs: ['Se','Ti','Fe','Ni'], strengths: ['行动力强，善于把握机会', '适应力和应变能力出色', '善于解决当下问题', '社交魅力强'], weaknesses: ['可能冲动冒险', '对长期计划缺乏耐心', '可能忽视规则', '容易感到无聊'] },
+  ESFP: { name: '表演者', tagline: '自发的、精力充沛的表演者——生活在他们周围永不无聊', funcs: ['Se','Fi','Te','Ni'], strengths: ['热情开朗，感染力强', '善于享受当下', '观察力和审美能力', '人际交往能力强'], weaknesses: ['可能缺乏长远规划', '容易分心', '对理论分析缺乏耐心', '可能逃避冲突'] }
+};
+
+// ===== Cognitive Function Names =====
+var funcNames = {
+  Ni: '内倾直觉', Ne: '外倾直觉',
+  Si: '内倾感觉', Se: '外倾感觉',
+  Ti: '内倾思维', Te: '外倾思维',
+  Fi: '内倾情感', Fe: '外倾情感'
+};
+
+var funcRoles = ['主导功能', '辅助功能', '第三功能', '劣势功能'];
+
+// ===== State =====
+var currentQ = 0;
+var answers = []; // { qId, value, score }
+
+function startQuiz() {
+  currentQ = 0;
+  answers = new Array(questions.length).fill(null);
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('quizScreen').classList.add('active');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  var q = questions[currentQ];
+  var total = questions.length;
+  var pct = Math.round(((currentQ + 1) / total) * 100);
+
+  // Progress
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = '第 ' + (currentQ + 1) + ' / ' + total + ' 题';
+  document.getElementById('progressPct').textContent = pct + '%';
+
+  // Card
+  var card = document.getElementById('questionCard');
+  card.innerHTML = '';
+
+  var numDiv = document.createElement('div');
+  numDiv.className = 'question-num';
+  numDiv.textContent = 'Q' + String(currentQ + 1).padStart(2, '0');
+  card.appendChild(numDiv);
+
+  var textDiv = document.createElement('div');
+  textDiv.className = 'question-text';
+  textDiv.textContent = q.left.text;
+  card.appendChild(textDiv);
+
+  // Choice row
+  var labelDiv = document.createElement('div');
+  labelDiv.className = 'choice-label';
+  labelDiv.textContent = '← 更符合左侧  |  更符合右侧 →';
+  card.appendChild(labelDiv);
+
+  var rowDiv = document.createElement('div');
+  rowDiv.className = 'choice-row';
+
+  // Left option button
+  var leftBtn = document.createElement('button');
+  leftBtn.className = 'choice-option left';
+  leftBtn.textContent = q.left.text;
+  leftBtn.onclick = function() { selectAnswer(q.left.val, 2); };
+  rowDiv.appendChild(leftBtn);
+
+  // Scale buttons (1-5)
+  // 1 = strongly left, 2 = left, 3 = neutral, 4 = right, 5 = strongly right
+  var scaleDiv = document.createElement('div');
+  scaleDiv.className = 'choice-scale';
+  var scaleLabels = ['★★', '★', '•', '★', '★★'];
+  for (var i = 0; i < 5; i++) {
+    (function(idx) {
+      var btn = document.createElement('button');
+      btn.className = 'scale-btn';
+      btn.textContent = scaleLabels[idx];
+      btn.onclick = function() { selectScale(idx); };
+      scaleDiv.appendChild(btn);
+    })(i);
+  }
+  rowDiv.appendChild(scaleDiv);
+
+  // Right option button
+  var rightBtn = document.createElement('button');
+  rightBtn.className = 'choice-option right';
+  rightBtn.textContent = q.right.text;
+  rightBtn.onclick = function() { selectAnswer(q.right.val, 4); };
+  rowDiv.appendChild(rightBtn);
+
+  card.appendChild(rowDiv);
+
+  // Update button states
+  document.getElementById('btnPrev').disabled = (currentQ === 0);
+  var btnNext = document.getElementById('btnNext');
+  btnNext.disabled = !answers[currentQ];
+  if (currentQ === total - 1) {
+    btnNext.textContent = '查看结果 →';
+  } else {
+    btnNext.textContent = '下一题 →';
+  }
+
+  // Restore selection
+  if (answers[currentQ]) {
+    highlightSelection(answers[currentQ].scaleIdx);
+  }
+}
+
+function selectAnswer(val, scaleIdx) {
+  var q = questions[currentQ];
+  var score;
+  if (val === q.left.val) {
+    score = scaleIdx === 2 ? 2 : 1;
+  } else {
+    score = scaleIdx === 4 ? 4 : 5;
+  }
+  // Actually scaleIdx is the button index 0-4
+  // Let's simplify: use the scale buttons for scoring
+}
+
+function selectScale(idx) {
+  var q = questions[currentQ];
+  // idx 0-4 maps to: 0=strongly left, 1=left, 2=neutral, 3=right, 4=strongly right
+  var scores = [-2, -1, 0, 1, 2];
+  var vals = [q.left.val, q.left.val, null, q.right.val, q.right.val];
+
+  answers[currentQ] = {
+    qId: q.id,
+    dim: q.dim,
+    value: vals[idx],
+    score: scores[idx],
+    scaleIdx: idx
+  };
+
+  highlightSelection(idx);
+  document.getElementById('btnNext').disabled = false;
+}
+
+function highlightSelection(idx) {
+  var btns = document.querySelectorAll('.scale-btn');
+  btns.forEach(function(b, i) {
+    if (i === idx) b.classList.add('selected');
+    else b.classList.remove('selected');
+  });
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function nextQuestion() {
+  if (!answers[currentQ]) return;
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  // Calculate scores per dimension
+  var dims = { EI: { left: 'E', right: 'I', scores: [] }, SN: { left: 'S', right: 'N', scores: [] }, TF: { left: 'T', right: 'F', scores: [] }, JP: { left: 'J', right: 'P', scores: [] } };
+
+  answers.forEach(function(a) {
+    if (a && dims[a.dim]) {
+      dims[a.dim].scores.push(a.score);
+    }
+  });
+
+  var typeStr = '';
+  var dimResults = {};
+
+  for (var key in dims) {
+    var d = dims[key];
+    var sum = d.scores.reduce(function(a, b) { return a + b; }, 0);
+    var totalPossible = d.scores.length * 2;
+    var leftPct, rightPct, dominant;
+
+    if (sum < 0) {
+      // Left dominant
+      dominant = d.left;
+      leftPct = Math.round(Math.abs(sum) / totalPossible * 100);
+      rightPct = 100 - leftPct;
+    } else if (sum > 0) {
+      dominant = d.right;
+      rightPct = Math.round(sum / totalPossible * 100);
+      leftPct = 100 - rightPct;
+    } else {
+      // Neutral - slight preference for left (arbitrary)
+      dominant = d.left;
+      leftPct = 50;
+      rightPct = 50;
+    }
+
+    typeStr += dominant;
+    dimResults[key] = { left: d.left, right: d.right, leftPct: leftPct, rightPct: rightPct, dominant: dominant };
+  }
+
+  var td = typeData[typeStr];
+  if (!td) td = typeData['INTJ']; // fallback
+
+  var screen = document.getElementById('resultScreen');
+  screen.innerHTML = '';
+
+  // Header
+  var header = document.createElement('div');
+  header.className = 'result-header';
+  header.innerHTML =
+    '<div class="result-type">' + typeStr + '</div>' +
+    '<div class="result-name">' + td.name + '</div>' +
+    '<div class="result-tagline">' + td.tagline + '</div>';
+  screen.appendChild(header);
+
+  // Dimension bars
+  var dimsDiv = document.createElement('div');
+  dimsDiv.className = 'result-dimensions';
+
+  var dimLabels = {
+    EI: { left: 'E 外向', right: 'I 内向' },
+    SN: { left: 'S 感觉', right: 'N 直觉' },
+    TF: { left: 'T 思维', right: 'F 情感' },
+    JP: { left: 'J 判断', right: 'P 知觉' }
+  };
+
+  for (var dk in dimResults) {
+    var dr = dimResults[dk];
+    var dl = dimLabels[dk];
+    var barDiv = document.createElement('div');
+    barDiv.className = 'dim-bar';
+    var leftDom = dr.dominant === dr.left;
+    barDiv.innerHTML =
+      '<div class="dim-bar-header">' +
+        '<div class="dim-bar-labels">' +
+          '<span class="dim-bar-letter ' + (leftDom ? 'dominant' : 'recessive') + '">' + dl.left + '</span>' +
+          '<span class="dim-bar-letter ' + (!leftDom ? 'dominant' : 'recessive') + '">' + dl.right + '</span>' +
+        '</div>' +
+        '<span class="dim-bar-pct">' + (leftDom ? dr.leftPct : dr.rightPct) + '%</span>' +
+      '</div>' +
+      '<div class="dim-bar-track">' +
+        '<div class="dim-bar-fill ' + (leftDom ? 'left' : 'right') + '" style="width: ' + (leftDom ? dr.leftPct : dr.rightPct) + '%"></div>' +
+      '</div>';
+    dimsDiv.appendChild(barDiv);
+  }
+  screen.appendChild(dimsDiv);
+
+  // Cognitive functions
+  var funcDiv = document.createElement('div');
+  funcDiv.className = 'result-section';
+  var funcTags = '';
+  td.funcs.forEach(function(f, i) {
+    var cls = ['dominant', 'auxiliary', 'tertiary', 'inferior'][i];
+    funcTags += '<span class="func-tag ' + cls + '">' + funcNames[f] + ' (' + f + ')<br><small style="opacity:0.7">' + funcRoles[i] + '</small></span>';
+  });
+  funcDiv.innerHTML = '<h3>🧩 荣格认知功能栈</h3><div class="cognitive-functions">' + funcTags + '</div>';
+  screen.appendChild(funcDiv);
+
+  // Description
+  var descDiv = document.createElement('div');
+  descDiv.className = 'result-section';
+  var descText = getDetailedDesc(typeStr);
+  descDiv.innerHTML = '<h3>📋 人格画像</h3><p>' + descText + '</p>';
+  screen.appendChild(descDiv);
+
+  // Strengths & Weaknesses
+  var swDiv = document.createElement('div');
+  swDiv.className = 'result-section';
+  var sHtml = '<h3>⚖️ 优势与盲区</h3><div class="strengths-weaknesses">';
+  sHtml += '<div class="sw-col strengths"><h4>核心优势</h4><ul>';
+  td.strengths.forEach(function(s) { sHtml += '<li>' + s + '</li>'; });
+  sHtml += '</ul></div>';
+  sHtml += '<div class="sw-col weaknesses"><h4>潜在盲区</h4><ul>';
+  td.weaknesses.forEach(function(w) { sHtml += '<li>' + w + '</li>'; });
+  sHtml += '</ul></div></div>';
+  swDiv.innerHTML = sHtml;
+  screen.appendChild(swDiv);
+
+  // Retry button
+  var retryBtn = document.createElement('button');
+  retryBtn.className = 'btn-retry';
+  retryBtn.textContent = '↻ 重新测试';
+  retryBtn.onclick = function() {
+    document.getElementById('resultScreen').classList.remove('active');
+    document.getElementById('introScreen').classList.remove('hidden');
+    document.getElementById('introScreen').style.display = 'block';
+    window.scrollTo(0, 0);
+  };
+  screen.appendChild(retryBtn);
+
+  // Footer
+  var footer = document.createElement('div');
+  footer.className = 'result-footer';
+  footer.innerHTML = '本测试基于荣格《心理类型》(1921) 与 Myers-Briggs 类型指标框架。<br>结果反映认知偏好倾向，非绝对分类，建议结合自我觉察综合理解。';
+  screen.appendChild(footer);
+
+  document.getElementById('quizScreen').classList.remove('active');
+  screen.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function getDetailedDesc(type) {
+  var descs = {
+    INTJ: '你是极具战略眼光的独立思考者。你的内倾直觉(Ni)让你能够洞察事物发展的长期趋势，外倾思维(Te)则帮助你将远见转化为可执行的计划。你天生善于发现系统中的问题和优化空间，对知识有不可遏制的渴求。在团队中，你通常扮演"幕后军师"的角色——不一定是说话最多的人，但往往是最有深度洞察的人。你重视能力和效率，对低效和敷衍零容忍。当别人还在讨论"怎么做"时，你已经在思考"为什么要这样做"以及"是否有更好的方式"。',
+    INTP: '你是一个充满好奇心的逻辑探索者。内倾思维(Ti)驱动你不断追问事物背后的原理和逻辑架构，外倾直觉(Ne)则让你能够看到事物之间意想不到的联系。你天生擅长抽象思考和概念分析，喜欢解构复杂问题。在别人看来"已经够了"的地方，你总觉得"还可以更深入"。你追求思想的精确性和一致性，对逻辑漏洞高度敏感。你可能对哲学、科学、理论体系等领域有天然亲和力，享受纯粹的智力探索过程。',
+    ENTJ: '你是天生的战略领导者和组织者。外倾思维(Te)让你高效地整合资源、制定决策，内倾直觉(Ni)帮助你把握长期方向。你善于识别低效并迅速改进，对混乱和无序有本能的不适。在团队中，你自然而然地走上领导位置——不是因为你追求权力，而是因为你比大多数人更清楚"应该往哪走"和"怎么到达"。你追求卓越，对自己和他人都有很高标准，相信通过合理的结构和执行，任何目标都可以实现。',
+    ENTP: '你是富有创造力的思想探险家。外倾直觉(Ne)让你能够快速产生大量想法并看到无限可能，内倾思维(Ti)帮助你筛选和精炼这些想法。你天生热爱智力挑战和辩论——不是为了赢，而是为了激发新的思考。你善于从不同角度看问题，常常能发现别人忽略的联系。传统和惯例对你来说不是"必须遵守的规则"，而是"可以被质疑的假设"。你在头脑风暴和概念生成方面有独特天赋。',
+    INFJ: '你是一个安静而深刻的理想主义者。内倾直觉(Ni)让你能够感知他人和情境背后的深层含义，外倾情感(Fe)则驱使你关心他人的福祉。你常常"就知道"某些事情——说不清为什么，但你的直觉往往准确。你有强烈的使命感和理想主义，渴望为世界带来积极的改变。虽然外表安静，内心却有一个丰富而复杂的世界。你善于理解他人的深层需求和动机，常常成为朋友倾诉的对象。你追求有意义的深度关系，而非表面的广泛社交。',
+    INFP: '你是一个真诚而理想化的灵魂探索者。内倾情感(Fi)赋予你极其丰富的内心世界和坚定的个人价值观，外倾直觉(Ne)则让你的想象力不断拓展。你天生对"什么是真正重要的"有深刻的感知，对虚伪和不真实高度敏感。你追求真实——忠于自己的内心，也尊重他人的独特性。你往往在艺术、写作、心理治疗等领域有天赋，因为你能感知到人类经验中微妙而美丽的层次。你深深关心他人的福祉，但这种关心源于内心的信念，而非外在的期待。',
+    ENFJ: '你是一个温暖而有力的人际连接者。外倾情感(Fe)让你天生善于理解和回应他人的情感需求，内倾直觉(Ni)帮助你看到人际互动和情境发展的深层模式。你像一个"人际催化剂"——能够激发他人的潜能，协调群体的能量。你天生擅长沟通和引导，常常成为团队中"把大家凝聚在一起"的人。你对他人有强烈的责任感和关怀，在帮助他人成长的过程中获得深刻的满足感。你追求和谐，但也愿意为了更大的善而直面冲突。',
+    ENFP: '你是一个热情洋溢的可能性发现者。外倾直觉(Ne)让你对世界充满好奇，不断发现新的可能和联系，内倾情感(Fi)则赋予你深层的个人价值观和真诚。你善于看到每个人身上的独特潜能，并热情地鼓励他们。你像一个"人性探险家"——对人的故事、人的可能性充满兴趣。你追求自由和真实，不喜欢被框定。你的热情和创造力具有感染力，能让你周围的人感到世界变得更加丰富和有趣。',
+    ISTJ: '你是一个可靠而务实的执行者。内倾感觉(Si)让你重视经验和事实，善于建立系统化的工作方式，外倾思维(Te)帮助你高效地组织和执行。你天生注重细节和准确性，对"事情应该怎么做"有清晰的认知。你是那种"说了就做到"的人——承诺对你来说是严肃的。你尊重传统、规则和经过验证的方法，不追求不切实际的新花样。你的可靠性、条理性和责任心使你成为任何组织中不可或缺的基石。',
+    ISFJ: '你是一个温暖而细致的守护者。内倾感觉(Si)让你记住他人的需求和偏好的细节，外倾情感(Fe)驱使你默默地为他人提供实际的帮助。你可能不是说话最大声的人，但你往往是"在背后默默确保一切正常运转"的人。你天生善于照顾他人，注意到别人忽略的细节。你重视和谐、稳定和人际关系的维护。你的忠诚和可靠性让身边人感到安心——知道有你在，事情就会被妥善处理。',
+    ESTJ: '你是一个高效而果断的管理者。外倾思维(Te)让你天生善于组织资源、制定流程和推动执行，内倾感觉(Si)帮助你基于经验建立可靠的系统。你重视秩序、效率和明确的标准，相信"正确的做法"是存在的。你直言不讳，说到做到，对模糊和拖延缺乏耐心。在团队中，你通常是那个"把事情理清楚、分配好、推进下去"的人。你尊重规则和传统，相信良好的结构和纪律是高效的基础。',
+    ESFJ: '你是一个热心而体贴的人际维系者。外倾情感(Fe)让你天生善于感知和回应他人的情感需求，内倾感觉(Si)帮助你记住关于他人的细节和偏好。你是社交场合中的"粘合剂"——让每个人感到被关注和照顾。你重视和谐、合作和传统，乐于为团队创造温暖的氛围。你记得朋友的生日、同事的喜好、家人的需求——这些不是"小事"，而是你表达关心的方式。你的可靠和热心让你成为朋友圈中不可或缺的存在。',
+    ISTP: '你是一个冷静而灵活的实践问题解决者。内倾思维(Ti)让你善于分析系统的工作原理，外倾感觉(Se)让你对物理世界有敏锐的感知和操作能力。你天生擅长"动手"——拆解、理解、修复、创造。你在危机中保持冷静，能快速找到实际可行的解决方案。你不喜欢理论空谈，更相信"试一试就知道了"。你珍惜自由和独立，不喜欢被过多的规则和计划束缚。你的安静外表下，隐藏着对工具、技术和机械原理的深刻理解。',
+    ISFP: '你是一个温和而敏锐的审美者。内倾情感(Fi)赋予你深层的个人价值观和对美的敏感，外倾感觉(Se)让你活在当下，善于感知世界的色彩、质感和细节。你天生有艺术气质——不一定是在传统意义上画画或做音乐，而是你用独特的方式感受和表达生活。你追求真实和忠于自我，不喜欢伪装。你对他人有温柔的同理心，但这种关心是安静的、非侵入性的。你珍惜自由和个人空间，在压力下可能退缩而非对抗。',
+    ESTP: '你是一个精力充沛的行动派。外倾感觉(Se)让你对当下的环境有敏锐的感知，内倾思维(Ti)帮助你快速分析情况并做出反应。你天生"在行动中思考"——与其坐下来规划，不如先动手试试。你在快节奏、高变化的环境中如鱼得水，善于抓住当下的机会。你有很强的社交魅力和幽默感，能迅速与人建立联系。规则对你来说更多是"建议"而非"铁律"——如果有一种更快更好的方式，你不会犹豫去尝试。',
+    ESFP: '你是一个热情而真诚的生活享受者。外倾感觉(Se)让你充分感受当下的每一刻，内倾情感(Fi)赋予你真诚的个人价值观。你天生善于营造轻松愉快的氛围，让身边的人感到快乐。你是那种"活在当下"的人——不纠结过去，不焦虑未来，全身心地投入此刻。你有很强的审美感和表现力，在社交场合中自然成为焦点。你关心他人不是通过深思熟虑的分析，而是通过即时的温暖和实际的帮助。你的存在让世界变得更加生动和有趣。'
+  };
+  return descs[type] || descs['INTJ'];
+}
+</script>
+</body>
+</html>
