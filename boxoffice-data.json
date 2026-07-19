@@ -1,10 +1,21 @@
 {
-  "lastUpdated": "2026-07-19 06:41:07",
+  "lastUpdated": "2026-07-20 06:43:09",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
     {
       "rank": 1,
+      "name_en": "Toy Story 5",
+      "name_cn": "玩具总动员5",
+      "genre": [
+        "动画",
+        "冒险"
+      ],
+      "gross": "$430.9M",
+      "rating": "8.1"
+    },
+    {
+      "rank": 2,
       "name_en": "The Super Mario Galaxy Movie",
       "name_cn": "超级马力欧:银河大电影",
       "genre": [
@@ -15,17 +26,6 @@
       "rating": "7.0"
     },
     {
-      "rank": 2,
-      "name_en": "Toy Story 5",
-      "name_cn": "玩具总动员5",
-      "genre": [
-        "动画",
-        "冒险"
-      ],
-      "gross": "$420.3M",
-      "rating": "8.1"
-    },
-    {
       "rank": 3,
       "name_en": "Michael",
       "name_cn": "巨星之路",
@@ -33,7 +33,7 @@
         "传记",
         "音乐"
       ],
-      "gross": "$372.1M",
+      "gross": "$372.2M",
       "rating": "7.5"
     },
     {
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$256.8M",
+      "gross": "$258.5M",
       "rating": ""
     },
     {
@@ -76,7 +76,7 @@
         "科幻",
         "恐怖"
       ],
-      "gross": "$195.5M",
+      "gross": "$196.0M",
       "rating": "6.6"
     },
     {
