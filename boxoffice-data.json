@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-20 06:43:09",
+  "lastUpdated": "2026-07-21 06:51:37",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$430.9M",
+      "gross": "$429.9M",
       "rating": "8.1"
     },
     {
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$258.5M",
+      "gross": "$258.4M",
       "rating": ""
     },
     {
