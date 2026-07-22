@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-22 06:47:09",
+  "lastUpdated": "2026-07-23 06:55:34",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$431.6M",
+      "gross": "$434.6M",
       "rating": "8.1"
     },
     {
@@ -33,7 +33,7 @@
         "传记",
         "音乐"
       ],
-      "gross": "$372.2M",
+      "gross": "$372.3M",
       "rating": "7.5"
     },
     {
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$258.7M",
+      "gross": "$259.2M",
       "rating": ""
     },
     {
@@ -103,13 +103,10 @@
     },
     {
       "rank": 10,
-      "name_en": "Avatar: Fire and Ash",
-      "name_cn": "阿凡达3:火与灰",
-      "genre": [
-        "科幻",
-        "动作"
-      ],
-      "gross": "$154.0M",
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$163.7M",
       "rating": ""
     }
   ]
