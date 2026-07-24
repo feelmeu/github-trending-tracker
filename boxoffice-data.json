@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-24 06:49:05",
+  "lastUpdated": "2026-07-25 06:55:14",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$434.6M",
+      "gross": "$436.7M",
       "rating": "8.1"
     },
     {
@@ -54,7 +54,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$259.2M",
+      "gross": "$259.6M",
       "rating": ""
     },
     {
@@ -65,7 +65,7 @@
         "剧情",
         "喜剧"
       ],
-      "gross": "$220.5M",
+      "gross": "$220.6M",
       "rating": "6.6"
     },
     {
@@ -81,6 +81,14 @@
     },
     {
       "rank": 8,
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$181.7M",
+      "rating": ""
+    },
+    {
+      "rank": 9,
       "name_en": "Star Wars: The Mandalorian and Grogu",
       "name_cn": "星球大战:曼达洛人与古古",
       "genre": [
@@ -91,7 +99,7 @@
       "rating": "7.4"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "name_en": "Hoppers",
       "name_cn": "河狸变身计划",
       "genre": [
@@ -100,14 +108,6 @@
       ],
       "gross": "$166.0M",
       "rating": "7.4"
-    },
-    {
-      "rank": 10,
-      "name_en": "The Odyssey",
-      "name_cn": "The Odyssey",
-      "genre": [],
-      "gross": "$163.7M",
-      "rating": ""
     }
   ]
 }
