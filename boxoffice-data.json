@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-26 06:45:34",
+  "lastUpdated": "2026-07-27 06:53:14",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$441.5M",
+      "gross": "$448.6M",
       "rating": "8.1"
     },
     {
@@ -49,20 +49,20 @@
     },
     {
       "rank": 5,
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$286.4M",
+      "rating": ""
+    },
+    {
+      "rank": 6,
       "name_en": "Obsession",
       "name_cn": "执念",
       "genre": [
         "恐怖"
       ],
-      "gross": "$260.3M",
-      "rating": ""
-    },
-    {
-      "rank": 6,
-      "name_en": "The Odyssey",
-      "name_cn": "The Odyssey",
-      "genre": [],
-      "gross": "$225.3M",
+      "gross": "$261.4M",
       "rating": ""
     },
     {
@@ -84,7 +84,7 @@
         "科幻",
         "恐怖"
       ],
-      "gross": "$196.5M",
+      "gross": "$196.8M",
       "rating": "6.6"
     },
     {
@@ -95,7 +95,7 @@
         "动作",
         "科幻"
       ],
-      "gross": "$177.6M",
+      "gross": "$177.7M",
       "rating": "7.4"
     },
     {
