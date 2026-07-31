@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-31 06:57:47",
+  "lastUpdated": "2026-08-01 06:53:12",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$454.2M",
+      "gross": "$455.4M",
       "rating": "8.1"
     },
     {
@@ -38,6 +38,14 @@
     },
     {
       "rank": 4,
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$344.5M",
+      "rating": ""
+    },
+    {
+      "rank": 5,
       "name_en": "Project Hail Mary",
       "name_cn": "挽救计划",
       "genre": [
@@ -48,21 +56,13 @@
       "rating": "8.6"
     },
     {
-      "rank": 5,
-      "name_en": "The Odyssey",
-      "name_cn": "The Odyssey",
-      "genre": [],
-      "gross": "$334.2M",
-      "rating": ""
-    },
-    {
       "rank": 6,
       "name_en": "Obsession",
       "name_cn": "执念",
       "genre": [
         "恐怖"
       ],
-      "gross": "$262.2M",
+      "gross": "$262.3M",
       "rating": ""
     },
     {
@@ -84,7 +84,7 @@
         "科幻",
         "恐怖"
       ],
-      "gross": "$196.8M",
+      "gross": "$197.0M",
       "rating": "6.6"
     },
     {
