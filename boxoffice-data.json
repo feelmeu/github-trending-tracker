@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-02 06:46:27",
+  "lastUpdated": "2026-08-03 06:47:35",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$457.2M",
+      "gross": "$461.7M",
       "rating": "8.1"
     },
     {
@@ -27,6 +27,14 @@
     },
     {
       "rank": 3,
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$395.5M",
+      "rating": ""
+    },
+    {
+      "rank": 4,
       "name_en": "Michael",
       "name_cn": "巨星之路",
       "genre": [
@@ -37,15 +45,15 @@
       "rating": "7.5"
     },
     {
-      "rank": 4,
-      "name_en": "The Odyssey",
-      "name_cn": "The Odyssey",
+      "rank": 5,
+      "name_en": "Spider-Man: Brand New Day",
+      "name_cn": "Spider-Man: Brand New Day",
       "genre": [],
-      "gross": "$359.0M",
+      "gross": "$355.0M",
       "rating": ""
     },
     {
-      "rank": 5,
+      "rank": 6,
       "name_en": "Project Hail Mary",
       "name_cn": "挽救计划",
       "genre": [
@@ -56,17 +64,17 @@
       "rating": "8.6"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "name_en": "Obsession",
       "name_cn": "执念",
       "genre": [
         "恐怖"
       ],
-      "gross": "$262.4M",
+      "gross": "$262.8M",
       "rating": ""
     },
     {
-      "rank": 7,
+      "rank": 8,
       "name_en": "The Devil Wears Prada 2",
       "name_cn": "穿普拉达的女王2",
       "genre": [
@@ -77,18 +85,18 @@
       "rating": "6.6"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "name_en": "Backrooms",
       "name_cn": "后室",
       "genre": [
         "科幻",
         "恐怖"
       ],
-      "gross": "$197.1M",
+      "gross": "$197.3M",
       "rating": "6.6"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "name_en": "Star Wars: The Mandalorian and Grogu",
       "name_cn": "星球大战:曼达洛人与古古",
       "genre": [
@@ -97,14 +105,6 @@
       ],
       "gross": "$177.7M",
       "rating": "7.4"
-    },
-    {
-      "rank": 10,
-      "name_en": "Spider-Man: Brand New Day",
-      "name_cn": "Spider-Man: Brand New Day",
-      "genre": [],
-      "gross": "$168.0M",
-      "rating": ""
     }
   ]
 }
