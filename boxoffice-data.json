@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-04 06:54:25",
+  "lastUpdated": "2026-08-05 06:55:15",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,7 +11,7 @@
         "动画",
         "冒险"
       ],
-      "gross": "$462.2M",
+      "gross": "$463.4M",
       "rating": "8.1"
     },
     {
@@ -27,14 +27,22 @@
     },
     {
       "rank": 3,
-      "name_en": "The Odyssey",
-      "name_cn": "The Odyssey",
+      "name_en": "Spider-Man: Brand New Day",
+      "name_cn": "Spider-Man: Brand New Day",
       "genre": [],
-      "gross": "$395.6M",
+      "gross": "$407.2M",
       "rating": ""
     },
     {
       "rank": 4,
+      "name_en": "The Odyssey",
+      "name_cn": "The Odyssey",
+      "genre": [],
+      "gross": "$405.3M",
+      "rating": ""
+    },
+    {
+      "rank": 5,
       "name_en": "Michael",
       "name_cn": "巨星之路",
       "genre": [
@@ -43,14 +51,6 @@
       ],
       "gross": "$372.3M",
       "rating": "7.5"
-    },
-    {
-      "rank": 5,
-      "name_en": "Spider-Man: Brand New Day",
-      "name_cn": "Spider-Man: Brand New Day",
-      "genre": [],
-      "gross": "$360.1M",
-      "rating": ""
     },
     {
       "rank": 6,
@@ -70,7 +70,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$262.8M",
+      "gross": "$262.9M",
       "rating": ""
     },
     {
