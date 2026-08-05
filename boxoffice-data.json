@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-05 06:55:15",
+  "lastUpdated": "2026-08-06 06:50:44",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -11,11 +11,19 @@
         "动画",
         "冒险"
       ],
-      "gross": "$463.4M",
+      "gross": "$464.6M",
       "rating": "8.1"
     },
     {
       "rank": 2,
+      "name_en": "Spider-Man: Brand New Day",
+      "name_cn": "Spider-Man: Brand New Day",
+      "genre": [],
+      "gross": "$449.2M",
+      "rating": ""
+    },
+    {
+      "rank": 3,
       "name_en": "The Super Mario Galaxy Movie",
       "name_cn": "超级马力欧:银河大电影",
       "genre": [
@@ -26,19 +34,11 @@
       "rating": "7.0"
     },
     {
-      "rank": 3,
-      "name_en": "Spider-Man: Brand New Day",
-      "name_cn": "Spider-Man: Brand New Day",
-      "genre": [],
-      "gross": "$407.2M",
-      "rating": ""
-    },
-    {
       "rank": 4,
       "name_en": "The Odyssey",
       "name_cn": "The Odyssey",
       "genre": [],
-      "gross": "$405.3M",
+      "gross": "$414.1M",
       "rating": ""
     },
     {
@@ -70,7 +70,7 @@
       "genre": [
         "恐怖"
       ],
-      "gross": "$262.9M",
+      "gross": "$263.0M",
       "rating": ""
     },
     {
