@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-05 19:51:06",
+  "lastUpdated": "2026-09-05 20:04:19",
   "timezone": "Asia/Shanghai (UTC+8)",
   "dateStr": "2026年09月05日",
   "dataSource": "last manual update",
@@ -93,18 +93,6 @@
       },
       {
         "rank": 8,
-        "name": "Kimi K3",
-        "vendor": "月之暗面",
-        "region": "cn",
-        "score": "AAI 50 / SC 70.68",
-        "status": [
-          "new",
-          "open"
-        ],
-        "highlight": "国产新晋 AAI Top10，SuperCLUE 编码第一"
-      },
-      {
-        "rank": 9,
         "name": "通义千问 Qwen3.8-Max",
         "vendor": "阿里巴巴",
         "region": "cn",
@@ -116,15 +104,27 @@
         "highlight": "SuperCLUE 榜首，数学 77.19 幻觉 86.08"
       },
       {
+        "rank": 9,
+        "name": "Kimi K3",
+        "vendor": "月之暗面",
+        "region": "cn",
+        "score": "AAI 50 / SC 70.68",
+        "status": [
+          "new",
+          "open"
+        ],
+        "highlight": "国产新晋 AAI Top10，SuperCLUE 编码第一"
+      },
+      {
         "rank": 10,
-        "name": "DeepSeek V4-Pro",
+        "name": "DeepSeek V4-Flash",
         "vendor": "深度求索",
         "region": "cn",
-        "score": "SC 70.10",
+        "score": "SC 65.60",
         "status": [
           "open"
         ],
-        "highlight": "幻觉控制 89.73 国产最高，开源旗舰"
+        "highlight": "数学 78.95 国产最高，轻量高效性价比突出"
       }
     ],
     "cn": [
@@ -152,16 +152,6 @@
       },
       {
         "rank": 3,
-        "name": "DeepSeek V4-Pro",
-        "vendor": "深度求索",
-        "score": "70.10",
-        "status": [
-          "open"
-        ],
-        "highlight": "幻觉控制 89.73 国产最高，智能体规划 85.48"
-      },
-      {
-        "rank": 4,
         "name": "豆包 Doubao-Seed-2.1 Pro",
         "vendor": "字节跳动",
         "score": "65.94",
@@ -171,27 +161,27 @@
         "highlight": "科学推理 77.19，智能体规划 84.95"
       },
       {
-        "rank": 5,
+        "rank": 4,
         "name": "DeepSeek V4-Flash",
         "vendor": "深度求索",
         "score": "65.60",
         "status": [
           "open"
         ],
-        "highlight": "数学 78.95，轻量高效性价比突出"
+        "highlight": "数学 78.95 国产最高，轻量高效性价比突出"
       },
       {
-        "rank": 6,
+        "rank": 5,
         "name": "DeepSeek V4-Pro (preview)",
         "vendor": "深度求索",
         "score": "64.40",
         "status": [
           "open"
         ],
-        "highlight": "指令遵循 49.52，智能体规划 79.00"
+        "highlight": "指令遵循 49.52，幻觉控制 79.70"
       },
       {
-        "rank": 7,
+        "rank": 6,
         "name": "GLM-5.2",
         "vendor": "智谱 AI",
         "score": "63.27",
@@ -201,7 +191,7 @@
         "highlight": "编码 64.13，智能体规划 65.27"
       },
       {
-        "rank": 8,
+        "rank": 7,
         "name": "腾讯 Hy3",
         "vendor": "腾讯",
         "score": "62.13",
@@ -211,7 +201,7 @@
         "highlight": "数学 77.19，科学推理 75.44"
       },
       {
-        "rank": 9,
+        "rank": 8,
         "name": "MiniMax M3",
         "vendor": "稀宇科技",
         "score": "56.90",
@@ -221,7 +211,7 @@
         "highlight": "智能体规划 77.68 表现突出"
       },
       {
-        "rank": 10,
+        "rank": 9,
         "name": "文心一言 ERNIE 5.1",
         "vendor": "百度",
         "score": "54.56",
@@ -229,6 +219,16 @@
           "closed"
         ],
         "highlight": "幻觉控制 83.02，智能体规划 72.21"
+      },
+      {
+        "rank": 10,
+        "name": "美团 LongCat-2.0",
+        "vendor": "美团",
+        "score": "54.22",
+        "status": [
+          "open"
+        ],
+        "highlight": "数学 70.18，科学推理 64.91"
       }
     ],
     "intl": [
