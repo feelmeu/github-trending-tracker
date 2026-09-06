@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-06 07:28:25",
+  "lastUpdated": "2026-09-07 07:22:26",
   "timezone": "Asia/Shanghai (UTC+8)",
   "source": "Box Office Mojo (Calendar Grosses)",
   "movies": [
@@ -12,7 +12,7 @@
         "冒险",
         "奇幻"
       ],
-      "gross": "$903.6M",
+      "gross": "$923.1M",
       "rating": "7.8"
     },
     {
@@ -24,7 +24,7 @@
         "剧情",
         "奇幻"
       ],
-      "gross": "$574.9M",
+      "gross": "$589.0M",
       "rating": "7.9"
     },
     {
@@ -36,7 +36,7 @@
         "冒险",
         "喜剧"
       ],
-      "gross": "$479.1M",
+      "gross": "$479.9M",
       "rating": "8.1"
     },
     {
@@ -115,7 +115,7 @@
         "冒险",
         "喜剧"
       ],
-      "gross": "$182.9M",
+      "gross": "$183.2M",
       "rating": "6.8"
     }
   ]
