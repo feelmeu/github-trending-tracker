@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI大模型排名与新闻 | 国内外权威榜单</title>
+<title>AI大模型排名 | 国内外权威榜单</title>
 <style>
 :root {
   --bg: #0d1117;
@@ -558,10 +558,11 @@ footer a:hover { text-decoration: underline; }
   <div class="navbar-inner">
     <a class="navbar-brand" href="index.html">
       <span class="brand-icon">🏆</span>
-      <span>AI 排名与新闻</span>
+      <span>AI 大模型排名</span>
     </a>
     <div class="navbar-links">
-      <a href="index.html" class="active">AI排名与新闻</a>
+      <a href="index.html" class="active">AI大模型排名</a>
+      <a href="ai-news.html">AI新闻周报</a>
       <a href="github-trending.html">GitHub项目追踪</a>
       <a href="ai-tools.html">AI工具全景</a>
       <a href="nev-sales.html">汽车销量榜</a>
@@ -575,8 +576,8 @@ footer a:hover { text-decoration: underline; }
 <header class="hero">
   <div class="hero-content">
     <div class="hero-left">
-      <h1>AI大模型排名与新闻</h1>
-      <p class="subtitle">国内外权威榜单 · 引擎厂商最新动态 — 涵盖模型发布、技术突破与优惠信息</p>
+      <h1>AI大模型排名</h1>
+      <p class="subtitle">国内外权威榜单 · Artificial Analysis Intelligence Index + SuperCLUE 综合排名</p>
     </div>
     <div class="hero-right">
       <span id="timestamp" class="timestamp">
@@ -593,13 +594,6 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ===== Main Content ===== -->
 <main class="container">
-
-  <!-- ===== Real-time AI News Section ===== -->
-  <section class="section" data-type="realtime">
-    <div class="news-grid" id="realtime-news-grid">
-      <div class="state-msg"><div class="spinner"></div>正在获取最新 AI 资讯...</div>
-    </div>
-  </section>
 
   <!-- ===== Mixed Ranking Section ===== -->
   <section class="section" data-type="mixed">
@@ -679,89 +673,6 @@ footer a:hover { text-decoration: underline; }
         <span>排行榜数据采集时间：—</span>
       </div>
     </div>
-
-    <!-- Domestic News -->
-    <div class="news-grid">
-      <div class="news-card" style="animation-delay:0s">
-        <div class="news-header">
-          <span class="news-tag release">模型发布</span>
-          <span class="news-date">2026-06-17</span>
-        </div>
-        <div class="news-title">智谱 AI 开源 GLM-5.2，Code Arena 全球可用模型第一</div>
-        <div class="news-body">智谱 AI 正式开源旗舰模型 GLM-5.2。在百万开发者盲测的 Code Arena 编程榜单中取得 1595 分，总榜第二，由于排名第一的 Claude Fable 5 被出口管制封锁，GLM-5.2 实际成为全球可商用模型第一。在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a><span class="source-sep">/</span><a href="https://www.ithome.com" target="_blank" rel="noopener">IT之家</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.05s">
-        <div class="news-header">
-          <span class="news-tag release">模型发布</span>
-          <span class="news-date">2026-06-23</span>
-        </div>
-        <div class="news-title">字节豆包 2.1 Pro 发布，性能直逼 GPT-5.5</div>
-        <div class="news-body">在 2026 年火山引擎 Force 大会上，字节跳动旗下豆包大模型最新旗舰版本 Doubao-Seed-2.1 Pro 正式亮相。官方 Benchmark 数据显示，其性能已接近 GPT-5.5、Claude Opus 4.7 以及 Gemini 3.1 Pro。豆包大模型日均 Tokens 调用量达 180 万亿，对比上线时增长超 1500 倍。豆包已从「追赶者」进化至「规模化运营者」。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.volcengine.com" target="_blank" rel="noopener">火山引擎 Force 大会</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.1s">
-        <div class="news-header">
-          <span class="news-tag release">模型发布</span>
-          <span class="news-date">2026-06-24</span>
-        </div>
-        <div class="news-title">阿里千问开源 Qwen-AgentWorld 原生语言世界模型</div>
-        <div class="news-body">阿里千问团队正式开源 Qwen-AgentWorld，号称首个原生语言世界模型（LWM），可在文本、代码、网页、办公、移动、桌面、具身等七大领域统一模拟智能体交互环境。环境建模从预训练阶段即作为目标，贯穿 CPT → SFT → RL 全流程，被视为 Agent 时代的基础设施级开源工作。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://qwen.ai" target="_blank" rel="noopener">阿里千问团队</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.15s">
-        <div class="news-header">
-          <span class="news-tag release">即将发布</span>
-          <span class="news-date">2026-06-23</span>
-        </div>
-        <div class="news-title">DeepSeek V4.1 即将发布，迭代节奏加速至两个月一更</div>
-        <div class="news-body">据 The Information 爆料，DeepSeek 计划在 6 月推出 V4.1 版本。从 V4 到 V4.1，间隔不到两个月。国产大模型的迭代节奏已从「半年一更」加速进入「两个月一更」。DeepSeek V4-Pro 在本地大模型横评中以 70.48 总分排名第一，数学 71.93、代码 74.95、智能体 78.12。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.2s">
-        <div class="news-header">
-          <span class="news-tag offer">优惠信息</span>
-          <span class="news-date">2026-06-24</span>
-        </div>
-        <div class="news-title">豆包专业版上线，标准套餐 68 元/月</div>
-        <div class="news-body">字节豆包专业版今日上线，基于豆包 2.1 系列大模型，标准套餐连续包月 68 元。专业版接入全新「办公任务模式」，可执行 Agent 类任务、操作本地文件。免费用户也可体验 2.1 Turbo 版本的办公模式。这是国内大模型从聊天向 Agent 生产力工具加速转型的关键信号。豆包 Q1 月活达 3.45 亿，超过千问与 DeepSeek 之和。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bytedance.com" target="_blank" rel="noopener">字节跳动</a><span class="source-sep">/</span><a href="https://www.questmobile.com.cn" target="_blank" rel="noopener">QuestMobile</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.25s">
-        <div class="news-header">
-          <span class="news-tag offer">免费福利</span>
-          <span class="news-date">2026-06-17</span>
-        </div>
-        <div class="news-title">智谱 GLM-5.2 模型免费用，开源即巅峰</div>
-        <div class="news-body">智谱 AI 开源 GLM-5.2 的同时宣布模型可免费使用。该模型在 Artificial Analysis 综合榜单上拿到 51 分，位列开源模型 SOTA，全球排名冲到第四。编程能力单项第四，智能体能力第二，Design Arena 网页设计榜单直接第一——超过了 Claude Fable 5。开源模型吊打闭源成为现实。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.zhipuai.cn" target="_blank" rel="noopener">智谱 AI 官方</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.3s">
-        <div class="news-header">
-          <span class="news-tag breakthrough">技术突破</span>
-          <span class="news-date">2026-06-24</span>
-        </div>
-        <div class="news-title">虚幻引擎 5.8 收官发布，MegaLights 转正</div>
-        <div class="news-body">Epic Games 发布 UE 5.8，这是虚幻引擎 5 计划内的最后一个大版本，下一站直接迈向 UE6。本次更新中 MegaLights 进入生产可用状态，MetaHuman 升级到人群系统级别，并新增无标记动捕能力，AIGC 内容生产门槛进一步降低。对 Unity MCP 生态也是重要信号：游戏引擎与 AI 的融合正在加速。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.unrealengine.com" target="_blank" rel="noopener">Epic Games 官方</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.35s">
-        <div class="news-header">
-          <span class="news-tag deal">行业动态</span>
-          <span class="news-date">2026-06-24</span>
-        </div>
-        <div class="news-title">滴滴、千问、豆包打响 AI 打车入口战</div>
-        <div class="news-body">AI 打车正在重写互联网底层规则——从「人找服务」转向「意图先行、服务后置」。滴滴、阿里千问、字节豆包均在加紧布局 AI 入口，谁能成为用户的「默认意图层」，谁就握住下一代流量分配权。微信 AI 助手「小微」灰度上线，内嵌于微信生态，13 亿月活用户即将「无感」体验 AI。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.tmtpost.com" target="_blank" rel="noopener">钛媒体</a><span class="source-sep">/</span><a href="https://www.aibase.com" target="_blank" rel="noopener">AI日报</a></div>
-      </div>
-    </div>
   </section>
 
   <!-- ===== International Section ===== -->
@@ -802,69 +713,6 @@ footer a:hover { text-decoration: underline; }
         <span>排行榜数据采集时间：—</span>
       </div>
     </div>
-
-    <!-- International News -->
-    <div class="news-grid">
-      <div class="news-card" style="animation-delay:0s">
-        <div class="news-header">
-          <span class="news-tag release">模型发布</span>
-          <span class="news-date">2026-06-09</span>
-        </div>
-        <div class="news-title">Anthropic 发布 Claude Fable 5 与 Mythos 5</div>
-        <div class="news-body">Anthropic 同时发布两款旗舰模型，首次将 Mythos 级能力开放给普通用户。Fable 5 在软件工程、知识工作、视觉识别、科学研究和长上下文处理等多个领域刷新纪录，LMSYS Arena 达 99 分，SWE-bench Verified 达 95.5%。但因美国出口管制要求，曾短暂下线所有用户访问。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic 官方</a><span class="source-sep">/</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.05s">
-        <div class="news-header">
-          <span class="news-tag deal">企业合作</span>
-          <span class="news-date">2026-06-22</span>
-        </div>
-        <div class="news-title">OpenAI 签下三星 12 万员工大单</div>
-        <div class="news-body">OpenAI 签下史上最大企业订单——三星 12 万员工全面接入 ChatGPT 企业版与 Codex。Codex 周活跃用户突破 500 万，其中非开发者增速是程序员的 3 倍。三星同步启动「AI 大转型」：总裁层集训、全员 AI 教育、新设 AI 专职组织。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.1s">
-        <div class="news-header">
-          <span class="news-tag breakthrough">技术突破</span>
-          <span class="news-date">2026-06-15</span>
-        </div>
-        <div class="news-title">GitHub Agent HQ 集成 Claude 与 Codex 多代理编码</div>
-        <div class="news-body">GitHub 在 Agent HQ 中加入 Anthropic Claude 和 OpenAI Codex，Copilot 用户可实现多代理编码工作流。多个 AI Agent 可协同完成复杂开发任务，标志着 AI 编码从单工具辅助进入多 Agent 协作时代。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.theverge.com" target="_blank" rel="noopener">The Verge</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.15s">
-        <div class="news-header">
-          <span class="news-tag warning">行业动态</span>
-          <span class="news-date">2026-06-23</span>
-        </div>
-        <div class="news-title">AI 芯片股重挫，万亿资本开支遭遇回报拷问</div>
-        <div class="news-body">纳指重挫 2.33%，英伟达跌 3.50%，AMD 大跌 7.52%。核心逻辑：AI 万亿资本开支何时兑现回报。当华尔街开始追问「这些投入什么时候产生实质性利润」，市场情绪天平随之倾斜。OpenAI 与 Anthropic 双双冲刺 IPO，AI 行业即将公开财务底牌。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.bloomberg.com" target="_blank" rel="noopener">彭博社</a><span class="source-sep">/</span><a href="https://www.wsj.com" target="_blank" rel="noopener">Wall Street Journal</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.2s">
-        <div class="news-header">
-          <span class="news-tag warning">数据隐忧</span>
-          <span class="news-date">2026-06-20</span>
-        </div>
-        <div class="news-title">科学家用 AI 训练 AI，数据质量成新灰犀牛</div>
-        <div class="news-body">《新科学家》调查报道：受雇于 Scale AI、Outlier 等数据标注平台的工作人员，正在用 ChatGPT 完成「提供高质量人类数据」的任务。如果「人类标注」实际由 AI 生成，模型学到的可能是一代代自我循环的「二手知识」，数据溯源和标注质量监管成为产业核心课题。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.newscientist.com" target="_blank" rel="noopener">New Scientist</a></div>
-      </div>
-
-      <div class="news-card" style="animation-delay:0.25s">
-        <div class="news-header">
-          <span class="news-tag deal">企业动态</span>
-          <span class="news-date">2026-06-23</span>
-        </div>
-        <div class="news-title">夏季达沃斯开幕，AI 成为全场关键词</div>
-        <div class="news-body">世界经济论坛第 17 届新领军者年会在大连开幕，来自 90 多个国家的 1700 余名代表齐聚。AI 成为绝对关键词。荷兰特文特大学教授警告 AI 能耗被严重低估，联合国报告称到 2030 年 AI 数据中心用水量将相当于 13 亿人的年基本生活用水。</div>
-        <div class="news-source"><span class="source-label">来源：</span><a href="https://www.weforum.org" target="_blank" rel="noopener">世界经济论坛</a><span class="source-sep">/</span><a href="https://www.un.org" target="_blank" rel="noopener">联合国报告</a></div>
-      </div>
-    </div>
   </section>
 
 </main>
@@ -872,8 +720,7 @@ footer a:hover { text-decoration: underline; }
 <!-- ===== Footer ===== -->
 <footer>
   <p>排行榜数据来源：<a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">Artificial Analysis</a> · <a href="https://www.superclueai.com/" target="_blank" rel="noopener">SuperCLUE</a> · Code Arena · LMSYS Chatbot Arena</p>
-  <p>实时资讯来源：36氪 · IT之家 · 机器之心 · 精选新闻整理自各厂商官方公告及权威媒体报道</p>
-  <p><a href="github-trending.html">GitHub 项目追踪</a> · <a href="ai-tools.html">AI 工具全景</a> · 由 <strong>TRAE</strong> 驱动</p>
+  <p><a href="ai-news.html">AI 新闻周报</a> · <a href="github-trending.html">GitHub 项目追踪</a> · <a href="ai-tools.html">AI 工具全景</a> · 由 <strong>TRAE</strong> 驱动</p>
 </footer>
 
 <script>
@@ -916,115 +763,10 @@ function updateRankingNotes() {
   });
 }
 
-// ===== Real-time News via RSS =====
-var RSS_SOURCES = [
-  { url: 'https://36kr.com/feed', name: '36氪', tag: 'release', tagText: '科技资讯' },
-  { url: 'https://www.ithome.com/rss/', name: 'IT之家', tag: 'deal', tagText: 'IT动态' },
-  { url: 'https://www.jiqizhixin.com/rss', name: '机器之心', tag: 'breakthrough', tagText: 'AI前沿' }
-];
-
-function stripHtml(html) {
-  var tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  return (tmp.textContent || tmp.innerText || '').trim();
-}
-
-function formatDate(dateStr) {
-  var d = new Date(dateStr);
-  if (isNaN(d.getTime())) return '';
-  var y = d.getFullYear();
-  var mo = String(d.getMonth() + 1).padStart(2, '0');
-  var da = String(d.getDate()).padStart(2, '0');
-  return y + '-' + mo + '-' + da;
-}
-
-function fetchRssNews(rssUrl) {
-  var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=6';
-  return fetch(apiUrl).then(function(res) { return res.json(); });
-}
-
-function renderRealtimeNews(allItems) {
-  var grid = document.getElementById('realtime-news-grid');
-  if (!grid) return;
-  if (!allItems || allItems.length === 0) {
-    grid.innerHTML = '';
-    return;
-  }
-  // Sort by date descending, take top 8
-  allItems.sort(function(a, b) {
-    return new Date(b.pubDate) - new Date(a.pubDate);
-  });
-  var display = allItems.slice(0, 8);
-  var html = display.map(function(item, i) {
-    var title = escapeHtml(item.title);
-    var desc = stripHtml(item.description || '');
-    if (desc.length > 120) desc = desc.substring(0, 120) + '...';
-    var date = formatDate(item.pubDate);
-    var sourceName = item._sourceName;
-    var tagText = item._tagText;
-    var tagClass = item._tagClass;
-    var link = item.link || '#';
-    return '<div class="news-card" style="animation-delay:' + (i * 0.05) + 's">'
-      + '<div class="news-header">'
-      +   '<span class="news-tag ' + tagClass + '">' + tagText + '</span>'
-      +   '<span class="news-date">' + date + '</span>'
-      + '</div>'
-      + '<div class="news-title"><a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">' + title + '</a></div>'
-      + (desc ? '<div class="news-body">' + escapeHtml(desc) + '</div>' : '')
-      + '<div class="news-source"><span class="source-label">来源：</span><a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' + sourceName + '</a></div>'
-      + '</div>';
-  }).join('');
-  grid.innerHTML = html;
-}
-
-function loadRealtimeNews() {
-  var grid = document.getElementById('realtime-news-grid');
-  if (grid) grid.innerHTML = '<div class="state-msg"><div class="spinner"></div>正在获取最新 AI 资讯...</div>';
-
-  // Check cache (30 min)
-  var cacheKey = 'ai_realtime_news_cache';
-  try {
-    var cached = JSON.parse(localStorage.getItem(cacheKey) || '{}');
-    if (cached.time && (Date.now() - cached.time < 30 * 60 * 1000) && cached.items && cached.items.length > 0) {
-      renderRealtimeNews(cached.items);
-      return;
-    }
-  } catch(e) {}
-
-  var promises = RSS_SOURCES.map(function(src) {
-    return fetchRssNews(src.url).then(function(data) {
-      if (data.status === 'ok' && data.items) {
-        return data.items.map(function(item) {
-          item._sourceName = src.name;
-          item._tagClass = src.tag;
-          item._tagText = src.tagText;
-          return item;
-        });
-      }
-      return [];
-    }).catch(function() { return []; });
-  });
-
-  Promise.all(promises).then(function(results) {
-    var allItems = [];
-    results.forEach(function(items) { allItems = allItems.concat(items); });
-    // Cache
-    try {
-      localStorage.setItem(cacheKey, JSON.stringify({ time: Date.now(), items: allItems }));
-    } catch(e) {}
-    renderRealtimeNews(allItems);
-  }).catch(function() {
-    renderRealtimeNews([]);
-  });
-}
-
 function refreshData() {
   var btn = document.getElementById('refresh-btn');
   if (btn) btn.classList.add('spinning');
   updateTimestamp(true);
-  // Clear cache and reload news
-  try { localStorage.removeItem('ai_realtime_news_cache'); } catch(e) {}
-  loadRealtimeNews();
   loadRankings();
   setTimeout(function() {
     updateTimestamp(false);
@@ -1132,7 +874,6 @@ function loadRankings() {
 // ===== Init =====
 updateTimestamp(false);
 updateRankingNotes();
-loadRealtimeNews();
 loadRankings();
 </script>
 
