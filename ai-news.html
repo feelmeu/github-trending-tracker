@@ -276,6 +276,104 @@ body {
 .section-header h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.15rem; }
 .section-header p { font-size: 0.85rem; color: var(--muted); }
 
+/* ===== Latest Badge ===== */
+.latest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(63,185,80,0.15);
+  border: 1px solid rgba(63,185,80,0.3);
+  color: var(--accent-green);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 0.5rem;
+}
+
+/* ===== Archive (Past Issues) ===== */
+.archive-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.archive-section .section-header { margin-bottom: 1rem; }
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.archive-item {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.archive-item > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  list-style: none;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.archive-item > summary::-webkit-details-marker { display: none; }
+.archive-item > summary::before {
+  content: '▶';
+  font-size: 0.7rem;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.archive-item[open] > summary::before { transform: rotate(90deg); }
+.archive-item > summary:hover { background: var(--bg3); }
+
+.archive-week-num {
+  color: var(--accent-purple);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.archive-week-dates {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.archive-news-count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: rgba(125,133,144,0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.archive-content {
+  padding: 0 1.2rem 1.2rem;
+}
+
+.archive-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
 /* ===== Footer ===== */
 footer {
   border-top: 1px solid var(--rule);
@@ -365,7 +463,7 @@ footer a:hover { text-decoration: underline; }
     <div class="section-header">
       <div class="section-icon">🌐</div>
       <div>
-        <h2>本周 AI 重大新闻</h2>
+        <h2>本期 AI 重大新闻<span class="latest-badge">最新</span></h2>
         <p>精选 12 条本周最重要的 AI 行业资讯</p>
       </div>
     </div>
@@ -492,6 +590,45 @@ footer a:hover { text-decoration: underline; }
         <div class="news-source"><span class="source-label">来源：</span><a href="https://www.chinatelecom.cn" target="_blank" rel="noopener">中国电信研究院</a></div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===== Archive: Past Issues ===== -->
+  <section class="archive-section">
+    <div class="section-header">
+      <div class="section-icon">📚</div>
+      <div>
+        <h2>往期周报</h2>
+        <p>点击展开查看往期 AI 新闻周报</p>
+      </div>
+    </div>
+
+    <div class="archive-list">
+      <!--
+        往期周报累积区域使用方法：
+        更新新一期时，将当前"本期"的 news-grid 内容移入下方一个新的 <details class="archive-item"> 中，
+        然后在"本期"区域填入新一期的新闻。
+
+        示例结构（复制此模板，修改日期和内容）：
+
+      <details class="archive-item">
+        <summary>
+          <span class="archive-week-num">第36期</span>
+          <span class="archive-week-dates">2026年8月31日 — 9月6日</span>
+          <span class="archive-news-count">10 条新闻</span>
+        </summary>
+        <div class="archive-content">
+          <div class="news-grid">
+            <div class="news-card">
+              ... 新闻卡片 ...
+            </div>
+          </div>
+        </div>
+      </details>
+      -->
+      <div class="archive-empty">
+        📋 暂无往期周报，后续每期更新后将在此累积归档
+      </div>
     </div>
   </section>
 
